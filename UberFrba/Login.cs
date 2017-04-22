@@ -67,15 +67,6 @@ namespace UberFrba
 
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            this.mostrarInicio();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -246,6 +237,16 @@ namespace UberFrba
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.mostrarInicio();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
 
