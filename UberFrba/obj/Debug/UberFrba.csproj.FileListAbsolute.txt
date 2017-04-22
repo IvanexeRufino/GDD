@@ -1,2 +1,13 @@
 E:\src\UberFrba\UberFrba\bin\Debug\UberFrba.exe.config
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\Aplicacion Desktop\UberFrba\bin\Debug\UberFrba.exe.config
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\bin\Debug\UberFrba.exe.config
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.exe
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.pdb
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\bin\Debug\UberFrba.exe
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\bin\Debug\UberFrba.pdb
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.csprojResolveAssemblyReference.cache
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Automovil.Form1.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Login.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Menu.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Properties.Resources.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.csproj.GenerateResource.Cache
