@@ -24,31 +24,31 @@ namespace UberFrba
             conexion = bd.getCon();
             InitializeComponent();
         }
-        
-        public void mostrarInicio() {
-            
+
+        public void mostrarInicio()
+        {
+
             label1.Visible = true;
             label2.Visible = true;
             label3.Visible = true;
             label4.Visible = true;
+            label5.Visible = true;
             label6.Visible = true;
-            label7.Visible = true;
-            label8.Visible = true;
-            UberFRBA.Visible = false;
+            label10.Visible = true;
 
-            button1.Visible = false;
+            button7.Visible = false;
+            button8.Visible = false;
+            button1.Visible = true;
             button2.Visible = true;
             button3.Visible = true;
             button4.Visible = true;
-            button5.Visible = false;
-            button6.Visible = true;
 
             textBox1.Visible = true;
             textBox2.Visible = true;
             textBox3.Visible = true;
             textBox4.Visible = true;
 
-            comboBox2.Visible = true;
+            comboBox1.Visible = true;
             lineShape1.Visible = true;
             conexion.Open();
             string query = "SELECT Rol_Nombre FROM OVERFANTASY.rol";
@@ -59,7 +59,7 @@ namespace UberFrba
                 {
                     while (reader.Read())
                     {
-                        comboBox2.Items.Add(reader.GetString(0));
+                        comboBox1.Items.Add(reader.GetString(0));
                     }
                 }
             }
@@ -67,17 +67,32 @@ namespace UberFrba
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.mostrarInicio();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             conexion.Open();
             if (textBox1.Text == "")
@@ -86,7 +101,7 @@ namespace UberFrba
                 conexion.Close();
                 return;
             }
-            if (textBox2.Text == "")
+            if (textBox3.Text == "")
             {
                 MessageBox.Show("Por favor ingrese su contraseña", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
@@ -123,7 +138,7 @@ namespace UberFrba
                     return;
                 }
 
-                query = "execute OVERFANTASY.verificarLogIn " + textBox1.Text + ", '" + textBox2.Text + "'";
+                query = "execute OVERFANTASY.verificarLogIn " + textBox1.Text + ", '" + textBox3.Text + "'";
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
 
@@ -160,15 +175,15 @@ namespace UberFrba
                     {
                         while (reader.Read())
                         {
-                            comboBox1.Items.Add(reader.GetString(0));
-                            comboBox1.Text = reader.GetString(0);
+                            comboBox2.Items.Add(reader.GetString(0));
+                            comboBox2.Text = reader.GetString(0);
                             contador = contador + 1;
                         }
                     }
                     if (contador > 1)
                     {
                         label5.Visible = true;
-                        comboBox1.Visible = true;
+                        comboBox2.Visible = true;
                         MessageBox.Show("Usted posee mas de un rol, por favor seleccione con el que quiere iniciar", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         conexion.Close();
                         return;
@@ -178,7 +193,7 @@ namespace UberFrba
                         this.Hide();
                         Menu mp = new Menu();
                         mp.Show();
-                        mp.desplegarMenu(textBox1.Text, comboBox1.Text);
+                        mp.desplegarMenu(textBox1.Text, comboBox2.Text);
                     }
 
                 }
@@ -187,42 +202,45 @@ namespace UberFrba
                     this.Hide();
                     Menu mp = new Menu();
                     mp.Show();
-                    mp.desplegarMenu(textBox1.Text, comboBox1.Text);
+                    mp.desplegarMenu(textBox1.Text, comboBox2.Text);
                 }
                 conexion.Close();
             }
+
+
+
         }
 
-
-        private void button4_Click(object sender, EventArgs e) {
+        private void button2_Click(object sender, EventArgs e)
+        {
 
             conexion.Open();
 
-            if (textBox4.Text == "")
+            if (textBox2.Text == "")
             {
                 MessageBox.Show("Por favor ingrese un nombre de usuario", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
-            if (textBox3.Text == "")
+            if (textBox4.Text == "")
             {
                 MessageBox.Show("Por favor ingrese su contraseña", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
 
-            if (comboBox2.Text == "")
+            if (comboBox1.Text == "")
             {
                 MessageBox.Show("Por favor ingrese su rol", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
 
-            string query = "INSERT INTO OVERFANTASY.Usuario(Usuario_Username, Usuario_Password) VALUES ('" + textBox4.Text + "', '"+textBox3.Text+"')";
+            string query = "INSERT INTO OVERFANTASY.Usuario(Usuario_Username, Usuario_Password) VALUES ('" + textBox2.Text + "', '" + textBox4.Text + "')";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
                 cmd.ExecuteNonQuery();
-                query = "INSERT INTO OVERFANTASY.Rol_Por_Usuario(Rol_Nombre, Usuario_Username) VALUES ('" + comboBox2.Text + "', '" + textBox4.Text + "')";
+                query = "INSERT INTO OVERFANTASY.Rol_Por_Usuario(Rol_Nombre, Usuario_Username) VALUES ('" + comboBox1.Text + "', '" + textBox2.Text + "')";
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
             }
@@ -230,25 +248,9 @@ namespace UberFrba
             this.Hide();
             Menu mp = new Menu();
             mp.Show();
-            mp.desplegarMenu(textBox4.Text, comboBox2.Text);
+            mp.desplegarMenu(textBox2.Text, comboBox1.Text);
 
             conexion.Close();
         }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.mostrarInicio();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-
     }
 }
