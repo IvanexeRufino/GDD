@@ -32,9 +32,8 @@ namespace UberFrba
             label2.Visible = true;
             label3.Visible = true;
             label4.Visible = true;
-            label5.Visible = true;
             label6.Visible = true;
-            label10.Visible = true;
+            label10.Visible = false;
 
             button7.Visible = false;
             button8.Visible = false;
