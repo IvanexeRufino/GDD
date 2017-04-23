@@ -28,27 +28,34 @@ namespace UberFrba
         public void mostrarInicio()
         {
 
-            label1.Visible = true;
-            label2.Visible = true;
-            label3.Visible = true;
-            label4.Visible = true;
-            label6.Visible = true;
-            label10.Visible = false;
+            Username1.Visible = true;
+            Password1.Visible = true;
+            Password2.Visible = true;
+            Username2.Visible = true;
+            Rol2.Visible = true;
 
-            button7.Visible = false;
-            button8.Visible = false;
-            button1.Visible = true;
-            button2.Visible = true;
-            button3.Visible = true;
-            button4.Visible = true;
+            LogLabel.Visible = true;
+            RegLabel.Visible = true;
+            LogInPrincipal.Visible = false;
+            Salir1.Visible = false;
+            IniciarSesion.Visible = true;
+            Register.Visible = true;
+            Salir2.Visible = true;
+            Salir3.Visible = true;
 
-            textBox1.Visible = true;
-            textBox2.Visible = true;
-            textBox3.Visible = true;
-            textBox4.Visible = true;
+            UsernameLogIn.Visible = true;
+            UsernameRegister.Visible = true;
+            PasswordLogIn.Visible = true;
+            PasswordRegister.Visible = true;
 
-            comboBox1.Visible = true;
+            RolRegister.Visible = true;
             lineShape1.Visible = true;
+            lineShape2.Visible = true;
+            lineShape3.Visible = true;
+            lineShape4.Visible = true;
+            lineShape5.Visible = true;
+            lineShape6.Visible = true;
+            lineShape7.Visible = true;
             conexion.Open();
             string query = "SELECT Rol_Nombre FROM OVERFANTASY.rol";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -58,16 +65,11 @@ namespace UberFrba
                 {
                     while (reader.Read())
                     {
-                        comboBox1.Items.Add(reader.GetString(0));
+                        RolRegister.Items.Add(reader.GetString(0));
                     }
                 }
             }
             conexion.Close();
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -94,13 +96,13 @@ namespace UberFrba
         private void button1_Click(object sender, EventArgs e)
         {
             conexion.Open();
-            if (textBox1.Text == "")
+            if (UsernameLogIn.Text == "")
             {
                 MessageBox.Show("Por favor ingrese un nombre de usuario", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
-            if (textBox3.Text == "")
+            if (PasswordLogIn.Text == "")
             {
                 MessageBox.Show("Por favor ingrese su contraseña", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
@@ -108,7 +110,7 @@ namespace UberFrba
             }
 
             string query = "SELECT Usuario_Inhab_Intentos, Usuario_Estado" +
-                           " FROM OVERFANTASY.Usuario WHERE Usuario_Username = '" + textBox1.Text + "'";
+                           " FROM OVERFANTASY.Usuario WHERE Usuario_Username = '" + UsernameLogIn.Text + "'";
             int intentosFallidosAntes;
             String habilitado;
             int intentosFallidosDespues;
@@ -137,11 +139,11 @@ namespace UberFrba
                     return;
                 }
 
-                query = "execute OVERFANTASY.verificarLogIn " + textBox1.Text + ", '" + textBox3.Text + "'";
+                query = "execute OVERFANTASY.verificarLogIn " + UsernameLogIn.Text + ", '" + PasswordLogIn.Text + "'";
                 cmd.CommandText = query;
                 cmd.ExecuteNonQuery();
 
-                query = "SELECT Usuario_Inhab_Intentos, Usuario_Estado FROM OVERFANTASY.Usuario WHERE Usuario_Username = '" + textBox1.Text + "'";
+                query = "SELECT Usuario_Inhab_Intentos, Usuario_Estado FROM OVERFANTASY.Usuario WHERE Usuario_Username = '" + UsernameLogIn.Text + "'";
                 cmd.CommandText = query;
 
 
@@ -165,24 +167,24 @@ namespace UberFrba
                 }
 
 
-                if (comboBox1.Text == "")
+                if (RolRegister.Text == "")
                 {
                     int contador = 0;
-                    query = "SELECT Rol_Nombre FROM OVERFANTASY.Rol_Por_Usuario WHERE Usuario_Username = '" + textBox1.Text + "'";
+                    query = "SELECT Rol_Nombre FROM OVERFANTASY.Rol_Por_Usuario WHERE Usuario_Username = '" + UsernameLogIn.Text + "'";
                     cmd.CommandText = query;
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            comboBox2.Items.Add(reader.GetString(0));
-                            comboBox2.Text = reader.GetString(0);
+                            RolLogIn.Items.Add(reader.GetString(0));
+                            RolLogIn.Text = reader.GetString(0);
                             contador = contador + 1;
                         }
                     }
                     if (contador > 1)
                     {
-                        label5.Visible = true;
-                        comboBox2.Visible = true;
+                        Rol1.Visible = true;
+                        RolLogIn.Visible = true;
                         MessageBox.Show("Usted posee mas de un rol, por favor seleccione con el que quiere iniciar", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         conexion.Close();
                         return;
@@ -192,7 +194,7 @@ namespace UberFrba
                         this.Hide();
                         Menu mp = new Menu();
                         mp.Show();
-                        mp.desplegarMenu(textBox1.Text, comboBox2.Text);
+                        mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
                     }
 
                 }
@@ -201,7 +203,7 @@ namespace UberFrba
                     this.Hide();
                     Menu mp = new Menu();
                     mp.Show();
-                    mp.desplegarMenu(textBox1.Text, comboBox2.Text);
+                    mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
                 }
                 conexion.Close();
             }
@@ -215,41 +217,57 @@ namespace UberFrba
 
             conexion.Open();
 
-            if (textBox2.Text == "")
+            if (UsernameRegister.Text == "")
             {
                 MessageBox.Show("Por favor ingrese un nombre de usuario", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
-            if (textBox4.Text == "")
+            if (PasswordRegister.Text == "")
             {
                 MessageBox.Show("Por favor ingrese su contraseña", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
 
-            if (comboBox1.Text == "")
+            if (RolRegister.Text == "")
             {
                 MessageBox.Show("Por favor ingrese su rol", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
                 return;
             }
 
-            string query = "INSERT INTO OVERFANTASY.Usuario(Usuario_Username, Usuario_Password) VALUES ('" + textBox2.Text + "', '" + textBox4.Text + "')";
+
+
+            string query = "INSERT INTO OVERFANTASY.Usuario(Usuario_Username, Usuario_Password) VALUES ('" + UsernameRegister.Text + "', '" + PasswordRegister.Text + "')";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
-                cmd.ExecuteNonQuery();
-                query = "INSERT INTO OVERFANTASY.Rol_Por_Usuario(Rol_Nombre, Usuario_Username) VALUES ('" + comboBox1.Text + "', '" + textBox2.Text + "')";
-                cmd.CommandText = query;
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    query = "INSERT INTO OVERFANTASY.Rol_Por_Usuario(Rol_Nombre, Usuario_Username) VALUES ('" + RolRegister.Text + "', '" + UsernameRegister.Text + "')";
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show("El usuario ingresado ya existe", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conexion.Close();
+                    return;
+                }
             }
 
             this.Hide();
             Menu mp = new Menu();
             mp.Show();
-            mp.desplegarMenu(textBox2.Text, comboBox1.Text);
+            mp.desplegarMenu(UsernameRegister.Text, RolRegister.Text);
 
             conexion.Close();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
