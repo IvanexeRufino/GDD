@@ -16,12 +16,14 @@ namespace UberFrba
     {
         BaseDeDatos bd;
         SqlConnection conexion;
+        Login login;
 
-        public Menu()
+        public Menu(Login log)
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            login = log;
         }
 
         public void desplegarMenu(String nombreDeUsuario, String rol)
@@ -50,7 +52,7 @@ namespace UberFrba
                                 ABMTurno.Visible = true;
                                 break;
                             case "ABM Automovil":
-                                ABMAutomovil.Visible = true;
+                                ABMAutomovilBut.Visible = true;
                                 break;
                             case "Rendicion de Cuentas":
                                 RendicionCuentas.Visible = true;
@@ -61,8 +63,8 @@ namespace UberFrba
                             case "Listado Estadistico":
                                 ListadoEstadistico.Visible = true;
                                 break;
-                            case "Solicitar Viaje":
-                                SolicitarViaje.Visible = true;
+                            case "Registro de Viaje":
+                                RegistroViajes.Visible = true;
                                 break;
                         }
                     }
@@ -71,16 +73,77 @@ namespace UberFrba
             conexion.Close();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Abm_Rol.ABMRol abmRol = new Abm_Rol.ABMRol();
+            abmRol.Show();
+        }
+
+        private void ABMClienteBut_Click(object sender, EventArgs e)
+        {
+            Abm_Cliente.ABMCliente abmCliente = new Abm_Cliente.ABMCliente();
+            abmCliente.Show();
+        }
+
+        private void ABMChoferBut_Click(object sender, EventArgs e)
+        {
+            Abm_Chofer.ABMChofer abmChofer = new Abm_Chofer.ABMChofer();
+            abmChofer.Show();
+        }
+
+        private void ABMTurnoBut_Click(object sender, EventArgs e)
+        {
+            Abm_Turno.ABMTurno abmTurno = new Abm_Turno.ABMTurno();
+            abmTurno.Show();
+        }
+
+        private void ABMAutomovilBut_Click(object sender, EventArgs e)
+        {
+            Abm_Automovil.ABMAutomovil abmAutomovil = new Abm_Automovil.ABMAutomovil();
+            abmAutomovil.Show();
+        }
+
+        private void RendicionCuentas_Click(object sender, EventArgs e)
+        {
+            Rendicion_Viajes.RendicionViajes rendicion = new Rendicion_Viajes.RendicionViajes();
+            rendicion.Show();
+        }
+
+        private void Facturacion_Click(object sender, EventArgs e)
+        {
+            Facturacion.Facturacion facturacion = new Facturacion.Facturacion();
+            facturacion.Show();
+        }
+
+        private void ListadoEstadistico_Click(object sender, EventArgs e)
+        {
+            Listado_Estadistico.ListadoEstadistico listado = new Listado_Estadistico.ListadoEstadistico();
+            listado.Show();
+        }
+
+        private void RegistroViajes_Click(object sender, EventArgs e)
+        {
+            Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes();
+            registro.Show();
+        }
+
+        private void SolicitarViaje_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Esta funcionalidad no se encuentra disponible", "Error de implementacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            conexion.Close();
+            return;
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            login.Show();
+            this.Close();
+        }
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void button20_Click(object sender, EventArgs e)
-        {
-            Login log = new Login();
-            log.Show();
-            this.Close();
-        }
     }
 }

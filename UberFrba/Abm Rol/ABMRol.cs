@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba.Registro_Viajes
+namespace UberFrba.Abm_Rol
 {
-    public partial class Form1 : Form
+    public partial class ABMRol : Form
     {
-        public Form1()
+        public ABMRol()
         {
             InitializeComponent();
         }

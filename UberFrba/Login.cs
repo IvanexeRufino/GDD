@@ -192,7 +192,7 @@ namespace UberFrba
                     else
                     {
                         this.Hide();
-                        Menu mp = new Menu();
+                        Menu mp = new Menu(this);
                         mp.Show();
                         mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
                     }
@@ -201,7 +201,7 @@ namespace UberFrba
                 else
                 {
                     this.Hide();
-                    Menu mp = new Menu();
+                    Menu mp = new Menu(this);
                     mp.Show();
                     mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
                 }
@@ -258,7 +258,7 @@ namespace UberFrba
             }
 
             this.Hide();
-            Menu mp = new Menu();
+            Menu mp = new Menu(this);
             mp.Show();
             mp.desplegarMenu(UsernameRegister.Text, RolRegister.Text);
 

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UberFrba.Listado_Estadistico
+namespace UberFrba.Abm_Cliente
 {
-    public partial class Form1 : Form
+    public partial class ABMCliente : Form
     {
-        public Form1()
+        public ABMCliente()
         {
             InitializeComponent();
         }

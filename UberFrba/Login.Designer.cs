@@ -38,6 +38,12 @@
             this.Username2 = new System.Windows.Forms.Label();
             this.Rol2 = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.Register = new System.Windows.Forms.Button();
             this.Salir3 = new System.Windows.Forms.Button();
@@ -51,23 +57,17 @@
             this.UsernameLogIn = new System.Windows.Forms.TextBox();
             this.Username1 = new System.Windows.Forms.Label();
             this.LogLabel = new System.Windows.Forms.Label();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.SuspendLayout();
             // 
             // UBERFRBA
             // 
             this.UBERFRBA.AutoSize = true;
             this.UBERFRBA.Font = new System.Drawing.Font("Mistral", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UBERFRBA.Location = new System.Drawing.Point(354, 32);
+            this.UBERFRBA.Location = new System.Drawing.Point(354, 20);
             this.UBERFRBA.Name = "UBERFRBA";
-            this.UBERFRBA.Size = new System.Drawing.Size(281, 76);
+            this.UBERFRBA.Size = new System.Drawing.Size(251, 76);
             this.UBERFRBA.TabIndex = 0;
-            this.UBERFRBA.Text = "UBER FRBA";
+            this.UBERFRBA.Text = "Uber FRBA";
             // 
             // LogInPrincipal
             // 
@@ -161,6 +161,60 @@
             this.shapeContainer1.Size = new System.Drawing.Size(997, 451);
             this.shapeContainer1.TabIndex = 15;
             this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape7
+            // 
+            this.lineShape7.Name = "lineShape7";
+            this.lineShape7.Visible = false;
+            this.lineShape7.X1 = 496;
+            this.lineShape7.X2 = 978;
+            this.lineShape7.Y1 = 431;
+            this.lineShape7.Y2 = 430;
+            // 
+            // lineShape6
+            // 
+            this.lineShape6.Name = "lineShape6";
+            this.lineShape6.Visible = false;
+            this.lineShape6.X1 = 15;
+            this.lineShape6.X2 = 497;
+            this.lineShape6.Y1 = 432;
+            this.lineShape6.Y2 = 431;
+            // 
+            // lineShape5
+            // 
+            this.lineShape5.Name = "lineShape5";
+            this.lineShape5.Visible = false;
+            this.lineShape5.X1 = 15;
+            this.lineShape5.X2 = 14;
+            this.lineShape5.Y1 = 132;
+            this.lineShape5.Y2 = 432;
+            // 
+            // lineShape4
+            // 
+            this.lineShape4.Name = "lineShape4";
+            this.lineShape4.Visible = false;
+            this.lineShape4.X1 = 978;
+            this.lineShape4.X2 = 974;
+            this.lineShape4.Y1 = 430;
+            this.lineShape4.Y2 = 133;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.Visible = false;
+            this.lineShape3.X1 = 496;
+            this.lineShape3.X2 = 975;
+            this.lineShape3.Y1 = 130;
+            this.lineShape3.Y2 = 132;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.Visible = false;
+            this.lineShape2.X1 = 15;
+            this.lineShape2.X2 = 497;
+            this.lineShape2.Y1 = 131;
+            this.lineShape2.Y2 = 130;
             // 
             // lineShape1
             // 
@@ -292,60 +346,6 @@
             this.LogLabel.TabIndex = 20;
             this.LogLabel.Text = "Log In";
             this.LogLabel.Visible = false;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.Visible = false;
-            this.lineShape2.X1 = 15;
-            this.lineShape2.X2 = 497;
-            this.lineShape2.Y1 = 131;
-            this.lineShape2.Y2 = 130;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.Visible = false;
-            this.lineShape3.X1 = 496;
-            this.lineShape3.X2 = 975;
-            this.lineShape3.Y1 = 130;
-            this.lineShape3.Y2 = 132;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.Visible = false;
-            this.lineShape4.X1 = 978;
-            this.lineShape4.X2 = 974;
-            this.lineShape4.Y1 = 430;
-            this.lineShape4.Y2 = 133;
-            // 
-            // lineShape5
-            // 
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.Visible = false;
-            this.lineShape5.X1 = 15;
-            this.lineShape5.X2 = 14;
-            this.lineShape5.Y1 = 132;
-            this.lineShape5.Y2 = 432;
-            // 
-            // lineShape6
-            // 
-            this.lineShape6.Name = "lineShape6";
-            this.lineShape6.Visible = false;
-            this.lineShape6.X1 = 15;
-            this.lineShape6.X2 = 497;
-            this.lineShape6.Y1 = 432;
-            this.lineShape6.Y2 = 431;
-            // 
-            // lineShape7
-            // 
-            this.lineShape7.Name = "lineShape7";
-            this.lineShape7.Visible = false;
-            this.lineShape7.X1 = 496;
-            this.lineShape7.X2 = 978;
-            this.lineShape7.Y1 = 431;
-            this.lineShape7.Y2 = 430;
             // 
             // Login
             // 
