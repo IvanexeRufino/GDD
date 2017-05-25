@@ -76,6 +76,12 @@
     <Compile Include="Abm Turno\ABMTurno.Designer.cs">
       <DependentUpon>ABMTurno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Turno\Agregar_Modificar_Turno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Turno\Agregar_Modificar_Turno.Designer.cs">
+      <DependentUpon>Agregar_Modificar_Turno.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseDeDatoscs.cs" />
     <Compile Include="Configuracion.cs" />
     <Compile Include="Facturacion\Facturacion.cs">
@@ -83,6 +89,15 @@
     </Compile>
     <Compile Include="Facturacion\Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GD1C2017DataSet.cs">
+      <DependentUpon>GD1C2017DataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GD1C2017DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD1C2017DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -119,6 +134,12 @@
     <EmbeddedResource Include="Abm Automovil\ABMAutomovil.resx">
       <DependentUpon>ABMAutomovil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Turno\ABMTurno.resx">
+      <DependentUpon>ABMTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Turno\Agregar_Modificar_Turno.resx">
+      <DependentUpon>Agregar_Modificar_Turno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +155,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="GD1C2017DataSet.xsc">
+      <DependentUpon>GD1C2017DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GD1C2017DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>GD1C2017DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GD1C2017DataSet.xss">
+      <DependentUpon>GD1C2017DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
