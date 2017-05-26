@@ -167,7 +167,7 @@ namespace UberFrba
                 }
 
 
-                if (RolRegister.Text == "")
+                if (RolLogIn.Text == "")
                 {
                     int contador = 0;
                     query = "SELECT Rol_Nombre FROM OVERFANTASY.Rol_Por_Usuario WHERE Usuario_Username = '" + UsernameLogIn.Text + "'";
@@ -195,15 +195,21 @@ namespace UberFrba
                         Menu mp = new Menu(this);
                         mp.Show();
                         mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
+                        RolLogIn.Text = "";
+                        RolLogIn.Items.Clear();
                     }
 
                 }
                 else
                 {
+                    Rol1.Visible = false;
+                    RolLogIn.Visible = false;
                     this.Hide();
                     Menu mp = new Menu(this);
                     mp.Show();
                     mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
+                    RolLogIn.Text = "";
+                    RolLogIn.Items.Clear();
                 }
                 conexion.Close();
             }
