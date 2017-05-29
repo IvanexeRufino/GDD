@@ -188,10 +188,13 @@ namespace UberFrba.Abm_Rol
                     if(comboBox1.Text.Equals("Habilitado"))
                     {
                         estado = "H";
+                        rolTableAdapter.UpdateRol(textBox1.Text, estado, idAnterior);
                     } else {
                         estado = "I";
+                        rolTableAdapter.UpdateRol(textBox1.Text, estado, idAnterior);
+                        rolTableAdapter.DeleteRol(idAnterior);
+                        MessageBox.Show("El Rol se ha Inhabilitado Correctamente, se han eliminado todas las relaciones con sus usuarios", "Baja Rol", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
-                    rolTableAdapter.UpdateRol(textBox1.Text, estado, idAnterior);
                     for (int i = 0; i < checkedListBox1.Items.Count; i++)
                     {
                         if (indicesAnteriores.Contains(i) && !checkedListBox1.CheckedIndices.Contains(i))

@@ -123,18 +123,22 @@ namespace UberFrba.Abm_Turno
                     decimal horarioFin = Decimal.Parse(textBox3.Text);
                     decimal precioBase = Decimal.Parse(textBox4.Text.Replace('.', ','));
                     decimal valorKilometro = Decimal.Parse(textBox5.Text.Replace('.', ','));
-                    if (comboBox1.Text.Equals("Inhabilitado"))
-                    {
-                        estado = "I";
-                    }
-                    else
-                    {
-                        estado = "H";
-                    }
                     try
                     {
-                        verificarHorarioInicioYFin(horarioInicio, horarioFin);
-                        turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
+                        if (comboBox1.Text.Equals("Inhabilitado"))
+                        {
+                            estado = "I";
+                            verificarHorarioInicioYFin(horarioInicio, horarioFin);
+                            turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
+                            turnoTableAdapter1.DeleteTurno(textBox1.Text);
+                            MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        }
+                        else
+                        {
+                            estado = "H";
+                            verificarHorarioInicioYFin(horarioInicio, horarioFin);
+                            turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
+                        }
                         MessageBox.Show("El Turno se ha modificado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
                         this.Close();
                     }
