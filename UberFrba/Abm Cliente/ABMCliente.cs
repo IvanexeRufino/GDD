@@ -23,5 +23,26 @@ namespace UberFrba.Abm_Cliente
             this.clienteTableAdapter.Fill(this.gD1C2017DataSet.Cliente);
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente();
+            amc.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 12) //Modificar Cliente
+            {
+                Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente(dataGridView1.Rows[e.RowIndex]);
+                amc.Show();
+            }
+
+        }
     }
 }
