@@ -62,13 +62,9 @@ namespace UberFrba {
         
         private global::System.Data.DataRelation relationFK__Funcional__Funci__73B00EE2;
         
-        private global::System.Data.DataRelation relationFK__Funcional__Rol_N__72BBEAA9;
-        
         private global::System.Data.DataRelation relationFK__Rendicion__Chofe__160526E6;
         
         private global::System.Data.DataRelation relationFK__Rendicion__Turno__151102AD;
-        
-        private global::System.Data.DataRelation relationFK__Rol_Por_U__Rol_N__05CEBF1D;
         
         private global::System.Data.DataRelation relationFK__Rol_Por_U__Usuar__06C2E356;
         
@@ -83,6 +79,10 @@ namespace UberFrba {
         private global::System.Data.DataRelation relationFK__Viaje__Rendicion__1F8E9120;
         
         private global::System.Data.DataRelation relationFK__Viaje__Turno_Des__1E9A6CE7;
+        
+        private global::System.Data.DataRelation relationFK__Rol_Por_U__Rol_I__10D65D75;
+        
+        private global::System.Data.DataRelation relationFK__Funcional__Rol_I__7FABD173;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -522,10 +522,8 @@ namespace UberFrba {
             this.relationFK__Cliente__Usuario__7D39791C = this.Relations["FK__Cliente__Usuario__7D39791C"];
             this.relationFK__Factura__Usuario__18E19391 = this.Relations["FK__Factura__Usuario__18E19391"];
             this.relationFK__Funcional__Funci__73B00EE2 = this.Relations["FK__Funcional__Funci__73B00EE2"];
-            this.relationFK__Funcional__Rol_N__72BBEAA9 = this.Relations["FK__Funcional__Rol_N__72BBEAA9"];
             this.relationFK__Rendicion__Chofe__160526E6 = this.Relations["FK__Rendicion__Chofe__160526E6"];
             this.relationFK__Rendicion__Turno__151102AD = this.Relations["FK__Rendicion__Turno__151102AD"];
-            this.relationFK__Rol_Por_U__Rol_N__05CEBF1D = this.Relations["FK__Rol_Por_U__Rol_N__05CEBF1D"];
             this.relationFK__Rol_Por_U__Usuar__06C2E356 = this.Relations["FK__Rol_Por_U__Usuar__06C2E356"];
             this.relationFK__Viaje__Automovil__1BBE003C = this.Relations["FK__Viaje__Automovil__1BBE003C"];
             this.relationFK__Viaje__Chofer_Us__1CB22475 = this.Relations["FK__Viaje__Chofer_Us__1CB22475"];
@@ -533,6 +531,8 @@ namespace UberFrba {
             this.relationFK__Viaje__Factura_N__2082B559 = this.Relations["FK__Viaje__Factura_N__2082B559"];
             this.relationFK__Viaje__Rendicion__1F8E9120 = this.Relations["FK__Viaje__Rendicion__1F8E9120"];
             this.relationFK__Viaje__Turno_Des__1E9A6CE7 = this.Relations["FK__Viaje__Turno_Des__1E9A6CE7"];
+            this.relationFK__Rol_Por_U__Rol_I__10D65D75 = this.Relations["FK__Rol_Por_U__Rol_I__10D65D75"];
+            this.relationFK__Funcional__Rol_I__7FABD173 = this.Relations["FK__Funcional__Rol_I__7FABD173"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -593,10 +593,6 @@ namespace UberFrba {
                         this.tableFuncionalidad.Funcionalidad_DescripcionColumn}, new global::System.Data.DataColumn[] {
                         this.tableFuncionalidad_Por_Rol.Funcionalidad_DescripcionColumn}, false);
             this.Relations.Add(this.relationFK__Funcional__Funci__73B00EE2);
-            this.relationFK__Funcional__Rol_N__72BBEAA9 = new global::System.Data.DataRelation("FK__Funcional__Rol_N__72BBEAA9", new global::System.Data.DataColumn[] {
-                        this.tableRol.Rol_NombreColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFuncionalidad_Por_Rol.Rol_NombreColumn}, false);
-            this.Relations.Add(this.relationFK__Funcional__Rol_N__72BBEAA9);
             this.relationFK__Rendicion__Chofe__160526E6 = new global::System.Data.DataRelation("FK__Rendicion__Chofe__160526E6", new global::System.Data.DataColumn[] {
                         this.tableChofer.Usuario_UsernameColumn}, new global::System.Data.DataColumn[] {
                         this.tableRendicion.Chofer_UsernameColumn}, false);
@@ -605,10 +601,6 @@ namespace UberFrba {
                         this.tableTurno.Turno_DescripcionColumn}, new global::System.Data.DataColumn[] {
                         this.tableRendicion.Turno_DescripcionColumn}, false);
             this.Relations.Add(this.relationFK__Rendicion__Turno__151102AD);
-            this.relationFK__Rol_Por_U__Rol_N__05CEBF1D = new global::System.Data.DataRelation("FK__Rol_Por_U__Rol_N__05CEBF1D", new global::System.Data.DataColumn[] {
-                        this.tableRol.Rol_NombreColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRol_Por_Usuario.Rol_NombreColumn}, false);
-            this.Relations.Add(this.relationFK__Rol_Por_U__Rol_N__05CEBF1D);
             this.relationFK__Rol_Por_U__Usuar__06C2E356 = new global::System.Data.DataRelation("FK__Rol_Por_U__Usuar__06C2E356", new global::System.Data.DataColumn[] {
                         this.tableUsuario.Usuario_UsernameColumn}, new global::System.Data.DataColumn[] {
                         this.tableRol_Por_Usuario.Usuario_UsernameColumn}, false);
@@ -637,6 +629,14 @@ namespace UberFrba {
                         this.tableTurno.Turno_DescripcionColumn}, new global::System.Data.DataColumn[] {
                         this.tableViaje.Turno_DescripcionColumn}, false);
             this.Relations.Add(this.relationFK__Viaje__Turno_Des__1E9A6CE7);
+            this.relationFK__Rol_Por_U__Rol_I__10D65D75 = new global::System.Data.DataRelation("FK__Rol_Por_U__Rol_I__10D65D75", new global::System.Data.DataColumn[] {
+                        this.tableRol.Rol_IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRol_Por_Usuario.Rol_IdColumn}, false);
+            this.Relations.Add(this.relationFK__Rol_Por_U__Rol_I__10D65D75);
+            this.relationFK__Funcional__Rol_I__7FABD173 = new global::System.Data.DataRelation("FK__Funcional__Rol_I__7FABD173", new global::System.Data.DataColumn[] {
+                        this.tableRol.Rol_IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFuncionalidad_Por_Rol.Rol_IdColumn}, false);
+            this.Relations.Add(this.relationFK__Funcional__Rol_I__7FABD173);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2632,9 +2632,9 @@ namespace UberFrba {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Funcionalidad_Por_RolDataTable : global::System.Data.TypedTableBase<Funcionalidad_Por_RolRow> {
             
-            private global::System.Data.DataColumn columnRol_Nombre;
-            
             private global::System.Data.DataColumn columnFuncionalidad_Descripcion;
+            
+            private global::System.Data.DataColumn columnRol_Id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2671,17 +2671,17 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Rol_NombreColumn {
+            public global::System.Data.DataColumn Funcionalidad_DescripcionColumn {
                 get {
-                    return this.columnRol_Nombre;
+                    return this.columnFuncionalidad_Descripcion;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Funcionalidad_DescripcionColumn {
+            public global::System.Data.DataColumn Rol_IdColumn {
                 get {
-                    return this.columnFuncionalidad_Descripcion;
+                    return this.columnRol_Id;
                 }
             }
             
@@ -2722,16 +2722,16 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Funcionalidad_Por_RolRow AddFuncionalidad_Por_RolRow(RolRow parentRolRowByFK__Funcional__Rol_N__72BBEAA9, FuncionalidadRow parentFuncionalidadRowByFK__Funcional__Funci__73B00EE2) {
+            public Funcionalidad_Por_RolRow AddFuncionalidad_Por_RolRow(FuncionalidadRow parentFuncionalidadRowByFK__Funcional__Funci__73B00EE2, RolRow parentRolRowByFK__Funcional__Rol_I__7FABD173) {
                 Funcionalidad_Por_RolRow rowFuncionalidad_Por_RolRow = ((Funcionalidad_Por_RolRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null};
-                if ((parentRolRowByFK__Funcional__Rol_N__72BBEAA9 != null)) {
-                    columnValuesArray[0] = parentRolRowByFK__Funcional__Rol_N__72BBEAA9[0];
-                }
                 if ((parentFuncionalidadRowByFK__Funcional__Funci__73B00EE2 != null)) {
-                    columnValuesArray[1] = parentFuncionalidadRowByFK__Funcional__Funci__73B00EE2[0];
+                    columnValuesArray[0] = parentFuncionalidadRowByFK__Funcional__Funci__73B00EE2[0];
+                }
+                if ((parentRolRowByFK__Funcional__Rol_I__7FABD173 != null)) {
+                    columnValuesArray[1] = parentRolRowByFK__Funcional__Rol_I__7FABD173[1];
                 }
                 rowFuncionalidad_Por_RolRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFuncionalidad_Por_RolRow);
@@ -2740,9 +2740,9 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Funcionalidad_Por_RolRow FindByRol_NombreFuncionalidad_Descripcion(string Rol_Nombre, string Funcionalidad_Descripcion) {
+            public Funcionalidad_Por_RolRow FindByRol_IdFuncionalidad_Descripcion(decimal Rol_Id, string Funcionalidad_Descripcion) {
                 return ((Funcionalidad_Por_RolRow)(this.Rows.Find(new object[] {
-                            Rol_Nombre,
+                            Rol_Id,
                             Funcionalidad_Descripcion})));
             }
             
@@ -2763,24 +2763,23 @@ namespace UberFrba {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnRol_Nombre = base.Columns["Rol_Nombre"];
                 this.columnFuncionalidad_Descripcion = base.Columns["Funcionalidad_Descripcion"];
+                this.columnRol_Id = base.Columns["Rol_Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnRol_Nombre = new global::System.Data.DataColumn("Rol_Nombre", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRol_Nombre);
                 this.columnFuncionalidad_Descripcion = new global::System.Data.DataColumn("Funcionalidad_Descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFuncionalidad_Descripcion);
+                this.columnRol_Id = new global::System.Data.DataColumn("Rol_Id", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRol_Id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRol_Nombre,
+                                this.columnRol_Id,
                                 this.columnFuncionalidad_Descripcion}, true));
-                this.columnRol_Nombre.AllowDBNull = false;
-                this.columnRol_Nombre.MaxLength = 30;
                 this.columnFuncionalidad_Descripcion.AllowDBNull = false;
                 this.columnFuncionalidad_Descripcion.MaxLength = 255;
+                this.columnRol_Id.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3986,9 +3985,11 @@ namespace UberFrba {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class RolDataTable : global::System.Data.TypedTableBase<RolRow> {
             
-            private global::System.Data.DataColumn columnRol_Nombre;
-            
             private global::System.Data.DataColumn columnRol_Estado;
+            
+            private global::System.Data.DataColumn columnRol_Id;
+            
+            private global::System.Data.DataColumn columnRol_Nombre;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -4025,17 +4026,25 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Rol_NombreColumn {
+            public global::System.Data.DataColumn Rol_EstadoColumn {
                 get {
-                    return this.columnRol_Nombre;
+                    return this.columnRol_Estado;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Rol_EstadoColumn {
+            public global::System.Data.DataColumn Rol_IdColumn {
                 get {
-                    return this.columnRol_Estado;
+                    return this.columnRol_Id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Rol_NombreColumn {
+                get {
+                    return this.columnRol_Nombre;
                 }
             }
             
@@ -4076,11 +4085,12 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RolRow AddRolRow(string Rol_Nombre, string Rol_Estado) {
+            public RolRow AddRolRow(string Rol_Estado, string Rol_Nombre) {
                 RolRow rowRolRow = ((RolRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Rol_Nombre,
-                        Rol_Estado};
+                        Rol_Estado,
+                        null,
+                        Rol_Nombre};
                 rowRolRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRolRow);
                 return rowRolRow;
@@ -4088,9 +4098,9 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RolRow FindByRol_Nombre(string Rol_Nombre) {
+            public RolRow FindByRol_Id(decimal Rol_Id) {
                 return ((RolRow)(this.Rows.Find(new object[] {
-                            Rol_Nombre})));
+                            Rol_Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4110,23 +4120,31 @@ namespace UberFrba {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnRol_Nombre = base.Columns["Rol_Nombre"];
                 this.columnRol_Estado = base.Columns["Rol_Estado"];
+                this.columnRol_Id = base.Columns["Rol_Id"];
+                this.columnRol_Nombre = base.Columns["Rol_Nombre"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnRol_Nombre = new global::System.Data.DataColumn("Rol_Nombre", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRol_Nombre);
                 this.columnRol_Estado = new global::System.Data.DataColumn("Rol_Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRol_Estado);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRol_Nombre}, true));
-                this.columnRol_Nombre.AllowDBNull = false;
-                this.columnRol_Nombre.Unique = true;
-                this.columnRol_Nombre.MaxLength = 30;
+                this.columnRol_Id = new global::System.Data.DataColumn("Rol_Id", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRol_Id);
+                this.columnRol_Nombre = new global::System.Data.DataColumn("Rol_Nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRol_Nombre);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnRol_Id}, true));
                 this.columnRol_Estado.MaxLength = 1;
+                this.columnRol_Id.AutoIncrement = true;
+                this.columnRol_Id.AutoIncrementSeed = -1;
+                this.columnRol_Id.AutoIncrementStep = -1;
+                this.columnRol_Id.AllowDBNull = false;
+                this.columnRol_Id.ReadOnly = true;
+                this.columnRol_Id.Unique = true;
+                this.columnRol_Nombre.AllowDBNull = false;
+                this.columnRol_Nombre.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4260,11 +4278,9 @@ namespace UberFrba {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Rol_Por_UsuarioDataTable : global::System.Data.TypedTableBase<Rol_Por_UsuarioRow> {
             
-            private global::System.Data.DataColumn columnRol_Nombre;
-            
             private global::System.Data.DataColumn columnUsuario_Username;
             
-            private global::System.Data.DataColumn columnRol_Estado;
+            private global::System.Data.DataColumn columnRol_Id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -4301,14 +4317,6 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Rol_NombreColumn {
-                get {
-                    return this.columnRol_Nombre;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn Usuario_UsernameColumn {
                 get {
                     return this.columnUsuario_Username;
@@ -4317,9 +4325,9 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Rol_EstadoColumn {
+            public global::System.Data.DataColumn Rol_IdColumn {
                 get {
-                    return this.columnRol_Estado;
+                    return this.columnRol_Id;
                 }
             }
             
@@ -4360,17 +4368,16 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Rol_Por_UsuarioRow AddRol_Por_UsuarioRow(RolRow parentRolRowByFK__Rol_Por_U__Rol_N__05CEBF1D, UsuarioRow parentUsuarioRowByFK__Rol_Por_U__Usuar__06C2E356, string Rol_Estado) {
+            public Rol_Por_UsuarioRow AddRol_Por_UsuarioRow(UsuarioRow parentUsuarioRowByFK__Rol_Por_U__Usuar__06C2E356, RolRow parentRolRowByFK__Rol_Por_U__Rol_I__10D65D75) {
                 Rol_Por_UsuarioRow rowRol_Por_UsuarioRow = ((Rol_Por_UsuarioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
-                        Rol_Estado};
-                if ((parentRolRowByFK__Rol_Por_U__Rol_N__05CEBF1D != null)) {
-                    columnValuesArray[0] = parentRolRowByFK__Rol_Por_U__Rol_N__05CEBF1D[0];
-                }
+                        null};
                 if ((parentUsuarioRowByFK__Rol_Por_U__Usuar__06C2E356 != null)) {
-                    columnValuesArray[1] = parentUsuarioRowByFK__Rol_Por_U__Usuar__06C2E356[0];
+                    columnValuesArray[0] = parentUsuarioRowByFK__Rol_Por_U__Usuar__06C2E356[0];
+                }
+                if ((parentRolRowByFK__Rol_Por_U__Rol_I__10D65D75 != null)) {
+                    columnValuesArray[1] = parentRolRowByFK__Rol_Por_U__Rol_I__10D65D75[1];
                 }
                 rowRol_Por_UsuarioRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRol_Por_UsuarioRow);
@@ -4379,9 +4386,9 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Rol_Por_UsuarioRow FindByRol_NombreUsuario_Username(string Rol_Nombre, string Usuario_Username) {
+            public Rol_Por_UsuarioRow FindByRol_IdUsuario_Username(decimal Rol_Id, string Usuario_Username) {
                 return ((Rol_Por_UsuarioRow)(this.Rows.Find(new object[] {
-                            Rol_Nombre,
+                            Rol_Id,
                             Usuario_Username})));
             }
             
@@ -4402,28 +4409,23 @@ namespace UberFrba {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnRol_Nombre = base.Columns["Rol_Nombre"];
                 this.columnUsuario_Username = base.Columns["Usuario_Username"];
-                this.columnRol_Estado = base.Columns["Rol_Estado"];
+                this.columnRol_Id = base.Columns["Rol_Id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnRol_Nombre = new global::System.Data.DataColumn("Rol_Nombre", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRol_Nombre);
                 this.columnUsuario_Username = new global::System.Data.DataColumn("Usuario_Username", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario_Username);
-                this.columnRol_Estado = new global::System.Data.DataColumn("Rol_Estado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRol_Estado);
+                this.columnRol_Id = new global::System.Data.DataColumn("Rol_Id", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRol_Id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRol_Nombre,
+                                this.columnRol_Id,
                                 this.columnUsuario_Username}, true));
-                this.columnRol_Nombre.AllowDBNull = false;
-                this.columnRol_Nombre.MaxLength = 30;
                 this.columnUsuario_Username.AllowDBNull = false;
                 this.columnUsuario_Username.MaxLength = 50;
-                this.columnRol_Estado.MaxLength = 1;
+                this.columnRol_Id.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6273,23 +6275,23 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Rol_Nombre {
-                get {
-                    return ((string)(this[this.tableFuncionalidad_Por_Rol.Rol_NombreColumn]));
-                }
-                set {
-                    this[this.tableFuncionalidad_Por_Rol.Rol_NombreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Funcionalidad_Descripcion {
                 get {
                     return ((string)(this[this.tableFuncionalidad_Por_Rol.Funcionalidad_DescripcionColumn]));
                 }
                 set {
                     this[this.tableFuncionalidad_Por_Rol.Funcionalidad_DescripcionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Rol_Id {
+                get {
+                    return ((decimal)(this[this.tableFuncionalidad_Por_Rol.Rol_IdColumn]));
+                }
+                set {
+                    this[this.tableFuncionalidad_Por_Rol.Rol_IdColumn] = value;
                 }
             }
             
@@ -6308,10 +6310,10 @@ namespace UberFrba {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RolRow RolRow {
                 get {
-                    return ((RolRow)(this.GetParentRow(this.Table.ParentRelations["FK__Funcional__Rol_N__72BBEAA9"])));
+                    return ((RolRow)(this.GetParentRow(this.Table.ParentRelations["FK__Funcional__Rol_I__7FABD173"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Funcional__Rol_N__72BBEAA9"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Funcional__Rol_I__7FABD173"]);
                 }
             }
         }
@@ -7374,17 +7376,6 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Rol_Nombre {
-                get {
-                    return ((string)(this[this.tableRol.Rol_NombreColumn]));
-                }
-                set {
-                    this[this.tableRol.Rol_NombreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Rol_Estado {
                 get {
                     try {
@@ -7396,6 +7387,28 @@ namespace UberFrba {
                 }
                 set {
                     this[this.tableRol.Rol_EstadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Rol_Id {
+                get {
+                    return ((decimal)(this[this.tableRol.Rol_IdColumn]));
+                }
+                set {
+                    this[this.tableRol.Rol_IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Rol_Nombre {
+                get {
+                    return ((string)(this[this.tableRol.Rol_NombreColumn]));
+                }
+                set {
+                    this[this.tableRol.Rol_NombreColumn] = value;
                 }
             }
             
@@ -7413,23 +7426,23 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Funcionalidad_Por_RolRow[] GetFuncionalidad_Por_RolRows() {
-                if ((this.Table.ChildRelations["FK__Funcional__Rol_N__72BBEAA9"] == null)) {
-                    return new Funcionalidad_Por_RolRow[0];
+            public Rol_Por_UsuarioRow[] GetRol_Por_UsuarioRows() {
+                if ((this.Table.ChildRelations["FK__Rol_Por_U__Rol_I__10D65D75"] == null)) {
+                    return new Rol_Por_UsuarioRow[0];
                 }
                 else {
-                    return ((Funcionalidad_Por_RolRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Funcional__Rol_N__72BBEAA9"])));
+                    return ((Rol_Por_UsuarioRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Rol_Por_U__Rol_I__10D65D75"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Rol_Por_UsuarioRow[] GetRol_Por_UsuarioRows() {
-                if ((this.Table.ChildRelations["FK__Rol_Por_U__Rol_N__05CEBF1D"] == null)) {
-                    return new Rol_Por_UsuarioRow[0];
+            public Funcionalidad_Por_RolRow[] GetFuncionalidad_Por_RolRows() {
+                if ((this.Table.ChildRelations["FK__Funcional__Rol_I__7FABD173"] == null)) {
+                    return new Funcionalidad_Por_RolRow[0];
                 }
                 else {
-                    return ((Rol_Por_UsuarioRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Rol_Por_U__Rol_N__05CEBF1D"])));
+                    return ((Funcionalidad_Por_RolRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Funcional__Rol_I__7FABD173"])));
                 }
             }
         }
@@ -7450,17 +7463,6 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Rol_Nombre {
-                get {
-                    return ((string)(this[this.tableRol_Por_Usuario.Rol_NombreColumn]));
-                }
-                set {
-                    this[this.tableRol_Por_Usuario.Rol_NombreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Usuario_Username {
                 get {
                     return ((string)(this[this.tableRol_Por_Usuario.Usuario_UsernameColumn]));
@@ -7472,28 +7474,12 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Rol_Estado {
+            public decimal Rol_Id {
                 get {
-                    try {
-                        return ((string)(this[this.tableRol_Por_Usuario.Rol_EstadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Rol_Estado\' de la tabla \'Rol_Por_Usuario\' es DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tableRol_Por_Usuario.Rol_IdColumn]));
                 }
                 set {
-                    this[this.tableRol_Por_Usuario.Rol_EstadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RolRow RolRow {
-                get {
-                    return ((RolRow)(this.GetParentRow(this.Table.ParentRelations["FK__Rol_Por_U__Rol_N__05CEBF1D"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Rol_Por_U__Rol_N__05CEBF1D"]);
+                    this[this.tableRol_Por_Usuario.Rol_IdColumn] = value;
                 }
             }
             
@@ -7510,14 +7496,13 @@ namespace UberFrba {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRol_EstadoNull() {
-                return this.IsNull(this.tableRol_Por_Usuario.Rol_EstadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRol_EstadoNull() {
-                this[this.tableRol_Por_Usuario.Rol_EstadoColumn] = global::System.Convert.DBNull;
+            public RolRow RolRow {
+                get {
+                    return ((RolRow)(this.GetParentRow(this.Table.ParentRelations["FK__Rol_Por_U__Rol_I__10D65D75"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Rol_Por_U__Rol_I__10D65D75"]);
+                }
             }
         }
         
@@ -11026,32 +11011,31 @@ SELECT Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad WHERE (Funcional
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Funcionalidad_Por_Rol";
-            tableMapping.ColumnMappings.Add("Rol_Nombre", "Rol_Nombre");
             tableMapping.ColumnMappings.Add("Funcionalidad_Descripcion", "Funcionalidad_Descripcion");
+            tableMapping.ColumnMappings.Add("Rol_Id", "Rol_Id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OVERFANTASY].[Funcionalidad_Por_Rol] WHERE (([Rol_Nombre] = @Origina" +
-                "l_Rol_Nombre) AND ([Funcionalidad_Descripcion] = @Original_Funcionalidad_Descrip" +
-                "cion))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OVERFANTASY].[Funcionalidad_Por_Rol] WHERE (([Rol_Id] = @Original_Ro" +
+                "l_Id) AND ([Funcionalidad_Descripcion] = @Original_Funcionalidad_Descripcion))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Funcionalidad_Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Funcionalidad_Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [OVERFANTASY].[Funcionalidad_Por_Rol] ([Rol_Nombre], [Funcionalidad_Descripcion]) VALUES (@Rol_Nombre, @Funcionalidad_Descripcion);
-SELECT Rol_Nombre, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE (Funcionalidad_Descripcion = @Funcionalidad_Descripcion) AND (Rol_Nombre = @Rol_Nombre)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [OVERFANTASY].[Funcionalidad_Por_Rol] ([Rol_Id], [Funcionalidad_Descripcion]) VALUES (@Rol_Id, @Funcionalidad_Descripcion);
+SELECT Rol_Id, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE (Funcionalidad_Descripcion = @Funcionalidad_Descripcion) AND (Rol_Id = @Rol_Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Funcionalidad_Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Funcionalidad_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [OVERFANTASY].[Funcionalidad_Por_Rol] SET [Rol_Nombre] = @Rol_Nombre, [Funcionalidad_Descripcion] = @Funcionalidad_Descripcion WHERE (([Rol_Nombre] = @Original_Rol_Nombre) AND ([Funcionalidad_Descripcion] = @Original_Funcionalidad_Descripcion));
-SELECT Rol_Nombre, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE (Funcionalidad_Descripcion = @Funcionalidad_Descripcion) AND (Rol_Nombre = @Rol_Nombre)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [OVERFANTASY].[Funcionalidad_Por_Rol] SET [Rol_Id] = @Rol_Id, [Funcionalidad_Descripcion] = @Funcionalidad_Descripcion WHERE (([Rol_Id] = @Original_Rol_Id) AND ([Funcionalidad_Descripcion] = @Original_Funcionalidad_Descripcion));
+SELECT Rol_Id, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE (Funcionalidad_Descripcion = @Funcionalidad_Descripcion) AND (Rol_Id = @Rol_Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Funcionalidad_Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Funcionalidad_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Funcionalidad_Descripcion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Funcionalidad_Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -11068,8 +11052,7 @@ SELECT Rol_Nombre, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Rol_Nombre, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_R" +
-                "ol";
+            this._commandCollection[0].CommandText = "SELECT Rol_Id, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11124,125 +11107,6 @@ SELECT Rol_Nombre, Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_Rol_Nombre, string Original_Funcionalidad_Descripcion) {
-            if ((Original_Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Original_Rol_Nombre");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_Rol_Nombre));
-            }
-            if ((Original_Funcionalidad_Descripcion == null)) {
-                throw new global::System.ArgumentNullException("Original_Funcionalidad_Descripcion");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Funcionalidad_Descripcion));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Rol_Nombre, string Funcionalidad_Descripcion) {
-            if ((Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Rol_Nombre");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Rol_Nombre));
-            }
-            if ((Funcionalidad_Descripcion == null)) {
-                throw new global::System.ArgumentNullException("Funcionalidad_Descripcion");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Funcionalidad_Descripcion));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Rol_Nombre, string Funcionalidad_Descripcion, string Original_Rol_Nombre, string Original_Funcionalidad_Descripcion) {
-            if ((Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Rol_Nombre");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Rol_Nombre));
-            }
-            if ((Funcionalidad_Descripcion == null)) {
-                throw new global::System.ArgumentNullException("Funcionalidad_Descripcion");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Funcionalidad_Descripcion));
-            }
-            if ((Original_Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Original_Rol_Nombre");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Rol_Nombre));
-            }
-            if ((Original_Funcionalidad_Descripcion == null)) {
-                throw new global::System.ArgumentNullException("Original_Funcionalidad_Descripcion");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Funcionalidad_Descripcion));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Original_Rol_Nombre, string Original_Funcionalidad_Descripcion) {
-            return this.Update(Original_Rol_Nombre, Original_Funcionalidad_Descripcion, Original_Rol_Nombre, Original_Funcionalidad_Descripcion);
         }
     }
     
@@ -12248,36 +12112,40 @@ SELECT Rendicion_Nro, Chofer_Username, Turno_Descripcion, Rendicion_Fecha, Rendi
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Rol";
-            tableMapping.ColumnMappings.Add("Rol_Nombre", "Rol_Nombre");
             tableMapping.ColumnMappings.Add("Rol_Estado", "Rol_Estado");
+            tableMapping.ColumnMappings.Add("Rol_Id", "Rol_Id");
+            tableMapping.ColumnMappings.Add("Rol_Nombre", "Rol_Nombre");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OVERFANTASY].[Rol] WHERE (([Rol_Nombre] = @Original_Rol_Nombre) AND " +
-                "((@IsNull_Rol_Estado = 1 AND [Rol_Estado] IS NULL) OR ([Rol_Estado] = @Original_" +
-                "Rol_Estado)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OVERFANTASY].[Rol] WHERE (([Rol_Id] = @Original_Rol_Id) AND ([Rol_No" +
+                "mbre] = @Original_Rol_Nombre) AND ((@IsNull_Rol_Estado = 1 AND [Rol_Estado] IS N" +
+                "ULL) OR ([Rol_Estado] = @Original_Rol_Estado)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rol_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [OVERFANTASY].[Rol] ([Rol_Nombre], [Rol_Estado]) VALUES (@Rol_Nombre," +
-                " @Rol_Estado);\r\nSELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_No" +
-                "mbre = @Rol_Nombre)";
+                " @Rol_Estado);\r\nSELECT Rol_Id, Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE" +
+                " (Rol_Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [OVERFANTASY].[Rol] SET [Rol_Nombre] = @Rol_Nombre, [Rol_Estado] = @Rol_Estado WHERE (([Rol_Nombre] = @Original_Rol_Nombre) AND ((@IsNull_Rol_Estado = 1 AND [Rol_Estado] IS NULL) OR ([Rol_Estado] = @Original_Rol_Estado)));
-SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nombre)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [OVERFANTASY].[Rol] SET [Rol_Nombre] = @Rol_Nombre, [Rol_Estado] = @Rol_Estado WHERE (([Rol_Id] = @Original_Rol_Id) AND ([Rol_Nombre] = @Original_Rol_Nombre) AND ((@IsNull_Rol_Estado = 1 AND [Rol_Estado] IS NULL) OR ([Rol_Estado] = @Original_Rol_Estado)));
+SELECT Rol_Id, Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Id = @Rol_Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rol_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Id", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12293,7 +12161,7 @@ SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nomb
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol";
+            this._commandCollection[0].CommandText = "SELECT Rol_Id, Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12354,20 +12222,21 @@ SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nomb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_Rol_Nombre, string Original_Rol_Estado) {
+        public virtual int Delete(decimal Original_Rol_Id, string Original_Rol_Nombre, string Original_Rol_Estado) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_Rol_Id));
             if ((Original_Rol_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Rol_Nombre");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_Rol_Nombre));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Rol_Nombre));
             }
             if ((Original_Rol_Estado == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Rol_Estado));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Rol_Estado));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -12422,7 +12291,7 @@ SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nomb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Rol_Nombre, string Rol_Estado, string Original_Rol_Nombre, string Original_Rol_Estado) {
+        public virtual int Update(string Rol_Nombre, string Rol_Estado, decimal Original_Rol_Id, string Original_Rol_Nombre, string Original_Rol_Estado, decimal Rol_Id) {
             if ((Rol_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Rol_Nombre");
             }
@@ -12435,20 +12304,22 @@ SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nomb
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Rol_Estado));
             }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Original_Rol_Id));
             if ((Original_Rol_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Rol_Nombre");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Rol_Nombre));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Rol_Nombre));
             }
             if ((Original_Rol_Estado == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Rol_Estado));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Rol_Estado));
             }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Rol_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12469,8 +12340,8 @@ SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nomb
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Rol_Estado, string Original_Rol_Nombre, string Original_Rol_Estado) {
-            return this.Update(Original_Rol_Nombre, Rol_Estado, Original_Rol_Nombre, Original_Rol_Estado);
+        public virtual int Update(string Rol_Nombre, string Rol_Estado, decimal Original_Rol_Id, string Original_Rol_Nombre, string Original_Rol_Estado) {
+            return this.Update(Rol_Nombre, Rol_Estado, Original_Rol_Id, Original_Rol_Nombre, Original_Rol_Estado, Original_Rol_Id);
         }
     }
     
@@ -12595,40 +12466,34 @@ SELECT Rol_Nombre, Rol_Estado FROM OVERFANTASY.Rol WHERE (Rol_Nombre = @Rol_Nomb
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Rol_Por_Usuario";
-            tableMapping.ColumnMappings.Add("Rol_Nombre", "Rol_Nombre");
             tableMapping.ColumnMappings.Add("Usuario_Username", "Usuario_Username");
-            tableMapping.ColumnMappings.Add("Rol_Estado", "Rol_Estado");
+            tableMapping.ColumnMappings.Add("Rol_Id", "Rol_Id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OVERFANTASY].[Rol_Por_Usuario] WHERE (([Rol_Nombre] = @Original_Rol_" +
-                "Nombre) AND ([Usuario_Username] = @Original_Usuario_Username) AND ((@IsNull_Rol_" +
-                "Estado = 1 AND [Rol_Estado] IS NULL) OR ([Rol_Estado] = @Original_Rol_Estado)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [OVERFANTASY].[Rol_Por_Usuario] WHERE (([Rol_Id] = @Original_Rol_Id) " +
+                "AND ([Usuario_Username] = @Original_Usuario_Username))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Usuario_Username", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rol_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [OVERFANTASY].[Rol_Por_Usuario] ([Rol_Nombre], [Usuario_Username], [Rol_Estado]) VALUES (@Rol_Nombre, @Usuario_Username, @Rol_Estado);
-SELECT Rol_Nombre, Usuario_Username, Rol_Estado FROM OVERFANTASY.Rol_Por_Usuario WHERE (Rol_Nombre = @Rol_Nombre) AND (Usuario_Username = @Usuario_Username)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [OVERFANTASY].[Rol_Por_Usuario] ([Rol_Id], [Usuario_Username]) VALUES" +
+                " (@Rol_Id, @Usuario_Username);\r\nSELECT Rol_Id, Usuario_Username FROM OVERFANTASY" +
+                ".Rol_Por_Usuario WHERE (Rol_Id = @Rol_Id) AND (Usuario_Username = @Usuario_Usern" +
+                "ame)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Usuario_Username", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [OVERFANTASY].[Rol_Por_Usuario] SET [Rol_Nombre] = @Rol_Nombre, [Usuario_Username] = @Usuario_Username, [Rol_Estado] = @Rol_Estado WHERE (([Rol_Nombre] = @Original_Rol_Nombre) AND ([Usuario_Username] = @Original_Usuario_Username) AND ((@IsNull_Rol_Estado = 1 AND [Rol_Estado] IS NULL) OR ([Rol_Estado] = @Original_Rol_Estado)));
-SELECT Rol_Nombre, Usuario_Username, Rol_Estado FROM OVERFANTASY.Rol_Por_Usuario WHERE (Rol_Nombre = @Rol_Nombre) AND (Usuario_Username = @Usuario_Username)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [OVERFANTASY].[Rol_Por_Usuario] SET [Rol_Id] = @Rol_Id, [Usuario_Username] = @Usuario_Username WHERE (([Rol_Id] = @Original_Rol_Id) AND ([Usuario_Username] = @Original_Usuario_Username));
+SELECT Rol_Id, Usuario_Username FROM OVERFANTASY.Rol_Por_Usuario WHERE (Rol_Id = @Rol_Id) AND (Usuario_Username = @Usuario_Username)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Usuario_Username", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Nombre", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Id", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Rol_Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Usuario_Username", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rol_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rol_Estado", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol_Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12644,7 +12509,7 @@ SELECT Rol_Nombre, Usuario_Username, Rol_Estado FROM OVERFANTASY.Rol_Por_Usuario
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Rol_Nombre, Usuario_Username, Rol_Estado FROM OVERFANTASY.Rol_Por_Usuario";
+            this._commandCollection[0].CommandText = "SELECT Rol_Id, Usuario_Username FROM OVERFANTASY.Rol_Por_Usuario";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12699,153 +12564,6 @@ SELECT Rol_Nombre, Usuario_Username, Rol_Estado FROM OVERFANTASY.Rol_Por_Usuario
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_Rol_Nombre, string Original_Usuario_Username, string Original_Rol_Estado) {
-            if ((Original_Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Original_Rol_Nombre");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_Rol_Nombre));
-            }
-            if ((Original_Usuario_Username == null)) {
-                throw new global::System.ArgumentNullException("Original_Usuario_Username");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Usuario_Username));
-            }
-            if ((Original_Rol_Estado == null)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Rol_Estado));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Rol_Nombre, string Usuario_Username, string Rol_Estado) {
-            if ((Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Rol_Nombre");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Rol_Nombre));
-            }
-            if ((Usuario_Username == null)) {
-                throw new global::System.ArgumentNullException("Usuario_Username");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Usuario_Username));
-            }
-            if ((Rol_Estado == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Rol_Estado));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Rol_Nombre, string Usuario_Username, string Rol_Estado, string Original_Rol_Nombre, string Original_Usuario_Username, string Original_Rol_Estado) {
-            if ((Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Rol_Nombre");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Rol_Nombre));
-            }
-            if ((Usuario_Username == null)) {
-                throw new global::System.ArgumentNullException("Usuario_Username");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Usuario_Username));
-            }
-            if ((Rol_Estado == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Rol_Estado));
-            }
-            if ((Original_Rol_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Original_Rol_Nombre");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Rol_Nombre));
-            }
-            if ((Original_Usuario_Username == null)) {
-                throw new global::System.ArgumentNullException("Original_Usuario_Username");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Usuario_Username));
-            }
-            if ((Original_Rol_Estado == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Rol_Estado));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Rol_Estado, string Original_Rol_Nombre, string Original_Usuario_Username, string Original_Rol_Estado) {
-            return this.Update(Original_Rol_Nombre, Original_Usuario_Username, Rol_Estado, Original_Rol_Nombre, Original_Usuario_Username, Original_Rol_Estado);
         }
     }
     

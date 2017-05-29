@@ -16,5 +16,12 @@ namespace UberFrba.Abm_Cliente
         {
             InitializeComponent();
         }
+
+        private void ABMCliente_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'gD1C2017DataSet.Cliente' Puede moverla o quitarla según sea necesario.
+            this.clienteTableAdapter.Fill(this.gD1C2017DataSet.Cliente);
+
+        }
     }
 }

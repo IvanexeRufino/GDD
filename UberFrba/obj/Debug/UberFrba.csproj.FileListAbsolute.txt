@@ -13,3 +13,5 @@ C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Automovil.ABMAutomovil.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Turno.ABMTurno.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Turno.Agregar_Modificar_Turno.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Cliente.ABMCliente.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Rol.ABMRol.resources

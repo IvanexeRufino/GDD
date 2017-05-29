@@ -25,11 +25,11 @@ namespace UberFrba
             login = log;
         }
 
-        public void desplegarMenu(String nombreDeUsuario, String rol)
+        public void desplegarMenu(String nombreDeUsuario, decimal rol)
         {
 
             conexion.Open();
-            string query = "SELECT Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE Rol_Nombre = '" + rol + "'";
+            string query = "SELECT Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE Rol_id = " + rol + "";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())

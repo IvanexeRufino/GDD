@@ -95,6 +95,7 @@ namespace UberFrba
 
         private void button1_Click(object sender, EventArgs e)
         {
+            decimal id = 0;
             conexion.Open();
             if (UsernameLogIn.Text == "")
             {
@@ -170,14 +171,15 @@ namespace UberFrba
                 if (RolLogIn.Text == "")
                 {
                     int contador = 0;
-                    query = "SELECT Rol_Nombre FROM OVERFANTASY.Rol_Por_Usuario WHERE Usuario_Username = '" + UsernameLogIn.Text + "'";
+                    query = "SELECT rxu.Rol_Id, Rol_Nombre FROM OVERFANTASY.Rol_Por_Usuario rxu JOIN OVERFANTASY.Rol r ON (rxu.Rol_Id = r.Rol_Id) WHERE Usuario_Username = '" + UsernameLogIn.Text + "'";
                     cmd.CommandText = query;
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            RolLogIn.Items.Add(reader.GetString(0));
-                            RolLogIn.Text = reader.GetString(0);
+                            id = reader.GetDecimal(0);
+                            RolLogIn.Items.Add(reader.GetString(1));
+                            RolLogIn.Text = reader.GetString(1);
                             contador = contador + 1;
                         }
                     }
@@ -194,7 +196,7 @@ namespace UberFrba
                         this.Hide();
                         Menu mp = new Menu(this);
                         mp.Show();
-                        mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
+                        mp.desplegarMenu(UsernameLogIn.Text, id);
                         RolLogIn.Text = "";
                         RolLogIn.Items.Clear();
                     }
@@ -202,12 +204,20 @@ namespace UberFrba
                 }
                 else
                 {
+                    query = "SELECT Rol_Id FROM OVERFANTASY.Rol WHERE Rol_Nombre = '" + RolLogIn.Text + "'";
+                    cmd.CommandText = query;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        id = reader.GetDecimal(0);
+                    }
                     Rol1.Visible = false;
                     RolLogIn.Visible = false;
                     this.Hide();
                     Menu mp = new Menu(this);
                     mp.Show();
-                    mp.desplegarMenu(UsernameLogIn.Text, RolLogIn.Text);
+
+                    mp.desplegarMenu(UsernameLogIn.Text, id);
                     RolLogIn.Text = "";
                     RolLogIn.Items.Clear();
                 }
@@ -243,7 +253,16 @@ namespace UberFrba
                 return;
             }
 
-
+            decimal id;
+            string query2 = "SELECT Rol_Id FROM OVERFANTASY.Rol WHERE Rol_Nombre = '" + RolRegister.Text + "'";
+            using (SqlCommand cmd = new SqlCommand(query2, conexion))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    reader.Read();
+                    id = reader.GetDecimal(0);
+                }
+            }
 
             string query = "INSERT INTO OVERFANTASY.Usuario(Usuario_Username, Usuario_Password) VALUES ('" + UsernameRegister.Text + "', '" + PasswordRegister.Text + "')";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -251,7 +270,7 @@ namespace UberFrba
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    query = "INSERT INTO OVERFANTASY.Rol_Por_Usuario(Rol_Nombre, Usuario_Username) VALUES ('" + RolRegister.Text + "', '" + UsernameRegister.Text + "')";
+                    query = "INSERT INTO OVERFANTASY.Rol_Por_Usuario(Rol_Id, Usuario_Username) VALUES (" + id + ", '" + UsernameRegister.Text + "')";
                     cmd.CommandText = query;
                     cmd.ExecuteNonQuery();
                 }
@@ -266,7 +285,7 @@ namespace UberFrba
             this.Hide();
             Menu mp = new Menu(this);
             mp.Show();
-            mp.desplegarMenu(UsernameRegister.Text, RolRegister.Text);
+            mp.desplegarMenu(UsernameRegister.Text, id);
 
             conexion.Close();
         }

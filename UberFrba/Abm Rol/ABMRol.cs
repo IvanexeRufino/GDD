@@ -16,5 +16,12 @@ namespace UberFrba.Abm_Rol
         {
             InitializeComponent();
         }
+
+        private void ABMRol_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'gD1C2017DataSet.Rol' Puede moverla o quitarla según sea necesario.
+            this.rolTableAdapter.Fill(this.gD1C2017DataSet.Rol);
+
+        }
     }
 }
