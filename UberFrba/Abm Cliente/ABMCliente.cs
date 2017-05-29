@@ -31,16 +31,16 @@ namespace UberFrba.Abm_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente();
-            amc.Show();
+ //           Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente();
+ //           amc.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 12) //Modificar Cliente
             {
-                Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente(dataGridView1.Rows[e.RowIndex]);
-                amc.Show();
+ //               Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente(dataGridView1.Rows[e.RowIndex]);
+//                amc.Show();
             }
 
         }
