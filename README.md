@@ -1,7 +1,5 @@
 TAREAS A REALIZAR
 
-PROYECTO    TAREA                           ESTADO                  RESPONSABLE
-
 SCRIPT BD
 
             Migracion                       OK
