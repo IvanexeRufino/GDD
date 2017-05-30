@@ -18,8 +18,9 @@ namespace UberFrba.Abm_Rol
         SqlConnection conexion;
         decimal idAnterior;
         List<int> indicesAnteriores = new List<int>();
+        ABMRol abm;
 
-        public Agregar_Modificar_Rol()
+        public Agregar_Modificar_Rol(ABMRol abm)
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -28,11 +29,12 @@ namespace UberFrba.Abm_Rol
             comboBox1.Visible = false;
             button1.Visible = false;
             label2.Visible = false;
-
+            this.abm = abm;
         }
 
-        public Agregar_Modificar_Rol(DataGridViewRow row)
+        public Agregar_Modificar_Rol(DataGridViewRow row, ABMRol abm)
         {
+            this.abm = abm;
             idAnterior = Decimal.Parse(row.Cells[0].Value.ToString());
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -163,6 +165,7 @@ namespace UberFrba.Abm_Rol
                         }
                     }
                     MessageBox.Show("El rol se ha creado exitosamente", "Alta Rol", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    this.abm.ABMRol_Load(sender, e);
                 }
                 catch
                 {
@@ -208,7 +211,8 @@ namespace UberFrba.Abm_Rol
                             funcionalidad_Por_RolTableAdapter1.InsertFuncionalidadPorRol(idAnterior, funcionalidad);
                         }
                     }
-                        MessageBox.Show("El rol se ha modificado exitosamente", "Moficicacion Rol", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show("El rol se ha modificado exitosamente", "Moficicacion Rol", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    abm.ABMRol_Load(sender,e);
                 }
                 catch
                 {

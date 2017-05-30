@@ -17,7 +17,7 @@ namespace UberFrba.Abm_Turno
             InitializeComponent();
         }
 
-        private void ABMTurno_Load(object sender, EventArgs e)
+        public void ABMTurno_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'gD1C2017DataSet.Turno' Puede moverla o quitarla según sea necesario.
             this.turnoTableAdapter.Fill(this.gD1C2017DataSet.Turno);
@@ -26,7 +26,7 @@ namespace UberFrba.Abm_Turno
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Agregar_Modificar_Turno amt = new Agregar_Modificar_Turno();
+            Agregar_Modificar_Turno amt = new Agregar_Modificar_Turno(this);
             amt.Show();
         }
 
@@ -55,7 +55,7 @@ namespace UberFrba.Abm_Turno
         {
             if (e.ColumnIndex == 6)
             {
-                Agregar_Modificar_Turno amt = new Agregar_Modificar_Turno(dataGridView1.Rows[e.RowIndex]);
+                Agregar_Modificar_Turno amt = new Agregar_Modificar_Turno(dataGridView1.Rows[e.RowIndex], this);
                 amt.Show();
             }
             else
@@ -64,7 +64,7 @@ namespace UberFrba.Abm_Turno
                 {
                     turnoTableAdapter.DeleteTurno(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
                     MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    turnoTableAdapter.Fill(gD1C2017DataSet.Turno);
+                    this.ABMTurno_Load(sender, e);
                 }
             }
         }

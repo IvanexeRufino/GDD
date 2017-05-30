@@ -17,7 +17,7 @@ namespace UberFrba.Abm_Rol
             InitializeComponent();
         }
 
-        private void ABMRol_Load(object sender, EventArgs e)
+        public void ABMRol_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'gD1C2017DataSet.Rol' Puede moverla o quitarla según sea necesario.
             this.rolTableAdapter.Fill(this.gD1C2017DataSet.Rol);
@@ -31,7 +31,7 @@ namespace UberFrba.Abm_Rol
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Agregar_Modificar_Rol amr = new Agregar_Modificar_Rol();
+            Agregar_Modificar_Rol amr = new Agregar_Modificar_Rol(this);
             amr.Show();
         }
 
@@ -39,7 +39,7 @@ namespace UberFrba.Abm_Rol
         {
             if (e.ColumnIndex == 3)
             {
-                Agregar_Modificar_Rol amr = new Agregar_Modificar_Rol(dataGridView1.Rows[e.RowIndex]);
+                Agregar_Modificar_Rol amr = new Agregar_Modificar_Rol(dataGridView1.Rows[e.RowIndex], this);
                 amr.Show();
             }
             else

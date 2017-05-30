@@ -18,9 +18,11 @@ namespace UberFrba.Abm_Turno
         SqlConnection conexion;
         decimal horarioInicioAnterior;
         decimal horarioFinAnterior;
+        ABMTurno abm;
 
-        public Agregar_Modificar_Turno()
+        public Agregar_Modificar_Turno(ABMTurno abm)
         {
+            this.abm = abm;
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
@@ -32,8 +34,9 @@ namespace UberFrba.Abm_Turno
             horarioFinAnterior = 45680;
         }
 
-        public Agregar_Modificar_Turno(DataGridViewRow row)
+        public Agregar_Modificar_Turno(DataGridViewRow row, ABMTurno abm)
         {
+            this.abm = abm;
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
@@ -89,6 +92,7 @@ namespace UberFrba.Abm_Turno
                             turnoTableAdapter1.InsertTurno(textBox1.Text, horarioInicio, horarioFin, precioBase, valorKilometro);
                             MessageBox.Show("El Turno se ha creado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
                             button4_Click(sender, e);
+                            abm.ABMTurno_Load(sender,e);
                         }
                         catch
                         {
@@ -140,6 +144,7 @@ namespace UberFrba.Abm_Turno
                             turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
                         }
                         MessageBox.Show("El Turno se ha modificado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        abm.ABMTurno_Load(sender, e);
                         this.Close();
                     }
                     catch (ArgumentException arg)
