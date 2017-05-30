@@ -1,7 +1,8 @@
 TAREAS A REALIZAR
 
 TAREA
-            SUBTAREA                        ESTADO                  RESPONSABLES
+
+            Subtarea                        Estado                  Responsable
 
 SCRIPT BD
 
