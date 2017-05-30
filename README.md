@@ -1,11 +1,13 @@
 TAREAS A REALIZAR
 
+TAREA
+            SUBTAREA                        ESTADO                  RESPONSABLES
+
 SCRIPT BD
 
             Migracion                       OK
             Creacion de triggers            PROCESO                 TODOS
             Creacion de vistas              PROCESO                 TODOS
-
 ENTREGABLE
 
             Login                           OK
