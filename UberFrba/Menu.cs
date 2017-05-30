@@ -16,6 +16,7 @@ namespace UberFrba
         BaseDeDatos bd;
         SqlConnection conexion;
         Login login;
+        String username;
 
         public Menu(Login log)
         {
@@ -27,7 +28,7 @@ namespace UberFrba
 
         public void desplegarMenu(String nombreDeUsuario, decimal rol)
         {
-
+            this.username = nombreDeUsuario;
             conexion.Open();
             string query = "SELECT Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE Rol_id = " + rol + "";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
@@ -122,7 +123,7 @@ namespace UberFrba
 
         private void RegistroViajes_Click(object sender, EventArgs e)
         {
-            Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes();
+            Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes(username);
             registro.Show();
         }
 

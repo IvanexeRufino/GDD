@@ -170,6 +170,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registro Viajes\RegistroViajes.resx">
+      <DependentUpon>RegistroViajes.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="GD1C2017DataSet.xsc">
       <DependentUpon>GD1C2017DataSet.xsd</DependentUpon>
     </None>
