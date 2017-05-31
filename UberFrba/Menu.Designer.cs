@@ -47,7 +47,6 @@
             this.Atras = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.SolicitarViaje = new System.Windows.Forms.Button();
             this.ABMAutomovil.SuspendLayout();
             this.ABMRol.SuspendLayout();
             this.ABMCliente.SuspendLayout();
@@ -83,11 +82,11 @@
             // RegistroViajes
             // 
             this.RegistroViajes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegistroViajes.Location = new System.Drawing.Point(248, 128);
+            this.RegistroViajes.Location = new System.Drawing.Point(733, 396);
             this.RegistroViajes.Name = "RegistroViajes";
-            this.RegistroViajes.Size = new System.Drawing.Size(162, 68);
+            this.RegistroViajes.Size = new System.Drawing.Size(200, 94);
             this.RegistroViajes.TabIndex = 7;
-            this.RegistroViajes.Text = "Registro Viajes";
+            this.RegistroViajes.Text = "Registrar Viaje";
             this.RegistroViajes.UseVisualStyleBackColor = true;
             this.RegistroViajes.Visible = false;
             this.RegistroViajes.Click += new System.EventHandler(this.RegistroViajes_Click);
@@ -95,7 +94,7 @@
             // ListadoEstadistico
             // 
             this.ListadoEstadistico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListadoEstadistico.Location = new System.Drawing.Point(17, 128);
+            this.ListadoEstadistico.Location = new System.Drawing.Point(137, 129);
             this.ListadoEstadistico.Name = "ListadoEstadistico";
             this.ListadoEstadistico.Size = new System.Drawing.Size(162, 68);
             this.ListadoEstadistico.TabIndex = 12;
@@ -254,7 +253,6 @@
             this.groupBox7.Controls.Add(this.Facturacion);
             this.groupBox7.Controls.Add(this.RendicionCuentas);
             this.groupBox7.Controls.Add(this.ListadoEstadistico);
-            this.groupBox7.Controls.Add(this.RegistroViajes);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(250, 381);
             this.groupBox7.Name = "groupBox7";
@@ -277,27 +275,16 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "ABMs";
             // 
-            // SolicitarViaje
-            // 
-            this.SolicitarViaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SolicitarViaje.Location = new System.Drawing.Point(733, 396);
-            this.SolicitarViaje.Name = "SolicitarViaje";
-            this.SolicitarViaje.Size = new System.Drawing.Size(200, 94);
-            this.SolicitarViaje.TabIndex = 13;
-            this.SolicitarViaje.Text = "Solicitar Viaje";
-            this.SolicitarViaje.UseVisualStyleBackColor = true;
-            this.SolicitarViaje.Click += new System.EventHandler(this.SolicitarViaje_Click);
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(977, 617);
-            this.Controls.Add(this.SolicitarViaje);
             this.Controls.Add(this.Atras);
             this.Controls.Add(this.UberFRBA);
             this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.RegistroViajes);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.ABMAutomovil);
             this.Name = "Menu";
@@ -335,6 +322,5 @@
         private System.Windows.Forms.Button ABMClienteBut;
         private System.Windows.Forms.Button ABMTurnoBut;
         private System.Windows.Forms.Button ABMChoferBut;
-        private System.Windows.Forms.Button SolicitarViaje;
     }
 }
