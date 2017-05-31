@@ -16,6 +16,8 @@ namespace UberFrba.Registro_Viajes
         BaseDeDatos bd;
         SqlConnection conexion;
         String username;
+        int horarioInicioTurno;
+        int horarioFinTurno;
 
         public RegistroViajes(String username)
         {
@@ -23,11 +25,6 @@ namespace UberFrba.Registro_Viajes
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             this.username = username;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            textBox3.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -49,10 +46,85 @@ namespace UberFrba.Registro_Viajes
             relacionComboYText();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int error = 0;
+            decimal cantidadDeKilometros = 0;
+            if (!textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals(""))
+            {
+                try
+                {
+                    cantidadDeKilometros = Decimal.Parse(textBox3.Text.Replace('.', ','));
+                }
+                catch
+                {
+                    error += 1;
+                    MessageBox.Show("Por favor ingrese numeros donde tiene qe haberlos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (cantidadDeKilometros < 0)
+                {
+                    error += 1;
+                    MessageBox.Show("Ingrese una cantidad de kilometros valida (Mayor a 0)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                conexion.Open();
+                String query = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Cliente_Username = '"+username+"' AND ('"+textBox4.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '"+textBox5.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            error += 1;
+                            MessageBox.Show("Ya hay un viaje realizado por usted en esa fecha", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                if (error == 0)
+                {
+                    viajeTableAdapter1.InsertViaje(cantidadDeKilometros, textBox4.Text, textBox5.Text, textBox1.Text, comboBox1.Text, username, textBox2.Text);
+                    MessageBox.Show("El viaje se ha registrado con exito", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                }
+                conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Por favor llene todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            textBox4.Text = datepickerAString(fechaInicio);
+            fechaFin.MinDate = fechaInicio.Value;
+            fechaFin.Visible = true;
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            textBox5.Text = datepickerAString(fechaFin);
+        }
+
+        private String datepickerAString(DateTimePicker dtp)
+        {
+            String date = dtp.Value.Year.ToString();
+            date += "/";
+            date += dtp.Value.Month.ToString();
+            date += "/";
+            date += dtp.Value.Day.ToString();
+            date += " ";
+            date += dtp.Value.Hour.ToString();
+            date += ":";
+            date += dtp.Value.Minute.ToString();
+            date += ":";
+            date += dtp.Value.Second.ToString();
+            return date;
+        }
+
         private void relacionComboYText()
         {
             conexion.Open();
-            String query = "SELECT Automovil_Patente FROM OVERFANTASY.Automovil WHERE Chofer_Username = '" + comboBox1.Text + "'";
+            String query = "SELECT Automovil_Patente, a.Turno_Descripcion, Turno_Horario_Inicio, Turno_Horario_Fin FROM OVERFANTASY.Automovil a JOIN OVERFANTASY.Turno t ON (a.Turno_Descripcion = t.Turno_Descripcion) WHERE Chofer_Username = '"+comboBox1.Text+"'";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -60,48 +132,17 @@ namespace UberFrba.Registro_Viajes
                     if (reader.Read())
                     {
                         textBox1.Text = reader.GetString(0);
-                    }
-                }
-            }
-            query = "SELECT Turno_Descripcion FROM OVERFANTASY.Automovil WHERE Chofer_Username = '" + comboBox1.Text + "'";
-            using (SqlCommand cmd = new SqlCommand(query, conexion))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        textBox2.Text = reader.GetString(0);
+                        textBox2.Text = reader.GetString(1);
+                        horarioInicioTurno = Decimal.ToInt32(reader.GetDecimal(2));
+                        horarioFinTurno = Decimal.ToInt32(reader.GetDecimal(3));
                     }
                 }
             }
             conexion.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (!textBox3.Text.Equals(""))
-            {
-                try
-                {
-                    decimal cantidadDeKilometros = Decimal.Parse(textBox3.Text.Replace('.', ','));
-                    if (cantidadDeKilometros > 0)
-                    {
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ingrese una cantidad de kilometros validos (Mayor a 0)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Por favor ingrese numeros donde tiene qe haberlos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor llene todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            DateTime rangoInicio = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioInicioTurno, 0, 0);
+            DateTime rangoFin = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioFinTurno, 0, 0);
+            fechaInicio.MinDate = rangoInicio;
+            fechaInicio.MaxDate = rangoFin;
         }
     }
 }

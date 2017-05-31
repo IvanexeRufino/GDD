@@ -14068,15 +14068,15 @@ SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, A
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"INSERT INTO [OVERFANTASY].[Viaje] ([Viaje_Cantidad_Kilometros], [Viaje_Hora_Inicio], [Viaje_Hora_Fin], [Automovil_Patente], [Chofer_Username], [Cliente_Username], [Turno_Descripcion]) VALUES (@Viaje_Cantidad_Kilometros, @Viaje_Hora_Inicio, @Viaje_Hora_Fin, @Automovil_Patente, @Chofer_Username, @Cliente_Username, @Turno_Descripcion);";
+            this._commandCollection[1].CommandText = @"INSERT INTO [OVERFANTASY].[Viaje] ([Viaje_Cantidad_Kilometros], [Viaje_Hora_Inicio], [Viaje_Hora_Fin], [Automovil_Patente], [Chofer_Username], [Cliente_Username], [Turno_Descripcion]) VALUES  (@cantidad, CONVERT(DateTime, @inic, 121), CONVERT(DateTime, @fin, 121), @patente, @chofer, @cliente, @turno)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Viaje_Cantidad_Kilometros", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Viaje_Cantidad_Kilometros", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Viaje_Hora_Inicio", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Viaje_Hora_Inicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Viaje_Hora_Fin", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Viaje_Hora_Fin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Patente", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Chofer_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Turno_Descripcion", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cantidad", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Viaje_Cantidad_Kilometros", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inic", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fin", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@patente", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chofer", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cliente", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@turno", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14413,34 +14413,44 @@ SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertViaje(decimal Viaje_Cantidad_Kilometros, System.DateTime Viaje_Hora_Inicio, System.DateTime Viaje_Hora_Fin, string Automovil_Patente, string Chofer_Username, string Cliente_Username, string Turno_Descripcion) {
+        public virtual int InsertViaje(decimal cantidad, string inic, string fin, string patente, string chofer, string cliente, string turno) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((decimal)(Viaje_Cantidad_Kilometros));
-            command.Parameters[1].Value = ((System.DateTime)(Viaje_Hora_Inicio));
-            command.Parameters[2].Value = ((System.DateTime)(Viaje_Hora_Fin));
-            if ((Automovil_Patente == null)) {
-                throw new global::System.ArgumentNullException("Automovil_Patente");
+            command.Parameters[0].Value = ((decimal)(cantidad));
+            if ((inic == null)) {
+                throw new global::System.ArgumentNullException("inic");
             }
             else {
-                command.Parameters[3].Value = ((string)(Automovil_Patente));
+                command.Parameters[1].Value = ((string)(inic));
             }
-            if ((Chofer_Username == null)) {
-                throw new global::System.ArgumentNullException("Chofer_Username");
-            }
-            else {
-                command.Parameters[4].Value = ((string)(Chofer_Username));
-            }
-            if ((Cliente_Username == null)) {
-                throw new global::System.ArgumentNullException("Cliente_Username");
+            if ((fin == null)) {
+                throw new global::System.ArgumentNullException("fin");
             }
             else {
-                command.Parameters[5].Value = ((string)(Cliente_Username));
+                command.Parameters[2].Value = ((string)(fin));
             }
-            if ((Turno_Descripcion == null)) {
-                throw new global::System.ArgumentNullException("Turno_Descripcion");
+            if ((patente == null)) {
+                throw new global::System.ArgumentNullException("patente");
             }
             else {
-                command.Parameters[6].Value = ((string)(Turno_Descripcion));
+                command.Parameters[3].Value = ((string)(patente));
+            }
+            if ((chofer == null)) {
+                throw new global::System.ArgumentNullException("chofer");
+            }
+            else {
+                command.Parameters[4].Value = ((string)(chofer));
+            }
+            if ((cliente == null)) {
+                throw new global::System.ArgumentNullException("cliente");
+            }
+            else {
+                command.Parameters[5].Value = ((string)(cliente));
+            }
+            if ((turno == null)) {
+                throw new global::System.ArgumentNullException("turno");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(turno));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

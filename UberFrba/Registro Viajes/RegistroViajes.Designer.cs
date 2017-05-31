@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.choferBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gD1C2017DataSet1 = new UberFrba.GD1C2017DataSet();
@@ -45,12 +44,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.clienteTableAdapter1 = new UberFrba.GD1C2017DataSetTableAdapters.ClienteTableAdapter();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.fechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.fechaFin = new System.Windows.Forms.DateTimePicker();
+            this.viajeTableAdapter1 = new UberFrba.GD1C2017DataSetTableAdapters.ViajeTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.choferBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.turnoBindingSource)).BeginInit();
@@ -60,7 +61,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(15, 292);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 64);
+            this.button1.Size = new System.Drawing.Size(117, 64);
             this.button1.TabIndex = 0;
             this.button1.Text = "Registrar";
             this.button1.UseVisualStyleBackColor = true;
@@ -68,23 +69,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(179, 326);
+            this.button2.Location = new System.Drawing.Point(259, 292);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 30);
+            this.button2.Size = new System.Drawing.Size(121, 64);
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(179, 292);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(86, 28);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Limpiar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // comboBox1
             // 
@@ -92,7 +83,7 @@
             this.comboBox1.DisplayMember = "Usuario_Username";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(144, 34);
+            this.comboBox1.Location = new System.Drawing.Point(259, 34);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
@@ -128,7 +119,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 66);
+            this.textBox1.Location = new System.Drawing.Point(259, 66);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(121, 20);
@@ -158,7 +149,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(144, 98);
+            this.textBox2.Location = new System.Drawing.Point(259, 98);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(121, 20);
@@ -166,7 +157,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(144, 131);
+            this.textBox3.Location = new System.Drawing.Point(259, 131);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(121, 20);
             this.textBox3.TabIndex = 10;
@@ -179,20 +170,6 @@
             this.label4.Size = new System.Drawing.Size(120, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Cantidad De Kilometros:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 191);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(250, 20);
-            this.dateTimePicker1.TabIndex = 11;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(15, 248);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(250, 20);
-            this.dateTimePicker2.TabIndex = 12;
             // 
             // label5
             // 
@@ -216,22 +193,54 @@
             // 
             this.clienteTableAdapter1.ClearBeforeFill = true;
             // 
-            // comboBox2
+            // textBox4
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(282, 191);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(54, 21);
-            this.comboBox2.TabIndex = 15;
+            this.textBox4.Location = new System.Drawing.Point(259, 188);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(121, 20);
+            this.textBox4.TabIndex = 26;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(259, 248);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(121, 20);
+            this.textBox5.TabIndex = 27;
+            // 
+            // fechaInicio
+            // 
+            this.fechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.fechaInicio.Location = new System.Drawing.Point(15, 188);
+            this.fechaInicio.Name = "fechaInicio";
+            this.fechaInicio.Size = new System.Drawing.Size(102, 20);
+            this.fechaInicio.TabIndex = 28;
+            this.fechaInicio.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // fechaFin
+            // 
+            this.fechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.fechaFin.Location = new System.Drawing.Point(15, 245);
+            this.fechaFin.Name = "fechaFin";
+            this.fechaFin.Size = new System.Drawing.Size(102, 20);
+            this.fechaFin.TabIndex = 30;
+            this.fechaFin.Visible = false;
+            this.fechaFin.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            // 
+            // viajeTableAdapter1
+            // 
+            this.viajeTableAdapter1.ClearBeforeFill = true;
             // 
             // RegistroViajes
             // 
-            this.ClientSize = new System.Drawing.Size(597, 368);
-            this.Controls.Add(this.comboBox2);
+            this.ClientSize = new System.Drawing.Size(393, 368);
+            this.Controls.Add(this.fechaFin);
+            this.Controls.Add(this.fechaInicio);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
@@ -240,7 +249,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "RegistroViajes";
@@ -261,7 +269,6 @@
         private GD1C2017DataSetTableAdapters.ViajeTableAdapter viajeTableAdapter;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -275,11 +282,13 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private GD1C2017DataSetTableAdapters.ClienteTableAdapter clienteTableAdapter1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.DateTimePicker fechaInicio;
+        private System.Windows.Forms.DateTimePicker fechaFin;
+        private GD1C2017DataSetTableAdapters.ViajeTableAdapter viajeTableAdapter1;
     }
 }
