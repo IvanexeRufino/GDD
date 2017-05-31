@@ -14059,13 +14059,24 @@ SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, A
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Au" +
                 "tomovil_Patente, Chofer_Username, Cliente_Username, Turno_Descripcion, Rendicion" +
                 "_Nro, Factura_Nro FROM OVERFANTASY.Viaje";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"INSERT INTO [OVERFANTASY].[Viaje] ([Viaje_Cantidad_Kilometros], [Viaje_Hora_Inicio], [Viaje_Hora_Fin], [Automovil_Patente], [Chofer_Username], [Cliente_Username], [Turno_Descripcion]) VALUES (@Viaje_Cantidad_Kilometros, @Viaje_Hora_Inicio, @Viaje_Hora_Fin, @Automovil_Patente, @Chofer_Username, @Cliente_Username, @Turno_Descripcion);";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Viaje_Cantidad_Kilometros", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Viaje_Cantidad_Kilometros", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Viaje_Hora_Inicio", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Viaje_Hora_Inicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Viaje_Hora_Fin", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Viaje_Hora_Fin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Patente", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Chofer_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Turno_Descripcion", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14396,6 +14407,56 @@ SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, A
                     global::System.Nullable<decimal> Original_Rendicion_Nro, 
                     global::System.Nullable<decimal> Original_Factura_Nro) {
             return this.Update(Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Automovil_Patente, Chofer_Username, Cliente_Username, Turno_Descripcion, Rendicion_Nro, Factura_Nro, Original_Viaje_Id, Original_Viaje_Cantidad_Kilometros, Original_Viaje_Hora_Inicio, Original_Viaje_Hora_Fin, Original_Automovil_Patente, Original_Chofer_Username, Original_Cliente_Username, Original_Turno_Descripcion, Original_Rendicion_Nro, Original_Factura_Nro, Original_Viaje_Id);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertViaje(decimal Viaje_Cantidad_Kilometros, System.DateTime Viaje_Hora_Inicio, System.DateTime Viaje_Hora_Fin, string Automovil_Patente, string Chofer_Username, string Cliente_Username, string Turno_Descripcion) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((decimal)(Viaje_Cantidad_Kilometros));
+            command.Parameters[1].Value = ((System.DateTime)(Viaje_Hora_Inicio));
+            command.Parameters[2].Value = ((System.DateTime)(Viaje_Hora_Fin));
+            if ((Automovil_Patente == null)) {
+                throw new global::System.ArgumentNullException("Automovil_Patente");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Automovil_Patente));
+            }
+            if ((Chofer_Username == null)) {
+                throw new global::System.ArgumentNullException("Chofer_Username");
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Chofer_Username));
+            }
+            if ((Cliente_Username == null)) {
+                throw new global::System.ArgumentNullException("Cliente_Username");
+            }
+            else {
+                command.Parameters[5].Value = ((string)(Cliente_Username));
+            }
+            if ((Turno_Descripcion == null)) {
+                throw new global::System.ArgumentNullException("Turno_Descripcion");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(Turno_Descripcion));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

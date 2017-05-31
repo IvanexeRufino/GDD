@@ -37,7 +37,14 @@ namespace UberFrba.Abm_Turno
 
         private void button2_Click(object sender, EventArgs e)
         {
-            turnoTableAdapter.FillBy(gD1C2017DataSet.Turno, textBox1.Text);
+            if (textBox1.Text.Equals(""))
+            {
+                turnoTableAdapter.FillBy(gD1C2017DataSet.Turno, textBox1.Text);
+            }
+            else
+            {
+                this.turnoTableAdapter.Fill(this.gD1C2017DataSet.Turno);
+            }
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
