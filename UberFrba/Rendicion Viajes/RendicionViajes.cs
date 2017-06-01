@@ -51,8 +51,24 @@ namespace UberFrba.Rendicion_Viajes
         {
             if (e.ColumnIndex == 2)
             {
-                HistorialDeViajes hdv = new HistorialDeViajes(dataGridView1.Rows[e.RowIndex]);
-                hdv.Show();
+                String query = "SELECT Rendicion_Nro FROM OVERFANTASY.Rendicion WHERE Chofer_Username = '"+dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()+"' AND Rendicion_Fecha = CONVERT(date, getdate())";
+                conexion.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                        {
+                            HistorialDeViajes hdv = new HistorialDeViajes(dataGridView1.Rows[e.RowIndex]);
+                            hdv.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este Choffer ya tiene una rendicion hecha en este dia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                conexion.Close();
             }
         }
 
