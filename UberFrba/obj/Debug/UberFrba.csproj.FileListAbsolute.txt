@@ -32,3 +32,4 @@ C:\Users\Intel\GDD\UberFrba\obj\Debug\UberFrba.Properties.Resources.resources
 C:\Users\Intel\GDD\UberFrba\obj\Debug\UberFrba.csproj.GenerateResource.Cache
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Rol.Agregar_Modificar_Rol.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Registro_Viajes.RegistroViajes.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.RendicionViajes.resources
