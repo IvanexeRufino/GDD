@@ -29,7 +29,7 @@ namespace UberFrba.Rendicion_Viajes
             DataGridViewButtonColumn rendirViajes = new DataGridViewButtonColumn();
             rendirViajes.Name = "Rendir Viajes";
             rendirViajes.Text = "Rendir Viajes";
-            String select = "SELECT DISTINCT(Chofer_Username), Turno_Descripcion FROM OVERFANTASY.Viaje WHERE Rendicion_Nro IS NULL";
+            String select = "SELECT DISTINCT(Chofer_Username), Turno_Descripcion FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Chofer_Username = u.Usuario_Username) WHERE Rendicion_Nro IS NULL AND Usuario_Estado = 'H'";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
@@ -51,7 +51,8 @@ namespace UberFrba.Rendicion_Viajes
         {
             if (e.ColumnIndex == 2)
             {
-                MessageBox.Show("hola wachin", "ok");
+                HistorialDeViajes hdv = new HistorialDeViajes(dataGridView1.Rows[e.RowIndex]);
+                hdv.Show();
             }
         }
 
