@@ -45,15 +45,8 @@ namespace UberFrba.Rendicion_Viajes
 
         private void HistorialDeViajes_Load(object sender, EventArgs e)
         {
-            String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, ";
-            select += "Total = (SELECT total = (Turno_Precio_Base + (Turno_Valor_Kilometro * Viaje_Cantidad_Kilometros)) ";
-            select += "FROM OVERFANTASY.Viaje v ";
-            select += "JOIN OVERFANTASY.Turno t ";
-            select += "ON (v.Turno_Descripcion = t.Turno_Descripcion) ";
-            select += "WHERE v.Viaje_Id = v2.Viaje_Id) ";
-            select += "FROM OVERFANTASY.Viaje v2 ";
-            select += "WHERE Rendicion_Nro IS NULL ";
-            select += "AND Chofer_Username = '"+chofer_Username+"' ";
+            String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Total FROM OVERFANTASY.ViajeConTotal ";
+            select += "WHERE Chofer_Username = '"+chofer_Username+"' ";
             select += "AND Turno_Descripcion = '"+Turno_Descripcion+"' ";
             select += "AND CONVERT(date,Viaje_Hora_Inicio) = '"+fecha+"'";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
@@ -73,11 +66,11 @@ namespace UberFrba.Rendicion_Viajes
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DateTime fechaRendicion = new DateTime(Int32.Parse(textBox3.Text.Substring(0,4)), Int32.Parse(textBox3.Text.Substring(5,2)), Int32.Parse(textBox3.Text.Substring(9,2)), 0, 0, 0);
-            this.rendicionTableAdapter1.InsertRendicion(chofer_Username, Turno_Descripcion, fechaRendicion, Decimal.Parse(textBox3.Text));
+            DateTime fechaRendicion = new DateTime(Int32.Parse(fecha.Substring(0,4)), Int32.Parse(fecha.Substring(5,2)), Int32.Parse(fecha.Substring(8,2)), 0, 0, 0);
+
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                this.viajeTableAdapter.UpdateViaje(dataGridView1.Rows[i].Cells[0].Value.ToString(), );
+                
             }
             MessageBox.Show("La rendicion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             rendicion.RendicionViajes_Load(sender, e);
