@@ -66,12 +66,24 @@ namespace UberFrba.Rendicion_Viajes
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DateTime fechaRendicion = new DateTime(Int32.Parse(fecha.Substring(0,4)), Int32.Parse(fecha.Substring(5,2)), Int32.Parse(fecha.Substring(8,2)), 0, 0, 0);
+            String aux = DateTime.Now.ToString();
+            fecha = aux.Substring(6, 4);
+            fecha += aux.Substring(2, 3);
+            fecha += "/";
+            fecha += aux.Substring(0, 2);
 
+            String insert;
+            conexion.Open();
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                
+                insert = "INSERT INTO OVERFANTASY.ViajeConTotal ";
+                insert += "VALUES (" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "," + dataGridView1.Rows[i].Cells[1].Value.ToString() + ", '" + fecha + "', '"+fecha+"','" + chofer_Username + "', '" + dataGridView1.Rows[i].Cells[4].Value.ToString() + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
+                using (SqlCommand cmd = new SqlCommand(insert, conexion))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
+            conexion.Close();
             MessageBox.Show("La rendicion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             rendicion.RendicionViajes_Load(sender, e);
             this.Close();
