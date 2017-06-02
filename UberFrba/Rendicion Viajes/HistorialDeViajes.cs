@@ -46,7 +46,8 @@ namespace UberFrba.Rendicion_Viajes
         private void HistorialDeViajes_Load(object sender, EventArgs e)
         {
             String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Total FROM OVERFANTASY.ViajeConTotal ";
-            select += "WHERE Chofer_Username = '"+chofer_Username+"' ";
+            select += "WHERE Rendicion_Nro IS NULL ";
+            select += "AND Chofer_Username = '"+chofer_Username+"' ";
             select += "AND Turno_Descripcion = '"+Turno_Descripcion+"' ";
             select += "AND CONVERT(date,Viaje_Hora_Inicio) = '"+fecha+"'";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
@@ -66,16 +67,10 @@ namespace UberFrba.Rendicion_Viajes
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String aux = DateTime.Now.ToString();
-            fecha = aux.Substring(6, 4);
-            fecha += aux.Substring(2, 3);
-            fecha += "/";
-            fecha += aux.Substring(0, 2);
-
             String insert;
             conexion.Open();
-            insert = "INSERT INTO OVERFANTASY.ViajeConTotal ";
-            insert += "VALUES (" + dataGridView1.Rows[0].Cells[0].Value.ToString() + "," + dataGridView1.Rows[0].Cells[1].Value.ToString() + ", '" + fecha + "', '"+fecha+"','" + chofer_Username + "', '" + dataGridView1.Rows[0].Cells[4].Value.ToString() + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
+            insert = "INSERT INTO OVERFANTASY.ViajeConTotal(Viaje_Hora_Inicio, Chofer_Username, Turno_Descripcion, Total)";
+            insert += "VALUES ('" + fecha + "', '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();
