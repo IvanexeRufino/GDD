@@ -74,14 +74,11 @@ namespace UberFrba.Rendicion_Viajes
 
             String insert;
             conexion.Open();
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            insert = "INSERT INTO OVERFANTASY.ViajeConTotal ";
+            insert += "VALUES (" + dataGridView1.Rows[0].Cells[0].Value.ToString() + "," + dataGridView1.Rows[0].Cells[1].Value.ToString() + ", '" + fecha + "', '"+fecha+"','" + chofer_Username + "', '" + dataGridView1.Rows[0].Cells[4].Value.ToString() + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
+            using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
-                insert = "INSERT INTO OVERFANTASY.ViajeConTotal ";
-                insert += "VALUES (" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "," + dataGridView1.Rows[i].Cells[1].Value.ToString() + ", '" + fecha + "', '"+fecha+"','" + chofer_Username + "', '" + dataGridView1.Rows[i].Cells[4].Value.ToString() + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
-                using (SqlCommand cmd = new SqlCommand(insert, conexion))
-                {
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.ExecuteNonQuery();
             }
             conexion.Close();
             MessageBox.Show("La rendicion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
