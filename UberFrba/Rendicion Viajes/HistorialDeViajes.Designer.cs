@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CostoDeViaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,17 +38,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.viajeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viajeCantidadKilometrosDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viajeHoraInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viajeHoraFinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.choferUsernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clienteUsernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.turnoDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rendicionNroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.viajeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gD1C2017DataSet = new UberFrba.GD1C2017DataSet();
             this.viajeTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.ViajeTableAdapter();
+            this.rendicionTableAdapter1 = new UberFrba.GD1C2017DataSetTableAdapters.RendicionTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viajeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).BeginInit();
@@ -74,35 +66,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Realizar Rendicion";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.viajeIdDataGridViewTextBoxColumn,
-            this.viajeCantidadKilometrosDataGridViewTextBoxColumn,
-            this.viajeHoraInicioDataGridViewTextBoxColumn,
-            this.viajeHoraFinDataGridViewTextBoxColumn,
-            this.choferUsernameDataGridViewTextBoxColumn,
-            this.clienteUsernameDataGridViewTextBoxColumn,
-            this.turnoDescripcionDataGridViewTextBoxColumn,
-            this.rendicionNroDataGridViewTextBoxColumn,
-            this.CostoDeViaje});
-            this.dataGridView1.DataSource = this.viajeBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 31);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(953, 150);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // CostoDeViaje
-            // 
-            this.CostoDeViaje.HeaderText = "Costo De Viaje";
-            this.CostoDeViaje.Name = "CostoDeViaje";
-            this.CostoDeViaje.ReadOnly = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -164,61 +128,16 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "%";
             // 
-            // viajeIdDataGridViewTextBoxColumn
+            // dataGridView1
             // 
-            this.viajeIdDataGridViewTextBoxColumn.DataPropertyName = "Viaje_Id";
-            this.viajeIdDataGridViewTextBoxColumn.HeaderText = "Viaje_Id";
-            this.viajeIdDataGridViewTextBoxColumn.Name = "viajeIdDataGridViewTextBoxColumn";
-            this.viajeIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // viajeCantidadKilometrosDataGridViewTextBoxColumn
-            // 
-            this.viajeCantidadKilometrosDataGridViewTextBoxColumn.DataPropertyName = "Viaje_Cantidad_Kilometros";
-            this.viajeCantidadKilometrosDataGridViewTextBoxColumn.HeaderText = "Viaje_Cantidad_Kilometros";
-            this.viajeCantidadKilometrosDataGridViewTextBoxColumn.Name = "viajeCantidadKilometrosDataGridViewTextBoxColumn";
-            this.viajeCantidadKilometrosDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // viajeHoraInicioDataGridViewTextBoxColumn
-            // 
-            this.viajeHoraInicioDataGridViewTextBoxColumn.DataPropertyName = "Viaje_Hora_Inicio";
-            this.viajeHoraInicioDataGridViewTextBoxColumn.HeaderText = "Viaje_Hora_Inicio";
-            this.viajeHoraInicioDataGridViewTextBoxColumn.Name = "viajeHoraInicioDataGridViewTextBoxColumn";
-            this.viajeHoraInicioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // viajeHoraFinDataGridViewTextBoxColumn
-            // 
-            this.viajeHoraFinDataGridViewTextBoxColumn.DataPropertyName = "Viaje_Hora_Fin";
-            this.viajeHoraFinDataGridViewTextBoxColumn.HeaderText = "Viaje_Hora_Fin";
-            this.viajeHoraFinDataGridViewTextBoxColumn.Name = "viajeHoraFinDataGridViewTextBoxColumn";
-            this.viajeHoraFinDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // choferUsernameDataGridViewTextBoxColumn
-            // 
-            this.choferUsernameDataGridViewTextBoxColumn.DataPropertyName = "Chofer_Username";
-            this.choferUsernameDataGridViewTextBoxColumn.HeaderText = "Chofer_Username";
-            this.choferUsernameDataGridViewTextBoxColumn.Name = "choferUsernameDataGridViewTextBoxColumn";
-            this.choferUsernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // clienteUsernameDataGridViewTextBoxColumn
-            // 
-            this.clienteUsernameDataGridViewTextBoxColumn.DataPropertyName = "Cliente_Username";
-            this.clienteUsernameDataGridViewTextBoxColumn.HeaderText = "Cliente_Username";
-            this.clienteUsernameDataGridViewTextBoxColumn.Name = "clienteUsernameDataGridViewTextBoxColumn";
-            this.clienteUsernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // turnoDescripcionDataGridViewTextBoxColumn
-            // 
-            this.turnoDescripcionDataGridViewTextBoxColumn.DataPropertyName = "Turno_Descripcion";
-            this.turnoDescripcionDataGridViewTextBoxColumn.HeaderText = "Turno_Descripcion";
-            this.turnoDescripcionDataGridViewTextBoxColumn.Name = "turnoDescripcionDataGridViewTextBoxColumn";
-            this.turnoDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rendicionNroDataGridViewTextBoxColumn
-            // 
-            this.rendicionNroDataGridViewTextBoxColumn.DataPropertyName = "Rendicion_Nro";
-            this.rendicionNroDataGridViewTextBoxColumn.HeaderText = "Rendicion_Nro";
-            this.rendicionNroDataGridViewTextBoxColumn.Name = "rendicionNroDataGridViewTextBoxColumn";
-            this.rendicionNroDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(953, 153);
+            this.dataGridView1.TabIndex = 10;
             // 
             // viajeBindingSource
             // 
@@ -234,11 +153,16 @@
             // 
             this.viajeTableAdapter.ClearBeforeFill = true;
             // 
+            // rendicionTableAdapter1
+            // 
+            this.rendicionTableAdapter1.ClearBeforeFill = true;
+            // 
             // HistorialDeViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 375);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -246,7 +170,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "HistorialDeViajes";
@@ -264,7 +187,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -275,14 +197,7 @@
         private GD1C2017DataSet gD1C2017DataSet;
         private System.Windows.Forms.BindingSource viajeBindingSource;
         private GD1C2017DataSetTableAdapters.ViajeTableAdapter viajeTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn viajeIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn viajeCantidadKilometrosDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn viajeHoraInicioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn viajeHoraFinDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn choferUsernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clienteUsernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn turnoDescripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rendicionNroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostoDeViaje;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private GD1C2017DataSetTableAdapters.RendicionTableAdapter rendicionTableAdapter1;
     }
 }

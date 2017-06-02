@@ -24,7 +24,7 @@ namespace UberFrba.Rendicion_Viajes
             InitializeComponent();
         }
 
-        private void RendicionViajes_Load(object sender, EventArgs e)
+        public void RendicionViajes_Load(object sender, EventArgs e)
         {
             DataGridViewButtonColumn rendirViajes = new DataGridViewButtonColumn();
             rendirViajes.Name = "Rendir Viajes";
@@ -59,7 +59,7 @@ namespace UberFrba.Rendicion_Viajes
                     {
                         if (!reader.Read())
                         {
-                            HistorialDeViajes hdv = new HistorialDeViajes(dataGridView1.Rows[e.RowIndex]);
+                            HistorialDeViajes hdv = new HistorialDeViajes(dataGridView1.Rows[e.RowIndex], this);
                             hdv.Show();
                         }
                         else
