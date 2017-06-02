@@ -35,21 +35,18 @@ namespace UberFrba.Abm_Automovil
             //ama.Show();
         }
 
-        //fillby falta declarar
+        //filtro
         private void button1_Click(object sender, EventArgs e)
         {
             //automovilTableAdapter.FillBy(gD1C2017DataSet.Turno, textBox1.Text);
         }
 
-        //no se q es pero lo puse por las dudas y no exploto
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
             automovilTableAdapter.Fill(gD1C2017DataSet.Automovil);
         }
 
@@ -70,5 +67,33 @@ namespace UberFrba.Abm_Automovil
                 }
             }
         }
+
+        private string filtrado()
+        {
+            string marca = textBox1.Text;
+            string modelo = textBox2.Text;
+            string patente = textBox3.Text;
+            string chofer = textBox4.Text;
+            var final_lista = "";
+            var posFiltro = true;
+            var filtrosBusqueda = new List<string>();
+            if (marca != "") filtrosBusqueda.Add("Automovil_marca LIKE '%" + marca + "%'");
+            if (modelo != "") filtrosBusqueda.Add("Automovil_Modelo LIKE '%" + modelo + "%'");
+            if (patente != "") filtrosBusqueda.Add("Automovil_patente LIKE '%" + patente + "%'");
+            if (chofer != "") filtrosBusqueda.Add("Chofer_Username LIKE '%" + chofer + "%'");
+
+            foreach (var filtro in filtrosBusqueda)
+            {
+                if (!posFiltro)
+                    final_lista += " AND " + filtro;
+                else
+                {
+                    final_lista += filtro;
+                    posFiltro = false;
+                }
+            }
+            return final_lista;
+        }
+
     }
 }

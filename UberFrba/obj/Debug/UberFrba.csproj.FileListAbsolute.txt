@@ -35,3 +35,6 @@ C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.RendicionViajes.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Cliente.Agregar_Modificar_Cliente.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.HistorialDeViajes.resources
+C:\Users\Nicolas\GDD\UberFrba\bin\Debug\UberFrba.exe.config
+C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.exe
+C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.pdb
