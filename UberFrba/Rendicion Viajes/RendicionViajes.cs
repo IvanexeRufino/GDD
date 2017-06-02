@@ -29,7 +29,7 @@ namespace UberFrba.Rendicion_Viajes
             DataGridViewButtonColumn rendirViajes = new DataGridViewButtonColumn();
             rendirViajes.Name = "Rendir Viajes";
             rendirViajes.Text = "Rendir Viajes";
-            String select = "SELECT DISTINCT(Chofer_Username), Turno_Descripcion FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Chofer_Username = u.Usuario_Username) WHERE Rendicion_Nro IS NULL AND Usuario_Estado = 'H'";
+            String select = "SELECT DISTINCT(Chofer_Username), Turno_Descripcion, Fecha = CONVERT(date,Viaje_Hora_Inicio) FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Chofer_Username = u.Usuario_Username) WHERE Rendicion_Nro IS NULL AND Usuario_Estado = 'H'";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
@@ -38,7 +38,7 @@ namespace UberFrba.Rendicion_Viajes
             dataGridView1.DataSource = ds.Tables[0];
             if (dataGridView1.Columns["Rendir Viajes"] == null)
             {
-                dataGridView1.Columns.Insert(2, rendirViajes);
+                dataGridView1.Columns.Insert(3, rendirViajes);
             }
         }
 
@@ -49,7 +49,7 @@ namespace UberFrba.Rendicion_Viajes
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 2)
+            if (e.ColumnIndex == 3)
             {
                 String query = "SELECT Rendicion_Nro FROM OVERFANTASY.Rendicion WHERE Chofer_Username = '"+dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()+"' AND Rendicion_Fecha = CONVERT(date, getdate())";
                 conexion.Open();
