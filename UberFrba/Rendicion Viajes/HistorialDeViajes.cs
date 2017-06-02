@@ -47,7 +47,7 @@ namespace UberFrba.Rendicion_Viajes
         {
             String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Total FROM OVERFANTASY.ViajeConTotal ";
             select += "WHERE Rendicion_Nro IS NULL ";
-            select += "AND Chofer_Username = '"+chofer_Username+"' ";
+            select += "AND Chofer_Username = '" + chofer_Username + "' ";
             select += "AND Turno_Descripcion = '"+Turno_Descripcion+"' ";
             select += "AND CONVERT(date,Viaje_Hora_Inicio) = '"+fecha+"'";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
