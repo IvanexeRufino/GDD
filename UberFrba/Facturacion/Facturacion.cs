@@ -26,7 +26,7 @@ namespace UberFrba.Facturacion
             DataGridViewButtonColumn rendirViajes = new DataGridViewButtonColumn();
             rendirViajes.Name = "Facturar Cliente";
             rendirViajes.Text = "Facturar Cliente";
-            String select = "SELECT DISTINCT(Chofer_Username), Turno_Descripcion, Fecha = CONVERT(date,Viaje_Hora_Inicio) FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Chofer_Username = u.Usuario_Username) WHERE Rendicion_Nro IS NULL AND Usuario_Estado = 'H'";
+            String select = "SELECT DISTINCT(Cliente_Username), Turno_Descripcion, Fecha = CONVERT(date,Viaje_Hora_Inicio) FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Chofer_Username = u.Usuario_Username) WHERE Rendicion_Nro IS NULL AND Usuario_Estado = 'H'";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();

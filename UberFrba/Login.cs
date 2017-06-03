@@ -202,7 +202,7 @@ namespace UberFrba
                             Menu mp = new Menu();
                             mp.Show();
                             mp.desplegarMenu(UsernameLogIn.Text, id);
-                            this.Close();
+                            this.Hide();
                         }
                     }
 
@@ -223,7 +223,7 @@ namespace UberFrba
 
                     mp.desplegarMenu(UsernameLogIn.Text, id);
 
-                    this.Close();
+                    this.Hide();
                 }
                 conexion.Close();
             }
@@ -292,7 +292,7 @@ namespace UberFrba
 
             conexion.Close();
 
-            this.Close();
+            this.Hide();
         }
 
         private void Login_Load(object sender, EventArgs e)
