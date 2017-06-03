@@ -36,9 +36,8 @@ C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Cliente.Agregar_Modificar_Cliente.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.HistorialDeViajes.resources
 C:\Users\Nicolas\GDD\UberFrba\bin\Debug\UberFrba.exe.config
-C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.exe
-C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.pdb
-C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.csprojResolveAssemblyReference.cache
+C:\Users\Nicolas\GDD\UberFrba\bin\Debug\UberFrba.exe
+C:\Users\Nicolas\GDD\UberFrba\bin\Debug\UberFrba.pdb
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Abm_Automovil.ABMAutomovil.resources
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Abm_Cliente.ABMCliente.resources
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Abm_Cliente.Agregar_Modificar_Cliente.resources
@@ -53,5 +52,5 @@ C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Registro_Viajes.RegistroViajes.
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.HistorialDeViajes.resources
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.RendicionViajes.resources
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.csproj.GenerateResource.Cache
-C:\Users\Nicolas\GDD\UberFrba\bin\Debug\UberFrba.exe
-C:\Users\Nicolas\GDD\UberFrba\bin\Debug\UberFrba.pdb
+C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.exe
+C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.pdb

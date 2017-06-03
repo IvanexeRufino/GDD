@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,15 @@ namespace UberFrba.Abm_Automovil
 {
     public partial class ABMAutomovil : Form
     {
+        SqlConnection conexion;
+        BaseDeDatos db; 
+        DataTable dt;
+
         public ABMAutomovil()
         {
             InitializeComponent();
+            db = new BaseDeDatos();
+            conexion = db.getCon();
         }
 
         private void ABMAutomovil_Load(object sender, EventArgs e)
@@ -24,30 +31,11 @@ namespace UberFrba.Abm_Automovil
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //Agregar_Modificar_Automovil ama = new Agregar_Modificar_Automovil();
             //ama.Show();
-        }
-
-        //filtro
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //automovilTableAdapter.FillBy(gD1C2017DataSet.Turno, textBox1.Text);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            automovilTableAdapter.Fill(gD1C2017DataSet.Automovil);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -95,7 +83,27 @@ namespace UberFrba.Abm_Automovil
             return final_lista;
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            bindingSource1.Filter = "";
+            automovilTableAdapter.Fill(gD1C2017DataSet.Automovil);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            string filtro = this.filtrado();
+            bindingSource1.Filter = filtro;
+        }
 
     }
 }
