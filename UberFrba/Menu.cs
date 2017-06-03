@@ -121,8 +121,25 @@ namespace UberFrba
 
         private void RegistroViajes_Click(object sender, EventArgs e)
         {
-            Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes(username);
-            registro.Show();
+            String fecha = DateTime.Now.Year.ToString()+"-"+DateTime.Now.Month.ToString()+"-"+DateTime.Now.Day.ToString();
+            String query = "SELECT * FROM OVERFANTASY.Factura WHERE Cliente_Username = '" + username + "' AND '"+fecha+"' BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin";
+            conexion.Open();
+            using (SqlCommand cmd = new SqlCommand(query, conexion))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        MessageBox.Show("Lo siento usted ya ha sido facturado por el mes vigente, por favor comuniquese con un administrador si esto es un error","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes(username);
+                        registro.Show();
+                    }
+                }
+            }
+            conexion.Close();
         }
 
         private void SolicitarViaje_Click(object sender, EventArgs e)
