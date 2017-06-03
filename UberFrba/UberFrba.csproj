@@ -61,13 +61,13 @@
     <Compile Include="Abm Cliente\ABMCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\ABMCliente.Designer.cs">
+    <Compile Include="Abm Cliente\ABMCliente.designer.cs">
       <DependentUpon>ABMCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Cliente\Agregar_Modificar_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\Agregar_Modificar_Cliente.Designer.cs">
+    <Compile Include="Abm Cliente\Agregar_Modificar_Cliente.designer.cs">
       <DependentUpon>Agregar_Modificar_Cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\ABMRol.cs">
@@ -169,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Turno\Agregar_Modificar_Turno.resx">
       <DependentUpon>Agregar_Modificar_Turno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
