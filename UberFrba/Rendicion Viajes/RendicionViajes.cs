@@ -83,5 +83,10 @@ namespace UberFrba.Rendicion_Viajes
                 RendicionViajes_Load(sender, e);
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

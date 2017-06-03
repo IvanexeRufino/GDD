@@ -43,6 +43,7 @@
             this.gD1C2017DataSet = new UberFrba.GD1C2017DataSet();
             this.viajeTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.ViajeTableAdapter();
             this.rendicionTableAdapter1 = new UberFrba.GD1C2017DataSetTableAdapters.RendicionTableAdapter();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viajeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).BeginInit();
@@ -133,7 +134,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(953, 153);
@@ -157,11 +158,21 @@
             // 
             this.rendicionTableAdapter1.ClearBeforeFill = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Viajes a ser Rendidos:";
+            // 
             // HistorialDeViajes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 375);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
@@ -199,5 +210,6 @@
         private GD1C2017DataSetTableAdapters.ViajeTableAdapter viajeTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
         private GD1C2017DataSetTableAdapters.RendicionTableAdapter rendicionTableAdapter1;
+        private System.Windows.Forms.Label label5;
     }
 }
