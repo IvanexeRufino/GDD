@@ -15,15 +15,13 @@ namespace UberFrba
     {
         BaseDeDatos bd;
         SqlConnection conexion;
-        Login login;
         String username;
 
-        public Menu(Login log)
+        public Menu()
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
-            login = log;
         }
 
         public void desplegarMenu(String nombreDeUsuario, decimal rol)
@@ -136,7 +134,8 @@ namespace UberFrba
 
         private void button20_Click(object sender, EventArgs e)
         {
-            login.Show();
+            Login log = new Login();
+            log.Show();
             this.Close();
         }
 

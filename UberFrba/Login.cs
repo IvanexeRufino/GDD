@@ -57,7 +57,7 @@ namespace UberFrba
             lineShape6.Visible = true;
             lineShape7.Visible = true;
             conexion.Open();
-            string query = "SELECT Rol_Nombre FROM OVERFANTASY.rol";
+            string query = "SELECT Rol_Nombre FROM OVERFANTASY.rol WHERE Rol_Estado = 'H'";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
 
@@ -193,12 +193,17 @@ namespace UberFrba
                     }
                     else
                     {
-                        this.Hide();
-                        Menu mp = new Menu(this);
-                        mp.Show();
-                        mp.desplegarMenu(UsernameLogIn.Text, id);
-                        RolLogIn.Text = "";
-                        RolLogIn.Items.Clear();
+                        if (contador == 0)
+                        {
+                            MessageBox.Show("Usted no posee ningun rol habilitado, Por favor comuniquese con un administrador", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            Menu mp = new Menu();
+                            mp.Show();
+                            mp.desplegarMenu(UsernameLogIn.Text, id);
+                            this.Close();
+                        }
                     }
 
                 }
@@ -213,13 +218,12 @@ namespace UberFrba
                     }
                     Rol1.Visible = false;
                     RolLogIn.Visible = false;
-                    this.Hide();
-                    Menu mp = new Menu(this);
+                    Menu mp = new Menu();
                     mp.Show();
 
                     mp.desplegarMenu(UsernameLogIn.Text, id);
-                    RolLogIn.Text = "";
-                    RolLogIn.Items.Clear();
+
+                    this.Close();
                 }
                 conexion.Close();
             }
@@ -282,12 +286,13 @@ namespace UberFrba
                 }
             }
 
-            this.Hide();
-            Menu mp = new Menu(this);
+            Menu mp = new Menu();
             mp.Show();
             mp.desplegarMenu(UsernameRegister.Text, id);
 
             conexion.Close();
+
+            this.Close();
         }
 
         private void Login_Load(object sender, EventArgs e)
