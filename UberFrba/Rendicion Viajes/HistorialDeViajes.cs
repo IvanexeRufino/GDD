@@ -77,7 +77,9 @@ namespace UberFrba.Rendicion_Viajes
             }
             conexion.Close();
             MessageBox.Show("La rendicion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            rendicion.RendicionViajes_Load(sender, e);
+            RendicionViajes rendicionV = new RendicionViajes();
+            rendicionV.Show();
+            rendicion.Close();
             this.Close();
         }
 
