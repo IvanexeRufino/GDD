@@ -45,7 +45,7 @@ namespace UberFrba.Rendicion_Viajes
 
         private void HistorialDeViajes_Load(object sender, EventArgs e)
         {
-            String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Total FROM OVERFANTASY.ViajeConTotal ";
+            String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Viaje_Total FROM OVERFANTASY.Viaje ";
             select += "WHERE Rendicion_Nro IS NULL ";
             select += "AND Chofer_Username = '" + chofer_Username + "' ";
             select += "AND Turno_Descripcion = '"+Turno_Descripcion+"' ";
@@ -69,8 +69,8 @@ namespace UberFrba.Rendicion_Viajes
         {
             String insert;
             conexion.Open();
-            insert = "INSERT INTO OVERFANTASY.ViajeConTotal(Viaje_Hora_Inicio, Chofer_Username, Turno_Descripcion, Total)";
-            insert += "VALUES ('" + fecha + "', '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
+            insert = "SET IDENTITY_INSERT OVERFANTASY.Rendicion ON INSERT INTO OVERFANTASY.Rendicion(Rendicion_Nro, Rendicion_Fecha, Chofer_Username, Turno_Descripcion, Rendicion_Total)";
+            insert += "VALUES (0, '" + fecha + "', '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ") SET IDENTITY_INSERT OVERFANTASY.Rendicion OFF";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();

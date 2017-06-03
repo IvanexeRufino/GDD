@@ -81,9 +81,16 @@ namespace UberFrba.Registro_Viajes
                 }
                 if (error == 0)
                 {
-                    viajeTableAdapter1.InsertViaje(cantidadDeKilometros, textBox4.Text, textBox5.Text, textBox1.Text, comboBox1.Text, username, textBox2.Text);
-                    MessageBox.Show("El viaje se ha registrado con exito", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    try
+                    {
+                        viajeTableAdapter1.InsertViaje(cantidadDeKilometros, textBox4.Text, textBox5.Text, textBox1.Text, comboBox1.Text, username, textBox2.Text);
+                        MessageBox.Show("El viaje se ha registrado con exito", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Lo siento usted no es un cliente registrado, debe ser dado de alta como cliente para realizar viajes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                    }
                 }
                 conexion.Close();
             }

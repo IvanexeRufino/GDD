@@ -54,3 +54,4 @@ C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.Rendicion_Viajes.RendicionViaje
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.csproj.GenerateResource.Cache
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.exe
 C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.pdb
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Facturacion.Facturacion.resources
