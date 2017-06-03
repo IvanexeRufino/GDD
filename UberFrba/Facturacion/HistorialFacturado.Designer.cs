@@ -28,20 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.gD1C2017DataSet = new UberFrba.GD1C2017DataSet();
+            this.viajeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viajeTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.ViajeTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viajeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 35);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(542, 193);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -79,6 +88,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Realizar Facturacion";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -89,6 +99,20 @@
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // gD1C2017DataSet
+            // 
+            this.gD1C2017DataSet.DataSetName = "GD1C2017DataSet";
+            this.gD1C2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // viajeBindingSource
+            // 
+            this.viajeBindingSource.DataMember = "Viaje";
+            this.viajeBindingSource.DataSource = this.gD1C2017DataSet;
+            // 
+            // viajeTableAdapter
+            // 
+            this.viajeTableAdapter.ClearBeforeFill = true;
             // 
             // HistorialFacturado
             // 
@@ -103,7 +127,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "HistorialFacturado";
             this.Text = "HistorialFacturado";
+            this.Load += new System.EventHandler(this.HistorialFacturado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viajeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +144,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private GD1C2017DataSet gD1C2017DataSet;
+        private System.Windows.Forms.BindingSource viajeBindingSource;
+        private GD1C2017DataSetTableAdapters.ViajeTableAdapter viajeTableAdapter;
     }
 }
