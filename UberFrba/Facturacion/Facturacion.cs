@@ -67,7 +67,6 @@ namespace UberFrba.Facturacion
         {
             if (e.ColumnIndex == 1)
             {
-                MessageBox.Show("entro2");
                 HistorialFacturado hf = new HistorialFacturado(dataGridView1.Rows[e.RowIndex], this);
                 hf.Show();
             }
