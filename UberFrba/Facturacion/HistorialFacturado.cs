@@ -58,8 +58,8 @@ namespace UberFrba.Facturacion
         {
             String insert;
             conexion.Open();
-            insert = "SET IDENTITY_INSERT OVERFANTASY.Factura ON INSERT INTO OVERFANTASY.Factura(Factura_Nro, Factura_Fecha_Inicio, Factura_Fecha_Fin, Cliente_Username, Factura_Total) ";
-            insert += "VALUES (0, '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01', '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + " 23:59:59', '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ") SET IDENTITY_INSERT OVERFANTASY.Factura OFF";
+            insert = "INSERT INTO OVERFANTASY.Factura(Factura_Fecha_Inicio, Factura_Fecha_Fin, Cliente_Username, Factura_Total) ";
+            insert += "VALUES ('" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01', '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + " 23:59:59', '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();

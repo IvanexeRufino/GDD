@@ -69,8 +69,8 @@ namespace UberFrba.Rendicion_Viajes
         {
             String insert;
             conexion.Open();
-            insert = "SET IDENTITY_INSERT OVERFANTASY.Rendicion ON INSERT INTO OVERFANTASY.Rendicion(Rendicion_Nro, Rendicion_Fecha, Chofer_Username, Turno_Descripcion, Rendicion_Total)";
-            insert += "VALUES (0, '" + fecha + "', '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ") SET IDENTITY_INSERT OVERFANTASY.Rendicion OFF";
+            insert = "INSERT INTO OVERFANTASY.Rendicion(Rendicion_Fecha, Chofer_Username, Turno_Descripcion, Rendicion_Total)";
+            insert += "VALUES ('" + fecha + "', '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();
