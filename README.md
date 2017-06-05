@@ -20,6 +20,6 @@ ENTREGABLE
             ABM Automovil                   PROCESO                 NICO
             ABM Turno                       OK
             Registro de Viajes              OK
-            Facturacion                     PRCOCESO                IVAN
+            Facturacion                     OK
             Rendicion                       OK
-            Listado Estadistico             PENDIENTE
+            Listado Estadistico             PROCESO                 IVAN
