@@ -16,10 +16,10 @@ ENTREGABLE
             Registrar Usuario               OK
             ABM Rol                         OK
             ABM Cliente                     PROCESO                 MATHI
-            ABM Chofer                      PENDIENTE                 
+            ABM Chofer                      PROCESO                 IVAN                
             ABM Automovil                   PROCESO                 NICO
             ABM Turno                       OK
             Registro de Viajes              OK
             Facturacion                     OK
             Rendicion                       OK
-            Listado Estadistico             PROCESO                 IVAN
+            Listado Estadistico             OK
