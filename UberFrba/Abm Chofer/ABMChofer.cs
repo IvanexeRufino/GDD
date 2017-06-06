@@ -82,7 +82,7 @@ namespace UberFrba.Abm_Chofer
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

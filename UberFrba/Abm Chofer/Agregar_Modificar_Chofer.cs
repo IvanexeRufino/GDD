@@ -10,14 +10,14 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace UberFrba.Abm_Cliente
+namespace UberFrba.Abm_Chofer
 {
-    public partial class Agregar_Modificar_Cliente : Form
+    public partial class Agregar_Modificar_Chofer : Form
     {
         BaseDeDatos bd;
         SqlConnection conexion;
 
-        public Agregar_Modificar_Cliente()
+        public Agregar_Modificar_Chofer()
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -26,7 +26,7 @@ namespace UberFrba.Abm_Cliente
 
         }
 
-        public Agregar_Modificar_Cliente(DataGridViewRow row)
+        public Agregar_Modificar_Chofer(DataGridViewRow row)
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();

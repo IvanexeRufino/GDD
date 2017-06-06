@@ -1,6 +1,6 @@
-﻿namespace UberFrba.Abm_Cliente
+﻿namespace UberFrba.Abm_Chofer
 {
-    partial class Agregar_Modificar_Cliente
+    partial class Agregar_Modificar_Chofer
     {
         /// <summary>
         /// Required designer variable.
