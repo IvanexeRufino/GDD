@@ -158,6 +158,9 @@
     <EmbeddedResource Include="Abm Automovil\ABMAutomovil.resx">
       <DependentUpon>ABMAutomovil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Chofer\ABMChofer.resx">
+      <DependentUpon>ABMChofer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\ABMCliente.resx">
       <DependentUpon>ABMCliente.cs</DependentUpon>
     </EmbeddedResource>

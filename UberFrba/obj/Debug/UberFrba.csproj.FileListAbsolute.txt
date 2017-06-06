@@ -57,3 +57,4 @@ C:\Users\Nicolas\GDD\UberFrba\obj\Debug\UberFrba.pdb
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Facturacion.Facturacion.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Facturacion.HistorialFacturado.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Listado_Estadistico.ListadoEstadistico.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Chofer.ABMChofer.resources
