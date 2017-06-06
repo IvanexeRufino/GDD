@@ -79,5 +79,20 @@ namespace UberFrba.Abm_Chofer
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filtro;
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 14)
+            {
+                choferTableAdapter1.DeleteChofer(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
+                ABMChofer_Load(sender, e);
+            }
+        }
     }
 }

@@ -9199,13 +9199,19 @@ SELECT Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_Fech
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_Fecha" +
                 "Nacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPos" +
                 "tal, Chofer_Mail, Chofer_telefono, Chofer_Localidad FROM OVERFANTASY.Chofer";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "DELETE FROM [OVERFANTASY].[Chofer] WHERE ([Usuario_Username] = @Original_Usuario_" +
+                "Username)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Usuario_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9605,6 +9611,35 @@ SELECT Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_Fech
                     string Original_Chofer_telefono, 
                     string Original_Chofer_Localidad) {
             return this.Update(Original_Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad, Original_Usuario_Username, Original_Chofer_Nombre, Original_Chofer_Apellido, Original_Chofer_DNI, Original_Chofer_FechaNacimiento, Original_Chofer_Direccion, Original_Chofer_Piso, Original_Chofer_Departamento, Original_Chofer_CodigoPostal, Original_Chofer_Mail, Original_Chofer_telefono, Original_Chofer_Localidad);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteChofer(string Original_Usuario_Username) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((Original_Usuario_Username == null)) {
+                throw new global::System.ArgumentNullException("Original_Usuario_Username");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Original_Usuario_Username));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
