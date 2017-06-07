@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace UberFrba.Abm_Chofer
@@ -80,11 +79,23 @@ namespace UberFrba.Abm_Chofer
             textBox7.Clear();
             textBox8.Clear();
             textBox9.Clear();
+            textBox10.Clear();
+            textBox11.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

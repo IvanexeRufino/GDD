@@ -58,3 +58,4 @@ C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Facturacion.HistorialFacturado.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Listado_Estadistico.ListadoEstadistico.resources
 C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Chofer.ABMChofer.resources
+C:\Users\IvanPC\Desktop\Ivan\Facultad\gestion\github\UberFrba\obj\Debug\UberFrba.Abm_Chofer.Agregar_Modificar_Chofer.resources

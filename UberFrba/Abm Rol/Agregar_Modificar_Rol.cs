@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace UberFrba.Abm_Rol
@@ -52,7 +51,6 @@ namespace UberFrba.Abm_Rol
             }
             conexion.Open();
             string query = "SELECT Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_rol WHERE ROL_Id = '"+row.Cells[0].Value.ToString()+"'";
-            int ix = 0;
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())

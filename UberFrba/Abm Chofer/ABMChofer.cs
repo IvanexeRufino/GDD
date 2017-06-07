@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace UberFrba.Abm_Chofer
@@ -83,15 +82,24 @@ namespace UberFrba.Abm_Chofer
         private void button2_Click(object sender, EventArgs e)
         {
             Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer();
+            amc.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 14)
+            if (e.ColumnIndex == 13)
             {
-                choferTableAdapter1.DeleteChofer(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
-                ABMChofer_Load(sender, e);
+                Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer(dataGridView1.Rows[e.RowIndex]);
+                amc.Show();
+            }
+            else
+            {
+                if (e.ColumnIndex == 14)
+                {
+                    choferTableAdapter1.DeleteChofer(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    ABMChofer_Load(sender, e);
+                }
             }
         }
     }

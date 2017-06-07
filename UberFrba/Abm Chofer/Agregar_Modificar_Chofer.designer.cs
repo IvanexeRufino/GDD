@@ -131,6 +131,7 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "Modificar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -140,6 +141,7 @@
             this.button1.TabIndex = 19;
             this.button1.Text = "Alta";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label9
             // 
@@ -305,7 +307,7 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Agregar_Modificar_Cliente
+            // Agregar_Modificar_Chofer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,7 +315,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Agregar_Modificar_Cliente";
+            this.Name = "Agregar_Modificar_Chofer";
             this.Text = "Agregar_Chofer";
             this.Load += new System.EventHandler(this.Agregar_Cliente_Load);
             this.groupBox1.ResumeLayout(false);

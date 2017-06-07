@@ -264,9 +264,6 @@
 
         #endregion
 
-        private GD1C2017DataSet gD1C2017DataSet;
-        private System.Windows.Forms.BindingSource viajeBindingSource;
-        private GD1C2017DataSetTableAdapters.ViajeTableAdapter viajeTableAdapter;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox1;

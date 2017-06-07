@@ -278,7 +278,7 @@ namespace UberFrba
                     cmd.CommandText = query;
                     cmd.ExecuteNonQuery();
                 }
-                catch (SqlException exception)
+                catch
                 {
                     MessageBox.Show("El usuario ingresado ya existe", "Inicio de sesion erroneo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     conexion.Close();
