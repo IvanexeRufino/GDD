@@ -64,6 +64,18 @@
     <Compile Include="Abm Chofer\Agregar_Modificar_Chofer.designer.cs">
       <DependentUpon>Agregar_Modificar_Chofer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Cliente\ABMCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\ABMCliente.designer.cs">
+      <DependentUpon>ABMCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\Agregar_Modificar_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\Agregar_Modificar_Cliente.designer.cs">
+      <DependentUpon>Agregar_Modificar_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Rol\ABMRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +170,12 @@
     <EmbeddedResource Include="Abm Chofer\Agregar_Modificar_Chofer.resx">
       <DependentUpon>Agregar_Modificar_Chofer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\ABMCliente.resx">
+      <DependentUpon>ABMCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\Agregar_Modificar_Cliente.resx">
+      <DependentUpon>Agregar_Modificar_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ABMRol.resx">
       <DependentUpon>ABMRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,9 +245,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abm Cliente\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
