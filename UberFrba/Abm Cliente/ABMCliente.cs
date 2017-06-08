@@ -125,13 +125,13 @@ namespace UberFrba.Abm_Cliente
         {
             String filtro = "";
             String and = " AND ";
-            filtro += "Chofer_Nombre LIKE '%" + textBox1.Text + "%'";
+            filtro += "Cliente_Nombre LIKE '%" + textBox1.Text + "%'";
             filtro += and;
-            filtro += "Chofer_Apellido LIKE '%" + textBox2.Text + "%'";
+            filtro += "Cliente_Apellido LIKE '%" + textBox2.Text + "%'";
             if (!textBox3.Text.Equals(""))
             {
                 filtro += and;
-                filtro += "Chofer_DNI = '" + textBox3.Text + "'";
+                filtro += "Cliente_DNI = '" + textBox3.Text + "'";
             }
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filtro;
         }
