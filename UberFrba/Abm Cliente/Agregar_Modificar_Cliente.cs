@@ -50,7 +50,7 @@ namespace UberFrba.Abm_Cliente
             textBox9.ReadOnly = true;
             monthCalendar1.MaxSelectionCount = 1;
 
-            user = row.Cells[1].Value.ToString();
+            user = row.Cells[0].Value.ToString();
             textBox1.Text = row.Cells[1].Value.ToString();               //Nombre
             textBox2.Text = row.Cells[2].Value.ToString();               //Apellido
             decimal dni = Decimal.Parse(row.Cells[3].Value.ToString()); 
@@ -182,13 +182,13 @@ namespace UberFrba.Abm_Cliente
                                 estado = "I";
                                 clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
                                 clienteTableAdapter2.DeleteClienteDni(dni);
-                                MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
                             }
                             else
                             {
                                 estado = "H";
                                 clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
-                                userTableAdapter1.UpdateUserEstado(estado, user);
+                                usuarioTableAdapter1.UpdateUserEstado(estado, user);
 
                             }
                             MessageBox.Show("El Cliente se ha modificado exitosamente", "Alta Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
@@ -223,7 +223,11 @@ namespace UberFrba.Abm_Cliente
         {
             textBox9.Text = monthCalendar1.SelectionRange.Start.ToString();
             textBox9.Text = monthCalendar1.SelectionStart.ToString().Substring(0, 10);
-            monthCalendar1.Visible = false;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

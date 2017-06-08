@@ -23,7 +23,7 @@ namespace UberFrba.Abm_Chofer
             InitializeComponent();
         }
 
-        private void ABMChofer_Load(object sender, EventArgs e)
+        public void ABMChofer_Load(object sender, EventArgs e)
         {
             DataGridViewButtonColumn modificarChofer = new DataGridViewButtonColumn();
             modificarChofer.Name = "Modificar Chofer";
@@ -81,7 +81,7 @@ namespace UberFrba.Abm_Chofer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer();
+            Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer(this);
             amc.Show();
         }
 
@@ -89,7 +89,7 @@ namespace UberFrba.Abm_Chofer
         {
             if (e.ColumnIndex == 13)
             {
-                Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer(dataGridView1.Rows[e.RowIndex]);
+                Agregar_Modificar_Chofer amc = new Agregar_Modificar_Chofer(dataGridView1.Rows[e.RowIndex], this);
                 amc.Show();
             }
             else
@@ -97,7 +97,7 @@ namespace UberFrba.Abm_Chofer
                 if (e.ColumnIndex == 14)
                 {
                     choferTableAdapter1.DeleteChofer(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
                     ABMChofer_Load(sender, e);
                 }
             }
