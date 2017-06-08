@@ -88,10 +88,17 @@ namespace UberFrba.Abm_Turno
                     {
                         try
                         {
-                            turnoTableAdapter1.InsertTurno(textBox1.Text, horarioInicio, horarioFin, precioBase, valorKilometro);
-                            MessageBox.Show("El Turno se ha creado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
-                            button4_Click(sender, e);
-                            abm.ABMTurno_Load(sender,e);
+                            if (precioBase > 0 && valorKilometro > 0)
+                            {
+                                turnoTableAdapter1.InsertTurno(textBox1.Text, horarioInicio, horarioFin, precioBase, valorKilometro);
+                                MessageBox.Show("El Turno se ha creado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                button4_Click(sender, e);
+                                abm.ABMTurno_Load(sender, e);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Los precios deben ser mayores a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
                         }
                         catch
                         {
@@ -128,23 +135,30 @@ namespace UberFrba.Abm_Turno
                     decimal valorKilometro = Decimal.Parse(textBox5.Text.Replace('.', ','));
                     try
                     {
-                        if (comboBox1.Text.Equals("Inhabilitado"))
+                        if (precioBase > 0 && valorKilometro > 0)
                         {
-                            estado = "I";
-                            verificarHorarioInicioYFin(horarioInicio, horarioFin);
-                            turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
-                            turnoTableAdapter1.DeleteTurno(textBox1.Text);
-                            MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            if (comboBox1.Text.Equals("Inhabilitado"))
+                            {
+                                estado = "I";
+                                verificarHorarioInicioYFin(horarioInicio, horarioFin);
+                                turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
+                                turnoTableAdapter1.DeleteTurno(textBox1.Text);
+                                MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
+                            else
+                            {
+                                estado = "H";
+                                verificarHorarioInicioYFin(horarioInicio, horarioFin);
+                                turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
+                            }
+                            MessageBox.Show("El Turno se ha modificado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            abm.ABMTurno_Load(sender, e);
+                            this.Close();
                         }
                         else
                         {
-                            estado = "H";
-                            verificarHorarioInicioYFin(horarioInicio, horarioFin);
-                            turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
+                            MessageBox.Show("Los precios deben ser mayores a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.None);
                         }
-                        MessageBox.Show("El Turno se ha modificado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        abm.ABMTurno_Load(sender, e);
-                        this.Close();
                     }
                     catch (ArgumentException arg)
                     {
@@ -162,6 +176,7 @@ namespace UberFrba.Abm_Turno
             }
 
         }
+
 
         private String verificarHorarioInicioYFin(decimal inicio, decimal fin)
         {
