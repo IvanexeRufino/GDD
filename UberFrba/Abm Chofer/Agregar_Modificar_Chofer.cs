@@ -21,6 +21,7 @@ namespace UberFrba.Abm_Chofer
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            monthCalendar1.MaxSelectionCount = 1;
             button2.Hide();                                     //BOTON MODIFICAR
 
         }
@@ -30,6 +31,7 @@ namespace UberFrba.Abm_Chofer
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            monthCalendar1.MaxSelectionCount = 1;
             button1.Hide();                                     //BOTON ALTA
 
             textBox1.Text = row.Cells[1].Value.ToString();      //Nombre
@@ -43,18 +45,6 @@ namespace UberFrba.Abm_Chofer
             textBox4.Text = row.Cells[9].Value.ToString();      //Mail
             textBox5.Text = row.Cells[10].Value.ToString();     //Telefono
             textBox11.Text = row.Cells[11].Value.ToString();    //Localidad
-
-            if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox5.Text.Equals("") && !textBox6.Text.Equals("") && !textBox7.Text.Equals("") && !textBox8.Text.Equals("") && !textBox9.Text.Equals("") && !textBox10.Text.Equals("") && !textBox11.Text.Equals(""))
-            {
-
-            }
-           
-            else
-            {
-                MessageBox.Show("Por favor llene los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
 
         }
 
@@ -90,12 +80,30 @@ namespace UberFrba.Abm_Chofer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals("") && !textBox6.Text.Equals("") && !textBox7.Text.Equals("") && !textBox8.Text.Equals("") && !textBox9.Text.Equals("") && !textBox10.Text.Equals("") && !textBox11.Text.Equals(""))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Por favor llene los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            monthCalendar1.Visible = true;
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            textBox5.Text = monthCalendar1.SelectionStart.ToString().Substring(0,10);
         }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -57,8 +59,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.button5 = new System.Windows.Forms.Button();
+            this.clienteTableAdapter2 = new UberFrba.GD1C2017DataSetTableAdapters.ClienteTableAdapter();
+            this.usuarioTableAdapter1 = new UberFrba.GD1C2017DataSetTableAdapters.UsuarioTableAdapter();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +100,23 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(270, 162);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(71, 23);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "Seleccionar";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(341, 162);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 14;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // label12
             // 
@@ -335,22 +354,13 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // monthCalendar1
+            // clienteTableAdapter2
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(341, 162);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 14;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.clienteTableAdapter2.ClearBeforeFill = true;
             // 
-            // button5
+            // usuarioTableAdapter1
             // 
-            this.button5.Location = new System.Drawing.Point(270, 162);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(71, 23);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "Seleccionar";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.usuarioTableAdapter1.ClearBeforeFill = true;
             // 
             // Agregar_Modificar_Cliente
             // 
@@ -404,5 +414,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private GD1C2017DataSetTableAdapters.ClienteTableAdapter clienteTableAdapter2;
+        private GD1C2017DataSetTableAdapters.UsuarioTableAdapter usuarioTableAdapter1;
     }
 }

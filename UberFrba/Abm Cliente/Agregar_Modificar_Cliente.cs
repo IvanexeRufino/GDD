@@ -180,14 +180,14 @@ namespace UberFrba.Abm_Cliente
                             if (comboBox1.Text.Equals("Inhabilitado"))
                             {
                                 estado = "I";
-                                clienteTableAdapter1.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
-                                clienteTableAdapter1.DeleteClienteDni(dni);
+                                clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
+                                clienteTableAdapter2.DeleteClienteDni(dni);
                                 MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
                             }
                             else
                             {
                                 estado = "H";
-                                clienteTableAdapter1.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
+                                clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
                                 userTableAdapter1.UpdateUserEstado(estado, user);
 
                             }
@@ -203,9 +203,9 @@ namespace UberFrba.Abm_Cliente
                     
 
                 }
-                catch
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Por favor ingrese datos de tipo valido, coloque numeros donde hay que ponerlos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
