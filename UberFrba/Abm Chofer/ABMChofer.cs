@@ -29,9 +29,9 @@ namespace UberFrba.Abm_Chofer
             modificarChofer.Name = "Modificar Chofer";
             modificarChofer.Text = "Modificar Chofer";
 
-            DataGridViewButtonColumn inhabilitarCliente = new DataGridViewButtonColumn();
-            inhabilitarCliente.Name = "Inhabilitar Chofer";
-            inhabilitarCliente.Text = "Inhabilitar Chofer";
+            DataGridViewButtonColumn inhabilitarChofer = new DataGridViewButtonColumn();
+            inhabilitarChofer.Name = "Inhabilitar Chofer";
+            inhabilitarChofer.Text = "Inhabilitar Chofer";
 
             String select = "SELECT Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad, Usuario_Estado FROM OVERFANTASY.ChoferCompleto";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
@@ -46,7 +46,7 @@ namespace UberFrba.Abm_Chofer
             }
             if (dataGridView1.Columns["Inhabilitar Chofer"] == null)
             {
-                dataGridView1.Columns.Insert(14, inhabilitarCliente);
+                dataGridView1.Columns.Insert(14, inhabilitarChofer);
             }
 
         }
@@ -76,7 +76,6 @@ namespace UberFrba.Abm_Chofer
                 filtro += "Chofer_DNI = '" + textBox3.Text + "'";
             }
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filtro;
-
         }
 
         private void button2_Click(object sender, EventArgs e)

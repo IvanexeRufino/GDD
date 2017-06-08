@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:Automovil" ZOrder="9" X="455" Y="78" Height="191" Width="205" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:Chofer" ZOrder="5" X="329" Y="297" Height="343" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:Cliente" ZOrder="1" X="313" Y="706" Height="362" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:Cliente" ZOrder="1" X="313" Y="706" Height="343" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Factura" ZOrder="2" X="313" Y="1081" Height="191" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:Funcionalidad" ZOrder="31" X="1711" Y="331" Height="96" Width="226" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="46" />
     <Shape ID="DesignTable:Funcionalidad_Por_Rol" ZOrder="30" X="1366" Y="331" Height="134" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
@@ -82,11 +82,11 @@
       <RoutePoints>
         <Point>
           <X>613</X>
-          <Y>1068</Y>
+          <Y>1049</Y>
         </Point>
         <Point>
           <X>621</X>
-          <Y>1068</Y>
+          <Y>1049</Y>
         </Point>
         <Point>
           <X>621</X>
