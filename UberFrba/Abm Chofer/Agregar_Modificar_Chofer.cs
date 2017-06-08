@@ -111,6 +111,13 @@ namespace UberFrba.Abm_Chofer
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
+                        conexion.Open();
+                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        conexion.Close();
                         String insert = "INSERT INTO OVERFANTASY.ChoferCompleto (Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad)";
                         insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox5.Text + "' , '" + piso + "', '" + textBox7.Text + "' , '" + textBox8.Text + "', '" + textBox9.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
@@ -122,7 +129,7 @@ namespace UberFrba.Abm_Chofer
                         abm.ABMChofer_Load(sender, e);
                         this.Close();
                     }
-                    catch (SqlException ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
@@ -156,28 +163,43 @@ namespace UberFrba.Abm_Chofer
 
                     try
                     {
-                        if (comboBox1.Text.Equals("Inhabilitado"))
+                        conexion.Open();
+                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
                         {
-                            estado = "I";
-                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
-                            choferTableAdapter1.DeleteChofer(user);
-                            MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            cmd.ExecuteNonQuery();
                         }
-                        else
+                        conexion.Close();
+                        try
                         {
-                            estado = "H";
-                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user); 
-                            usuarioTableAdapter1.UpdateUserEstado(estado, user);
 
+                            if (comboBox1.Text.Equals("Inhabilitado"))
+                            {
+                                estado = "I";
+                                choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
+                                choferTableAdapter1.DeleteChofer(user);
+                                MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
+                            else
+                            {
+                                estado = "H";
+                                choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user); 
+                                usuarioTableAdapter1.UpdateUserEstado(estado, user);
+
+                            }
+                            MessageBox.Show("El Chofer se ha modificado exitosamente", "Alta Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            abm.ABMChofer_Load(sender, e);
+                            this.Close();
                         }
-                        MessageBox.Show("El Chofer se ha modificado exitosamente", "Alta Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        abm.ABMChofer_Load(sender, e);
-                        this.Close();
+
+                        catch (ArgumentException arg)
+                        {
+                            MessageBox.Show(arg.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-
-                    catch (ArgumentException arg)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show(arg.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message);
                     }
 
 

@@ -110,7 +110,14 @@ namespace UberFrba.Abm_Cliente
                     fecha += "/";
                     fecha += textBox5.Text.Substring(0, 2);
                     try
-                    { 
+                    {
+                        conexion.Open();
+                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        conexion.Close();
                         if (!textBox4.Text.Equals(""))
                         {
                             String insert = "INSERT INTO OVERFANTASY.ClienterCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
@@ -166,29 +173,42 @@ namespace UberFrba.Abm_Cliente
                     fecha += textBox5.Text.Substring(2, 3);
                     fecha += "/";
                     fecha += textBox5.Text.Substring(0, 2);
-
                     try
                     {
-                        if (comboBox1.Text.Equals("Inhabilitado"))
+                        conexion.Open();
+                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
                         {
-                            estado = "I";
-                            clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
-                            clienteTableAdapter2.DeleteCliente(user);
-                            MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            cmd.ExecuteNonQuery();
                         }
-                        else
+                        conexion.Close();
+                        try
                         {
-                            estado = "H";
-                            clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
-                            usuarioTableAdapter1.UpdateUserEstado(estado, user);
+                            if (comboBox1.Text.Equals("Inhabilitado"))
+                            {
+                                estado = "I";
+                                clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
+                                clienteTableAdapter2.DeleteCliente(user);
+                                MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
+                            else
+                            {
+                                estado = "H";
+                                clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
+                                usuarioTableAdapter1.UpdateUserEstado(estado, user);
+                            }
+                            MessageBox.Show("El Cliente se ha modificado exitosamente", "Alta Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            abm.ABMCliente_Load(sender, e);
+                            this.Close();
                         }
-                        MessageBox.Show("El Cliente se ha modificado exitosamente", "Alta Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        abm.ABMCliente_Load(sender, e);
-                        this.Close();
+                        catch (ArgumentException arg)
+                        {
+                            MessageBox.Show(arg.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch (ArgumentException arg)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show(arg.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (SqlException ex)
