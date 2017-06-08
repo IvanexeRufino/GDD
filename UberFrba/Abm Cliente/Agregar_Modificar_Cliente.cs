@@ -145,6 +145,7 @@ namespace UberFrba.Abm_Cliente
                     }
                     catch (SqlException ex)
                     {
+                        conexion.Close();
                         MessageBox.Show(ex.Message);
                     }
                 }
@@ -208,6 +209,7 @@ namespace UberFrba.Abm_Cliente
                     }
                     catch (Exception ex)
                     {
+                        conexion.Close();
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

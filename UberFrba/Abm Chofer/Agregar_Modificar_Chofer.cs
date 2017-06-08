@@ -131,6 +131,7 @@ namespace UberFrba.Abm_Chofer
                     }
                     catch (Exception ex)
                     {
+                        conexion.Close();
                         MessageBox.Show(ex.Message);
                     }
                 }
@@ -199,6 +200,7 @@ namespace UberFrba.Abm_Chofer
                     }
                     catch (Exception ex)
                     {
+                        conexion.Close();
                         MessageBox.Show(ex.Message);
                     }
 
