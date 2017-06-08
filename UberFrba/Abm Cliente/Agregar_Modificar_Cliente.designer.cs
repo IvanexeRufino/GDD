@@ -57,11 +57,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.monthCalendar1);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.textBox11);
@@ -90,7 +94,7 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 496);
+            this.groupBox1.Size = new System.Drawing.Size(601, 496);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -149,7 +153,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(32, 455);
+            this.button2.Location = new System.Drawing.Point(159, 455);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 35);
             this.button2.TabIndex = 20;
@@ -159,7 +163,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(180, 455);
+            this.button1.Location = new System.Drawing.Point(367, 461);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 35);
             this.button1.TabIndex = 19;
@@ -313,7 +317,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(192, 514);
+            this.button4.Location = new System.Drawing.Point(379, 514);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(105, 35);
             this.button4.TabIndex = 12;
@@ -323,7 +327,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(44, 514);
+            this.button3.Location = new System.Drawing.Point(171, 513);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(105, 35);
             this.button3.TabIndex = 13;
@@ -331,11 +335,28 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(341, 162);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 14;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(270, 162);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(71, 23);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "Seleccionar";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Agregar_Modificar_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 560);
+            this.ClientSize = new System.Drawing.Size(625, 560);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox1);
@@ -381,5 +402,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
