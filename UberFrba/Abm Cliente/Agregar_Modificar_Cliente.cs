@@ -174,19 +174,20 @@ namespace UberFrba.Abm_Cliente
                     fecha += textBox9.Text.Substring(2, 3);
                     fecha += "/";
                     fecha += textBox9.Text.Substring(0, 2);
+                    
                         try
                         {
                             if (comboBox1.Text.Equals("Inhabilitado"))
                             {
                                 estado = "I";
-                                clienteTableAdapter1.UpdateCliente(textBox1.Text, textBox2.Text, dni, fecha, textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
+                                clienteTableAdapter1.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
                                 clienteTableAdapter1.DeleteClienteDni(dni);
                                 MessageBox.Show("El Turno se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
                             }
                             else
                             {
                                 estado = "H";
-                                clienteTableAdapter1.UpdateCliente(textBox1.Text, textBox2.Text, dni, fecha, textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
+                                clienteTableAdapter1.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox6.Text, piso, textBox8.Text, textBox10.Text, textBox4.Text, textBox5.Text, textBox11.Text);
                                 userTableAdapter1.UpdateUserEstado(estado, user);
 
                             }
