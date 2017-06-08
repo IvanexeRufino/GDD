@@ -156,14 +156,14 @@ namespace UberFrba.Abm_Chofer
                         if (comboBox1.Text.Equals("Inhabilitado"))
                         {
                             estado = "I";
-                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text);
-                            choferTableAdapter1.DeleteChoferDni(dni);
+                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
+                            choferTableAdapter1.DeleteChofer(user);
                             MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
                         }
                         else
                         {
                             estado = "H";
-                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text);
+                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user); 
                             usuarioTableAdapter1.UpdateUserEstado(estado, user);
 
                         }
