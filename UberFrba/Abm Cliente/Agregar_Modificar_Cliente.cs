@@ -129,6 +129,7 @@ namespace UberFrba.Abm_Cliente
                             MessageBox.Show("El Cliente se ha creado exitosamente", "Alta Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
                             button4_Click(sender, e);
                             abm.ABMCliente_Load(sender, e);
+                            this.Close();
                         }
                         else 
                         {
@@ -141,6 +142,7 @@ namespace UberFrba.Abm_Cliente
                             MessageBox.Show("El Cliente se ha creado exitosamente", "Alta Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
                             button4_Click(sender, e);
                             abm.ABMCliente_Load(sender, e);
+                            this.Close();
                             }
                     }
                     catch (SqlException ex)

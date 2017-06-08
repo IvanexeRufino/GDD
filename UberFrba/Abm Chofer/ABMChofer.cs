@@ -44,7 +44,13 @@ namespace UberFrba.Abm_Chofer
             {
                 dataGridView1.Columns.Insert(13, modificarChofer);
             }
-            if (dataGridView1.Columns["Inhabilitar Chofer"] == null)
+            else
+            {
+                dataGridView1.Columns.Remove("Modificar Chofer");
+                dataGridView1.Columns.Remove("Inhabilitar Chofer");
+                dataGridView1.Columns.Insert(13, modificarChofer);
+            }
+            if (dataGridView1.Columns["Inhabilitar Cliente"] == null)
             {
                 dataGridView1.Columns.Insert(14, inhabilitarChofer);
             }

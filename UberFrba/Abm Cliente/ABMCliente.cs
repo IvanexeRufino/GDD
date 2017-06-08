@@ -44,28 +44,15 @@ namespace UberFrba.Abm_Cliente
             {
                 dataGridView1.Columns.Insert(13, modificarCliente);
             }
+            else
+            {
+                dataGridView1.Columns.Remove("Modificar Cliente");
+                dataGridView1.Columns.Remove("Inhabilitar Cliente");
+                dataGridView1.Columns.Insert(13, modificarCliente);
+            }
             if (dataGridView1.Columns["Inhabilitar Cliente"] == null)
             {
                 dataGridView1.Columns.Insert(14, inhabilitarCliente);
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (!textBox1.Text.Equals(""))
-            {
-                if (!textBox2.Text.Equals(""))
-                {
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Cliente_Nombre LIKE '" + textBox1.Text + "%' AND Cliente_Apellido LIKE'" + textBox2.Text + "%'");
-                }
-                else
-                {
-                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Cliente_Nombre LIKE '" + textBox1.Text + "%'");
-                }
-            }
-            else
-            {
-                ABMCliente_Load(sender, e);
             }
         }
 
