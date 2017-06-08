@@ -38,19 +38,19 @@ namespace UberFrba.Abm_Chofer
             monthCalendar1.MaxSelectionCount = 1;
             button1.Hide();                                     //BOTON ALTA
             this.abm = abm;
-            
+
 
             user = row.Cells[0].Value.ToString();
             textBox1.Text = row.Cells[1].Value.ToString();      //Nombre
             textBox2.Text = row.Cells[2].Value.ToString();      //Apellido
             textBox3.Text = row.Cells[3].Value.ToString();      //DNI
-            textBox4.Text = row.Cells[4].Value.ToString();      //Mail
-            textBox5.Text = row.Cells[5].Value.ToString();      //Nacimiento
-            textBox6.Text = row.Cells[6].Value.ToString();      //Telefono
-            textBox7.Text = row.Cells[7].Value.ToString();      //Direccion
-            textBox8.Text = row.Cells[8].Value.ToString();     //Piso
-            textBox9.Text = row.Cells[9].Value.ToString();      //Depto
-            textBox10.Text = row.Cells[10].Value.ToString();     //Cod Postal
+            textBox4.Text = row.Cells[9].Value.ToString();      //Mail
+            textBox5.Text = row.Cells[4].Value.ToString();      //Nacimiento
+            textBox6.Text = row.Cells[10].Value.ToString();      //Telefono
+            textBox7.Text = row.Cells[5].Value.ToString();      //Direccion
+            textBox8.Text = row.Cells[6].Value.ToString();     //Piso
+            textBox9.Text = row.Cells[7].Value.ToString();      //Depto
+            textBox10.Text = row.Cells[8].Value.ToString();     //Cod Postal
             textBox11.Text = row.Cells[11].Value.ToString();    //Localidad
 
             if (row.Cells[12].Value.ToString().Equals("I"))
@@ -156,14 +156,14 @@ namespace UberFrba.Abm_Chofer
                         if (comboBox1.Text.Equals("Inhabilitado"))
                         {
                             estado = "I";
-                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox5.Text, piso, textBox7.Text, textBox8.Text, textBox9.Text, textBox10.Text, textBox11.Text);
+                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text);
                             choferTableAdapter1.DeleteChoferDni(dni);
                             MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
                         }
                         else
                         {
                             estado = "H";
-                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox5.Text, piso, textBox7.Text, textBox8.Text, textBox9.Text, textBox10.Text, textBox11.Text);
+                            choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text);
                             usuarioTableAdapter1.UpdateUserEstado(estado, user);
 
                         }
