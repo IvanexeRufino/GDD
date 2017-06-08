@@ -412,8 +412,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
-        private GD1C2017DataSetTableAdapters.ClienteTableAdapter clienteTableAdapter1;
-        private GD1C2017DataSetTableAdapters.UsuarioTableAdapter userTableAdapter1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox1;

@@ -212,7 +212,6 @@
         private GD1C2017DataSet gD1C2017DataSet;
         private GD1C2017DataSetTableAdapters.ClienteTableAdapter clienteTableAdapter;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
