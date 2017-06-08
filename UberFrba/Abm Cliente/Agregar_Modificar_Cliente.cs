@@ -17,6 +17,7 @@ namespace UberFrba.Abm_Cliente
         SqlConnection conexion;
         ABMCliente abm;
         String user;
+        String telefonoViejo;
 
         public Agregar_Modificar_Cliente(ABMCliente abm)
         {
@@ -55,6 +56,7 @@ namespace UberFrba.Abm_Cliente
             textBox9.Text = row.Cells[7].Value.ToString();      //Depto
             textBox10.Text = row.Cells[8].Value.ToString();     //Cod Postal
             textBox11.Text = row.Cells[11].Value.ToString();    //Localidad
+            telefonoViejo = row.Cells[10].Value.ToString();
 
             if (row.Cells[12].Value.ToString().Equals("I"))
             {
@@ -111,11 +113,15 @@ namespace UberFrba.Abm_Cliente
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
-                        conexion.Open();
-                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
-                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
+                        if (telefonoViejo != textBox6.Text)
                         {
-                            cmd.ExecuteNonQuery();
+                            conexion.Open();
+                            String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                            using (SqlCommand cmd = new SqlCommand(procedure, conexion))
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            conexion.Close();
                         }
                         conexion.Close();
                         if (!textBox4.Text.Equals(""))
