@@ -24,6 +24,7 @@ namespace UberFrba.Abm_Chofer
             conexion = bd.getCon();
             InitializeComponent();
             monthCalendar1.MaxSelectionCount = 1;
+            monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
             button2.Hide();                                     //BOTON MODIFICAR
             this.abm = abm;
             
@@ -36,6 +37,7 @@ namespace UberFrba.Abm_Chofer
             conexion = bd.getCon();
             InitializeComponent();
             monthCalendar1.MaxSelectionCount = 1;
+            monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
             button1.Hide();                                     //BOTON ALTA
             this.abm = abm;
 
@@ -198,7 +200,6 @@ namespace UberFrba.Abm_Chofer
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             textBox5.Text = monthCalendar1.SelectionStart.ToString().Substring(0,10);
-            monthCalendar1.Visible= false;
         }
     }
 }
