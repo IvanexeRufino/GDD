@@ -113,15 +113,11 @@ namespace UberFrba.Abm_Cliente
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
-                        if (telefonoViejo != textBox6.Text)
+                        conexion.Open();
+                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
                         {
-                            conexion.Open();
-                            String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
-                            using (SqlCommand cmd = new SqlCommand(procedure, conexion))
-                            {
-                                cmd.ExecuteNonQuery();
-                            }
-                            conexion.Close();
+                            cmd.ExecuteNonQuery();
                         }
                         conexion.Close();
                         if (!textBox4.Text.Equals(""))
@@ -184,13 +180,16 @@ namespace UberFrba.Abm_Cliente
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
-                        conexion.Open();
-                        String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
-                        using (SqlCommand cmd = new SqlCommand(procedure, conexion))
+                        if (telefonoViejo != textBox6.Text)
                         {
-                            cmd.ExecuteNonQuery();
+                            conexion.Open();
+                            String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
+                            using (SqlCommand cmd = new SqlCommand(procedure, conexion))
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            conexion.Close();
                         }
-                        conexion.Close();
                         try
                         {
                             if (comboBox1.Text.Equals("Inhabilitado"))
