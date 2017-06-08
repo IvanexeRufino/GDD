@@ -9944,7 +9944,7 @@ SELECT Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_F" +
@@ -9954,55 +9954,33 @@ SELECT Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM OVERFANTASY.Cliente WHERE Usuario_Username = @Username";
+            this._commandCollection[1].CommandText = "DELETE FROM [OVERFANTASY].[Cliente] WHERE ([Usuario_Username] = @Original_Usuario" +
+                "_Username)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Usuario_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "DELETE FROM OVERFANTASY.Cliente WHERE Cliente_DNI = @DNI";
+            this._commandCollection[2].CommandText = "SELECT *\r\nFROM OVERFANTASY.ClienteCompleto\r\nWHERE (Cliente_DNI = @Dni)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DNI", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_DNI", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dni", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_DNI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT *\r\nFROM OVERFANTASY.ClienteCompleto\r\nWHERE (Cliente_DNI = @Dni)";
+            this._commandCollection[3].CommandText = @"UPDATE       OVERFANTASY.Cliente
+SET                Cliente_Nombre = @Nombre, Cliente_Apellido = @Apellido,Cliente_DNI = @DNI, Cliente_FechaNacimiento = @Nac, Cliente_Direccion = @Dir, Cliente_Piso = @Piso, Cliente_Departamento = @Dpto , Cliente_CodigoPostal = @CodPostal , Cliente_Mail = @Mail, Cliente_telefono = @Tel, Cliente_Localidad = @Localidad
+WHERE        (Usuario_Username = @usernameI); ";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dni", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_DNI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT *\r\nFROM OVERFANTASY.ClienteCompleto";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = @"INSERT INTO [OVERFANTASY].[Cliente] ([Cliente_Nombre], [Cliente_Apellido], [Cliente_DNI], [Cliente_FechaNacimiento], [Cliente_Direccion], [Cliente_Piso], [Cliente_Departamento], [Cliente_CodigoPostal], [Cliente_Mail], [Cliente_telefono], [Cliente_Localidad]) VALUES (@Cliente_Nombre, @Cliente_Apellido, @Cliente_DNI, @Cliente_FechaNacimiento, @Cliente_Direccion, @Cliente_Piso, @Cliente_Departamento, @Cliente_CodigoPostal, @Cliente_Mail, @Cliente_telefono, @Cliente_Localidad);";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Nombre", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Apellido", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_DNI", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_DNI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_FechaNacimiento", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_FechaNacimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Direccion", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Direccion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Piso", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_Piso", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Departamento", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Departamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_CodigoPostal", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_CodigoPostal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Mail", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_telefono", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_telefono", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cliente_Localidad", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Localidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"UPDATE       OVERFANTASY.Cliente
-SET                Cliente_Nombre = @Nombre, Cliente_Apellido = @Apellido, Cliente_DNI = @DNI, Cliente_FechaNacimiento = @Nac, Cliente_Direccion = @Dir, Cliente_Piso = @Piso, Cliente_Departamento = @Dpto , Cliente_CodigoPostal = @CodPostal , Cliente_Mail = @Mail, Cliente_telefono = @Tel, Cliente_Localidad = @Localidad
-WHERE        (Cliente_DNI = @DNI); ";
-            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Apellido", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DNI", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_DNI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nac", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_FechaNacimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dir", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Direccion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Piso", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_Piso", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dpto", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Departamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPostal", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_CodigoPostal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tel", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_telefono", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Localidad", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Localidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Apellido", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Apellido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DNI", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_DNI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nac", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_FechaNacimiento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dir", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Direccion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Piso", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_Piso", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dpto", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Departamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPostal", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_CodigoPostal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tel", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Cliente_telefono", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Localidad", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Cliente_Localidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@usernameI", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10034,24 +10012,13 @@ WHERE        (Cliente_DNI = @DNI); ";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBy(GD1C2017DataSet.ClienteDataTable dataTable, decimal Dni) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(Dni));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual GD1C2017DataSet.ClienteDataTable GetClienteCompleto() {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
-            GD1C2017DataSet.ClienteDataTable dataTable = new GD1C2017DataSet.ClienteDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10433,111 +10400,13 @@ WHERE        (Cliente_DNI = @DNI); ";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int DeleteCliente(string Username) {
+        public virtual int DeleteCliente(string Original_Usuario_Username) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            if ((Username == null)) {
-                throw new global::System.ArgumentNullException("Username");
+            if ((Original_Usuario_Username == null)) {
+                throw new global::System.ArgumentNullException("Original_Usuario_Username");
             }
             else {
-                command.Parameters[0].Value = ((string)(Username));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
-        public virtual int DeleteClienteDni(decimal DNI) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((decimal)(DNI));
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            int returnValue;
-            try {
-                returnValue = command.ExecuteNonQuery();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertCliente(string Cliente_Nombre, string Cliente_Apellido, decimal Cliente_DNI, System.DateTime Cliente_FechaNacimiento, string Cliente_Direccion, decimal Cliente_Piso, string Cliente_Departamento, string Cliente_CodigoPostal, string Cliente_Mail, string Cliente_telefono, string Cliente_Localidad) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
-            if ((Cliente_Nombre == null)) {
-                throw new global::System.ArgumentNullException("Cliente_Nombre");
-            }
-            else {
-                command.Parameters[0].Value = ((string)(Cliente_Nombre));
-            }
-            if ((Cliente_Apellido == null)) {
-                throw new global::System.ArgumentNullException("Cliente_Apellido");
-            }
-            else {
-                command.Parameters[1].Value = ((string)(Cliente_Apellido));
-            }
-            command.Parameters[2].Value = ((decimal)(Cliente_DNI));
-            command.Parameters[3].Value = ((System.DateTime)(Cliente_FechaNacimiento));
-            if ((Cliente_Direccion == null)) {
-                throw new global::System.ArgumentNullException("Cliente_Direccion");
-            }
-            else {
-                command.Parameters[4].Value = ((string)(Cliente_Direccion));
-            }
-            command.Parameters[5].Value = ((decimal)(Cliente_Piso));
-            if ((Cliente_Departamento == null)) {
-                throw new global::System.ArgumentNullException("Cliente_Departamento");
-            }
-            else {
-                command.Parameters[6].Value = ((string)(Cliente_Departamento));
-            }
-            if ((Cliente_CodigoPostal == null)) {
-                throw new global::System.ArgumentNullException("Cliente_CodigoPostal");
-            }
-            else {
-                command.Parameters[7].Value = ((string)(Cliente_CodigoPostal));
-            }
-            if ((Cliente_Mail == null)) {
-                command.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[8].Value = ((string)(Cliente_Mail));
-            }
-            if ((Cliente_telefono == null)) {
-                throw new global::System.ArgumentNullException("Cliente_telefono");
-            }
-            else {
-                command.Parameters[9].Value = ((string)(Cliente_telefono));
-            }
-            if ((Cliente_Localidad == null)) {
-                throw new global::System.ArgumentNullException("Cliente_Localidad");
-            }
-            else {
-                command.Parameters[10].Value = ((string)(Cliente_Localidad));
+                command.Parameters[0].Value = ((string)(Original_Usuario_Username));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10560,8 +10429,8 @@ WHERE        (Cliente_DNI = @DNI); ";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateCliente(string Nombre, string Apellido, decimal DNI, System.DateTime Nac, string Dir, decimal Piso, string Dpto, string CodPostal, string Mail, string Tel, string Localidad) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+        public virtual int UpdateCliente(string Nombre, string Apellido, decimal DNI, System.DateTime Nac, string Dir, decimal Piso, string Dpto, string CodPostal, string Mail, decimal Tel, string Localidad, string usernameI) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -10601,17 +10470,18 @@ WHERE        (Cliente_DNI = @DNI); ";
             else {
                 command.Parameters[8].Value = ((string)(Mail));
             }
-            if ((Tel == null)) {
-                throw new global::System.ArgumentNullException("Tel");
-            }
-            else {
-                command.Parameters[9].Value = ((string)(Tel));
-            }
+            command.Parameters[9].Value = ((decimal)(Tel));
             if ((Localidad == null)) {
                 throw new global::System.ArgumentNullException("Localidad");
             }
             else {
                 command.Parameters[10].Value = ((string)(Localidad));
+            }
+            if ((usernameI == null)) {
+                throw new global::System.ArgumentNullException("usernameI");
+            }
+            else {
+                command.Parameters[11].Value = ((string)(usernameI));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

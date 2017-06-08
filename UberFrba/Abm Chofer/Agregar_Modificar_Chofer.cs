@@ -23,12 +23,12 @@ namespace UberFrba.Abm_Chofer
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            label12.Visible = false;
+            comboBox1.Visible = false;
             monthCalendar1.MaxSelectionCount = 1;
             monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
             button2.Hide();                                     //BOTON MODIFICAR
             this.abm = abm;
-            
-
         }
 
         public Agregar_Modificar_Chofer(DataGridViewRow row, ABMChofer abm)
@@ -36,11 +36,12 @@ namespace UberFrba.Abm_Chofer
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
-            monthCalendar1.MaxSelectionCount = 1;
-            monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
             button1.Hide();                                     //BOTON ALTA
             this.abm = abm;
-
+            label12.Visible = true;
+            comboBox1.Visible = true;
+            monthCalendar1.MaxSelectionCount = 1;
+            monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
 
             user = row.Cells[0].Value.ToString();
             textBox1.Text = row.Cells[1].Value.ToString();      //Nombre
@@ -48,9 +49,9 @@ namespace UberFrba.Abm_Chofer
             textBox3.Text = row.Cells[3].Value.ToString();      //DNI
             textBox4.Text = row.Cells[9].Value.ToString();      //Mail
             textBox5.Text = row.Cells[4].Value.ToString();      //Nacimiento
-            textBox6.Text = row.Cells[10].Value.ToString();      //Telefono
+            textBox6.Text = row.Cells[10].Value.ToString();     //Telefono
             textBox7.Text = row.Cells[5].Value.ToString();      //Direccion
-            textBox8.Text = row.Cells[6].Value.ToString();     //Piso
+            textBox8.Text = row.Cells[6].Value.ToString();      //Piso
             textBox9.Text = row.Cells[7].Value.ToString();      //Depto
             textBox10.Text = row.Cells[8].Value.ToString();     //Cod Postal
             textBox11.Text = row.Cells[11].Value.ToString();    //Localidad
@@ -63,7 +64,6 @@ namespace UberFrba.Abm_Chofer
             {
                 comboBox1.Text = "Habilitado";
             }
-
         }
 
         private void Agregar_Cliente_Load(object sender, EventArgs e)
@@ -91,7 +91,7 @@ namespace UberFrba.Abm_Chofer
             textBox11.Clear();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Boton cerrar
         {
             this.Close();
         }
@@ -111,15 +111,16 @@ namespace UberFrba.Abm_Chofer
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
-                            String insert = "INSERT INTO OVERFANTASY.ChoferCompleto VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox5.Text + "' , '" + piso + "', '" + textBox7.Text + "' , '" + textBox8.Text + "', '" + textBox9.Text + "', '" + telefono + "', '" + textBox11.Text + "', 'H')";
-                            SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
-                            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-                            DataSet ds = new DataSet();
-                            dataAdapter.Fill(ds);
-                            MessageBox.Show("El Chofer se ha creado exitosamente", "Alta Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
-                            button4_Click(sender, e);
-                            abm.ABMChofer_Load(sender, e);
-                            this.Close();
+                        String insert = "INSERT INTO OVERFANTASY.ChoferCompleto (Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad)";
+                        insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox5.Text + "' , '" + piso + "', '" + textBox7.Text + "' , '" + textBox8.Text + "', '" + textBox9.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
+                        SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+                        DataSet ds = new DataSet();
+                        dataAdapter.Fill(ds);
+                        MessageBox.Show("El Chofer se ha creado exitosamente", "Alta Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        button4_Click(sender, e);
+                        abm.ABMChofer_Load(sender, e);
+                        this.Close();
                     }
                     catch (SqlException ex)
                     {
