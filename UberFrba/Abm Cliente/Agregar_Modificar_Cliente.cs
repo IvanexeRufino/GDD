@@ -120,7 +120,7 @@ namespace UberFrba.Abm_Cliente
                         conexion.Close();
                         if (!textBox4.Text.Equals(""))
                         {
-                            String insert = "INSERT INTO OVERFANTASY.ClienterCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
+                            String insert = "INSERT INTO OVERFANTASY.ClienteCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
                             insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
                             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -132,7 +132,7 @@ namespace UberFrba.Abm_Cliente
                         }
                         else 
                         {
-                            String insert = "INSERT INTO OVERFANTASY.ClienterCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
+                            String insert = "INSERT INTO OVERFANTASY.ClienteCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
                             insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', NULL, '" + telefono + "', '" + textBox11.Text + "')";
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
                             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
