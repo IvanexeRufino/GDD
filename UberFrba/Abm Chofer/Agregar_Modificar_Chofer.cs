@@ -119,7 +119,7 @@ namespace UberFrba.Abm_Chofer
                         }
                         conexion.Close();
                         String insert = "INSERT INTO OVERFANTASY.ChoferCompleto (Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad)";
-                        insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox5.Text + "' , '" + piso + "', '" + textBox7.Text + "' , '" + textBox8.Text + "', '" + textBox9.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
+                        insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
                         SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
                         DataSet ds = new DataSet();
