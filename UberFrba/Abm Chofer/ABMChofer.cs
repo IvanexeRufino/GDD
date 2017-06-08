@@ -103,7 +103,7 @@ namespace UberFrba.Abm_Chofer
                 {
                     choferTableAdapter1.DeleteChofer(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
                     MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    ABMChofer_Load(sender, e);
+                    this.ABMChofer_Load(sender, e);
                 }
             }
         }
