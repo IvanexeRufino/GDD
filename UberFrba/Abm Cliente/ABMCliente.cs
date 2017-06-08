@@ -117,8 +117,16 @@ namespace UberFrba.Abm_Cliente
             filtro += "Cliente_Apellido LIKE '%" + textBox2.Text + "%'";
             if (!textBox3.Text.Equals(""))
             {
-                filtro += and;
-                filtro += "Cliente_DNI = '" + textBox3.Text + "'";
+                try
+                {
+                    Decimal.Parse(textBox3.Text);
+                    filtro += and;
+                    filtro += "Cliente_DNI = '" + textBox3.Text + "'";
+                }
+                catch
+                {
+                    MessageBox.Show("Inserte numero en el campo DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
             }
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filtro;
         }

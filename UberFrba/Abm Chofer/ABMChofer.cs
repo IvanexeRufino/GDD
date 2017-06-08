@@ -78,8 +78,16 @@ namespace UberFrba.Abm_Chofer
             filtro += "Chofer_Apellido LIKE '%" + textBox2.Text + "%'";
             if (!textBox3.Text.Equals(""))
             {
-                filtro += and;
-                filtro += "Chofer_DNI = '" + textBox3.Text + "'";
+                try
+                {
+                    Decimal.Parse(textBox3.Text);
+                    filtro += and;
+                    filtro += "Chofer_DNI = '" + Decimal.Parse(textBox3.Text) + "'";
+                }
+                catch
+                {
+                    MessageBox.Show("Inserte numero en el campo DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
             }
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filtro;
         }
