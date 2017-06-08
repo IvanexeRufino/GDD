@@ -160,7 +160,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(171, 42);
             this.button6.TabIndex = 14;
-            this.button6.Text = "Alta Chofer";
+            this.button6.Text = "Alta Cliente";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
