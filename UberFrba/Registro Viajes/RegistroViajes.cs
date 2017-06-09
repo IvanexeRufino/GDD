@@ -25,7 +25,7 @@ namespace UberFrba.Registro_Viajes
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             this.username = username;
-            String select = "SELECT Usuario_Username FROM OVERFANTASY.Chofer JOIN OVERFANTASY.Automovil ON  (Usuario_Username = Chofer_Username) WHERE Automovil_Estado = 'H' order by Usuario_Username";
+            String select = "SELECT Usuario_Username FROM OVERFANTASY.Usuario JOIN OVERFANTASY.Automovil ON  (Usuario_Username = Chofer_Username) WHERE Automovil_Estado = 'H' AND	Usuario_Estado = 'H' order by Usuario_Username";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
