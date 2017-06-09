@@ -18,6 +18,7 @@ namespace UberFrba.Abm_Automovil
         ABMAutomovil abm;
         string patenteVieja = "";
         string estadoInicial;
+        bool flagComboBox;
 
 
         public Agregar_Modificar_Automovil(ABMAutomovil abm)
@@ -30,6 +31,7 @@ namespace UberFrba.Abm_Automovil
             comboBox1.Visible = false;
             label4.Visible = false;
             filtro_combo();
+            flagComboBox = true;
 
         }
 
@@ -43,6 +45,7 @@ namespace UberFrba.Abm_Automovil
             label4.Visible = true;
             button1.Hide();
             filtro_combo();
+            flagComboBox = false;
             textBox1.Text = row.Cells[0].Value.ToString();
             patenteVieja = row.Cells[0].Value.ToString();
             comboBox4.Text = row.Cells[1].Value.ToString();
@@ -73,12 +76,11 @@ namespace UberFrba.Abm_Automovil
         {
             textBox1.Clear();
             textBox3.Clear();
-            comboBox4.SelectedIndex = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)//alta
         {
-            if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals(""))
+            if (!textBox1.Text.Equals("") && !textBox3.Text.Equals(""))
             {
                 if (automovilTableAdapter.Patente(textBox1.Text) != null)
                 {
@@ -109,7 +111,23 @@ namespace UberFrba.Abm_Automovil
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!(automovilTableAdapter.getChoferes(comboBox2.Text) == 0) && flagComboBox)
+            {
+                if (MessageBox.Show("El chofer ya tiene un automovil asignado, desea inhabilatarlo?", "Chofer ocupado", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                {
+                    string patente = automovilTableAdapter.TraemePatente(comboBox2.Text).ToString();
+                    automovilTableAdapter.DeleteAutomovil(patente);
+                    MessageBox.Show("El automovil del chofer a sido inhabilitado con exito", "Automovil inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
+                else 
+                {
 
+                }
+            }
+            else 
+            {
+
+            }
         }
 
         private void Agregar_Modificar_Automovil_Load(object sender, EventArgs e)
@@ -130,7 +148,7 @@ namespace UberFrba.Abm_Automovil
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals(""))
+            if (!textBox1.Text.Equals("") &&  !textBox3.Text.Equals(""))
             {
                 if (automovilTableAdapter.Patente(textBox1.Text) != null && textBox1.Text.ToUpper() != patenteVieja.ToUpper())
                 {

@@ -34,9 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.turnoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gD1C2017DataSet = new UberFrba.GD1C2017DataSet();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.choferBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -53,7 +53,6 @@
             this.turnoTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.TurnoTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.automovilTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.AutomovilTableAdapter();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.turnoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).BeginInit();
@@ -108,7 +107,6 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
@@ -119,6 +117,28 @@
             this.groupBox1.Size = new System.Drawing.Size(272, 369);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DataSource = this.turnoBindingSource;
+            this.comboBox4.DisplayMember = "Turno_Descripcion";
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(139, 66);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 13;
+            // 
+            // turnoBindingSource
+            // 
+            this.turnoBindingSource.DataMember = "Turno";
+            this.turnoBindingSource.DataSource = this.gD1C2017DataSet;
+            this.turnoBindingSource.Filter = "Turno_estado = \'H\'";
+            // 
+            // gD1C2017DataSet
+            // 
+            this.gD1C2017DataSet.DataSetName = "GD1C2017DataSet";
+            this.gD1C2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // comboBox3
             // 
@@ -131,17 +151,6 @@
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 12;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
-            // 
-            // turnoBindingSource
-            // 
-            this.turnoBindingSource.DataMember = "Turno";
-            this.turnoBindingSource.DataSource = this.gD1C2017DataSet;
-            this.turnoBindingSource.Filter = "Turno_estado = \'H\'";
-            // 
-            // gD1C2017DataSet
-            // 
-            this.gD1C2017DataSet.DataSetName = "GD1C2017DataSet";
-            this.gD1C2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // comboBox2
             // 
@@ -217,13 +226,6 @@
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 6;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(64, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
-            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(139, 15);
@@ -268,17 +270,6 @@
             // 
             this.automovilTableAdapter.ClearBeforeFill = true;
             // 
-            // comboBox4
-            // 
-            this.comboBox4.DataSource = this.turnoBindingSource;
-            this.comboBox4.DisplayMember = "Turno_Descripcion";
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(139, 66);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 13;
-            // 
             // Agregar_Modificar_Automovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +300,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
