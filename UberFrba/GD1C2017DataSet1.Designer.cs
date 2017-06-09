@@ -8710,7 +8710,7 @@ SELECT Automovil_Patente, Automovil_Marca, Automovil_Modelo, Automovil_Estado, T
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Automovil_Patente, Automovil_Marca, Automovil_Modelo, Automovil_Estado, Tu" +
@@ -8718,24 +8718,31 @@ SELECT Automovil_Patente, Automovil_Marca, Automovil_Modelo, Automovil_Estado, T
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        Automovil_Patente\r\nFROM            OVERFANTASY.Automovil\r\nWHERE    " +
-                "    (Automovil_Patente = @var)";
+            this._commandCollection[1].CommandText = "SELECT COUNT(*) \r\nFROM overfantasy.chofer join OVERFANTASY.Automovil on Chofer_Us" +
+                "ername = Usuario_Username\r\nWHERE Usuario_Username= @chofer and Automovil_Estado " +
+                "= \'H\'\r\n \r\n\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@var", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@chofer", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Usuario_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"UPDATE       OVERFANTASY.Automovil
+            this._commandCollection[2].CommandText = "SELECT        Automovil_Patente\r\nFROM            OVERFANTASY.Automovil\r\nWHERE    " +
+                "    (Automovil_Patente = @var)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@var", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"UPDATE       OVERFANTASY.Automovil
 SET Automovil_Marca = @Automovil_Marca, Automovil_Modelo = @Automovil_Modelo,
 Automovil_Estado = @Automovil_Estado, Turno_Descripcion = @Turno_Descripcion, 
 Chofer_Username = @Chofer_Username
 WHERE        (Automovil_Patente = @Automovil_Patente)";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Marca", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Modelo", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Modelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Estado", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Turno_Descripcion", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Chofer_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Patente", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Marca", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Modelo", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Modelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Estado", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Turno_Descripcion", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Chofer_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Patente", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9013,8 +9020,42 @@ WHERE        (Automovil_Patente = @Automovil_Patente)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual string Patente(string var) {
+        public virtual global::System.Nullable<int> getChoferes(string chofer) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((chofer == null)) {
+                throw new global::System.ArgumentNullException("chofer");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(chofer));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual string Patente(string var) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((var == null)) {
                 throw new global::System.ArgumentNullException("var");
             }
@@ -9049,7 +9090,7 @@ WHERE        (Automovil_Patente = @Automovil_Patente)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateAutomovil(string Automovil_Marca, string Automovil_Modelo, string Automovil_Estado, string Turno_Descripcion, string Chofer_Username, string Automovil_Patente) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((Automovil_Marca == null)) {
                 throw new global::System.ArgumentNullException("Automovil_Marca");
             }

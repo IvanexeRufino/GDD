@@ -144,6 +144,7 @@
             // 
             this.comboBox2.DataSource = this.choferBindingSource;
             this.comboBox2.DisplayMember = "Usuario_Username";
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(139, 219);
             this.comboBox2.Name = "comboBox2";
@@ -196,6 +197,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Inhabilitado",

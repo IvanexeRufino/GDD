@@ -83,10 +83,18 @@ namespace UberFrba.Abm_Automovil
                 }
                 else
                 {
-                    automovilTableAdapter.Insert(textBox1.Text, textBox2.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
-                    MessageBox.Show("El Automovil se ha creado exitosamente", "Alta Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    abm.ABMAutomovil_Load(sender, e);
-                    this.Close();
+                    if (automovilTableAdapter.getChoferes(comboBox2.Text).ToString() == "0")
+                    {
+
+                        automovilTableAdapter.Insert(textBox1.Text, textBox2.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                        MessageBox.Show("El Automovil se ha creado exitosamente", "Alta Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        abm.ABMAutomovil_Load(sender, e);
+                        this.Close();
+                    }
+                    else 
+                    {
+                        MessageBox.Show("La chofer seleccionado ya tiene asignado un automovil habilitado", "Error de chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
