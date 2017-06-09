@@ -35,9 +35,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.turnoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gD1C2017DataSet = new UberFrba.GD1C2017DataSet();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.choferBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
@@ -120,14 +120,22 @@
             // 
             // comboBox4
             // 
-            this.comboBox4.DataSource = this.turnoBindingSource;
-            this.comboBox4.DisplayMember = "Turno_Descripcion";
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(139, 66);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 13;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(139, 168);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 12;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // turnoBindingSource
             // 
@@ -140,22 +148,8 @@
             this.gD1C2017DataSet.DataSetName = "GD1C2017DataSet";
             this.gD1C2017DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.DataSource = this.turnoBindingSource;
-            this.comboBox3.DisplayMember = "Turno_Descripcion";
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(139, 168);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 12;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
-            // 
             // comboBox2
             // 
-            this.comboBox2.DataSource = this.choferBindingSource;
-            this.comboBox2.DisplayMember = "Usuario_Username";
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(139, 219);
