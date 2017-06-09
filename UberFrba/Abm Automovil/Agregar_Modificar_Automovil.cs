@@ -17,6 +17,7 @@ namespace UberFrba.Abm_Automovil
         SqlConnection conexion;
         ABMAutomovil abm;
         string patenteVieja = "";
+        string estadoInicial;
 
 
         public Agregar_Modificar_Automovil(ABMAutomovil abm)
@@ -28,6 +29,7 @@ namespace UberFrba.Abm_Automovil
             button2.Hide();
             comboBox1.Visible = false;
             label4.Visible = false;
+            filtro_combo();
 
         }
 
@@ -40,10 +42,12 @@ namespace UberFrba.Abm_Automovil
             comboBox1.Visible = true;
             label4.Visible = true;
             button1.Hide();
+            filtro_combo();
             textBox1.Text = row.Cells[0].Value.ToString();
             patenteVieja = row.Cells[0].Value.ToString();
-            textBox2.Text = row.Cells[1].Value.ToString();
+            comboBox4.Text = row.Cells[1].Value.ToString();
             textBox3.Text = row.Cells[2].Value.ToString();
+            estadoInicial = row.Cells[3].Value.ToString();
             if (row.Cells[3].Value.ToString().Equals("I"))
             {
                 comboBox1.Text = "Inhabilitado";
@@ -68,8 +72,8 @@ namespace UberFrba.Abm_Automovil
         private void button4_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
-            textBox2.Clear();
             textBox3.Clear();
+            comboBox4.SelectedIndex = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)//alta
@@ -83,10 +87,10 @@ namespace UberFrba.Abm_Automovil
                 }
                 else
                 {
-                    if (automovilTableAdapter.getChoferes(comboBox2.Text).ToString() == "0")
+                    if (automovilTableAdapter.getChoferes(comboBox2.Text) == 0)
                     {
 
-                        automovilTableAdapter.Insert(textBox1.Text, textBox2.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                        automovilTableAdapter.Insert(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
                         MessageBox.Show("El Automovil se ha creado exitosamente", "Alta Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                         abm.ABMAutomovil_Load(sender, e);
                         this.Close();
@@ -137,14 +141,31 @@ namespace UberFrba.Abm_Automovil
                 {
                     if (comboBox1.Text == "Habilitado")
                     {
-                        automovilTableAdapter.UpdateAutomovil(textBox2.Text, textBox3.Text,"H", comboBox3.Text, comboBox2.Text, textBox1.Text);
-                        MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        abm.ABMAutomovil_Load(sender, e);
-                        this.Close();
+                        if (estadoInicial == "H" || estadoInicial == "h")
+                        {
+                            automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                            MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            abm.ABMAutomovil_Load(sender, e);
+                            this.Close();
+                        }
+                        else
+                        {
+                            if (automovilTableAdapter.getChoferes(comboBox2.Text) == 0)
+                            {
+                                automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                                MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                abm.ABMAutomovil_Load(sender, e);
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("La chofer seleccionado ya tiene asignado un automovil habilitado", "Error de chofer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                     else
                     {
-                        automovilTableAdapter.UpdateAutomovil(textBox2.Text, textBox3.Text, "I", comboBox3.Text, comboBox2.Text, textBox1.Text);
+                        automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "I", comboBox3.Text, comboBox2.Text);
                         MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                         abm.ABMAutomovil_Load(sender, e);
                         this.Close();
@@ -158,7 +179,20 @@ namespace UberFrba.Abm_Automovil
             }
         }
 
-
+        private void filtro_combo()
+        {
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand("SELECT distinct Automovil_marca FROM OVERFANTASY.Automovil", conexion);
+            SqlDataReader dr = cmd.ExecuteReader();
+            IList<string> listName = new List<string>();
+            while (dr.Read())
+            {
+                listName.Add(dr[0].ToString());
+            }
+            listName = listName.Distinct().ToList();
+            comboBox4.DataSource = listName;
+            conexion.Close();
+        }
 
     }
 }

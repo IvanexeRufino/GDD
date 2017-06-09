@@ -53,6 +53,7 @@
             this.turnoTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.TurnoTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.automovilTableAdapter = new UberFrba.GD1C2017DataSetTableAdapters.AutomovilTableAdapter();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.turnoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD1C2017DataSet)).BeginInit();
@@ -98,6 +99,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox4);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label6);
@@ -122,6 +124,7 @@
             // 
             this.comboBox3.DataSource = this.turnoBindingSource;
             this.comboBox3.DisplayMember = "Turno_Descripcion";
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(139, 168);
             this.comboBox3.Name = "comboBox3";
@@ -216,7 +219,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(139, 69);
+            this.textBox2.Location = new System.Drawing.Point(64, 41);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
@@ -265,6 +268,17 @@
             // 
             this.automovilTableAdapter.ClearBeforeFill = true;
             // 
+            // comboBox4
+            // 
+            this.comboBox4.DataSource = this.turnoBindingSource;
+            this.comboBox4.DisplayMember = "Turno_Descripcion";
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(139, 66);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 13;
+            // 
             // Agregar_Modificar_Automovil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,5 +326,6 @@
         private GD1C2017DataSetTableAdapters.TurnoTableAdapter turnoTableAdapter;
         private System.Windows.Forms.BindingSource bindingSource1;
         private GD1C2017DataSetTableAdapters.AutomovilTableAdapter automovilTableAdapter;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }

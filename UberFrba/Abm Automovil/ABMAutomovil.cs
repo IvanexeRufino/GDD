@@ -98,9 +98,9 @@ namespace UberFrba.Abm_Automovil
             {
                 if (e.ColumnIndex == 7)
                 {
-                    //automovilTableAdapter.DeleteAutomovil(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    //MessageBox.Show("El vehiculo se ha Inhabilitado Correctamente", "Baja Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    //automovilTableAdapter.Fill(gD1C2017DataSet.Automovil);
+                    automovilTableAdapter.DeleteAutomovil(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    MessageBox.Show("El automovil se ha Inhabilitado Correctamente", "Baja Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    automovilTableAdapter.Fill(gD1C2017DataSet.Automovil);
                 }
             }
         }
