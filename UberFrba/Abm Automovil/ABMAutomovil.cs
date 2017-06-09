@@ -25,11 +25,11 @@ namespace UberFrba.Abm_Automovil
             comboBox1.SelectedIndex = -1;
         }
 
-        private void ABMAutomovil_Load(object sender, EventArgs e)
+        public void ABMAutomovil_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'gD1C2017DataSet.Automovil' table. You can move, or remove it, as needed.
             this.automovilTableAdapter.Fill(this.gD1C2017DataSet.Automovil);
-
+            filtro_combo();
         }
 
         private string filtrado()
@@ -99,7 +99,7 @@ namespace UberFrba.Abm_Automovil
                 if (e.ColumnIndex == 7)
                 {
                     //automovilTableAdapter.DeleteAutomovil(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    //MessageBox.Show("El vehiculo se ha Inhabilitado Correctamente", "Baja Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    //MessageBox.Show("El vehiculo se ha Inhabilitado Correctamente", "Baja Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                     //automovilTableAdapter.Fill(gD1C2017DataSet.Automovil);
                 }
             }
@@ -107,7 +107,6 @@ namespace UberFrba.Abm_Automovil
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void filtro_combo() 
@@ -123,8 +122,7 @@ namespace UberFrba.Abm_Automovil
             }
             listName = listName.Distinct().ToList();
             comboBox1.DataSource = listName;
-            conexion.Close();
-            
+            conexion.Close();            
         }
 
 

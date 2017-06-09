@@ -85,7 +85,8 @@ namespace UberFrba.Abm_Automovil
                 {
                     automovilTableAdapter.Insert(textBox1.Text, textBox2.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
                     MessageBox.Show("El Automovil se ha creado exitosamente", "Alta Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
-
+                    abm.ABMAutomovil_Load(sender, e);
+                    this.Close();
                 }
             }
             else
@@ -130,12 +131,15 @@ namespace UberFrba.Abm_Automovil
                     {
                         automovilTableAdapter.UpdateAutomovil(textBox2.Text, textBox3.Text,"H", comboBox3.Text, comboBox2.Text, textBox1.Text);
                         MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        //automovilTableAdapter.Update;
+                        abm.ABMAutomovil_Load(sender, e);
+                        this.Close();
                     }
                     else
                     {
                         automovilTableAdapter.UpdateAutomovil(textBox2.Text, textBox3.Text, "I", comboBox3.Text, comboBox2.Text, textBox1.Text);
                         MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        abm.ABMAutomovil_Load(sender, e);
+                        this.Close();
                     }
 
                 }
