@@ -23,13 +23,15 @@ namespace UberFrba.Registro_Viajes
             InitializeComponent();
             bd = new BaseDeDatos();
             conexion = bd.getCon();
-            String select = "SELECT Usuario_Username FROM OVERFANTASY.Usuario JOIN OVERFANTASY.Automovil a ON  (Usuario_Username = Chofer_Username) JOIN OVERFANTASY.Turno t ON (a.Turno_Descripcion = t.Turno_Descripcion) WHERE Automovil_Estado = 'H' AND Usuario_Estado = 'H' AND Turno_Estado = 'H' order by Usuario_Username";
+            String select = "SELECT Usuario_Username FROM OVERFANTASY.Usuario JOIN OVERFANTASY.Automovil a ON  (Usuario_Username = Chofer_Username) JOIN OVERFANTASY.Turno t ON (a.Turno_Descripcion = t.Turno_Descripcion)";
+            select += " WHERE Automovil_Estado = 'H' AND Usuario_Estado = 'H' AND Turno_Estado = 'H' order by Usuario_Username";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds);
             comboBox1.DataSource = ds.Tables[0];
-            String select1 = "SELECT Usuario_Username FROM OVERFANTASY.Usuario WHERE Usuario_Estado = 'H' order by Usuario_Username";
+            String select1 = "SELECT c.Usuario_Username FROM OVERFANTASY.Cliente c JOIN OVERFANTASY.Usuario u ON (c.Usuario_Username = u.Usuario_Username)";
+            select1 += " WHERE Usuario_Estado = 'H' AND c.Usuario_Username NOT IN (SELECT Cliente_Username FROM OVERFANTASY.Factura WHERE '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + "' BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin)  order by Usuario_Username";
             SqlDataAdapter dataAdapter1 = new SqlDataAdapter(select1, conexion);
             SqlCommandBuilder commandBuilder1 = new SqlCommandBuilder(dataAdapter1);
             DataSet ds1 = new DataSet();
