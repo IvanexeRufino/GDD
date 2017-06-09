@@ -134,7 +134,7 @@ namespace UberFrba
                     }
                     else
                     {
-                        Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes(username);
+                        Registro_Viajes.RegistroViajes registro = new Registro_Viajes.RegistroViajes();
                         registro.Show();
                     }
                 }

@@ -15,22 +15,26 @@ namespace UberFrba.Registro_Viajes
     {
         BaseDeDatos bd;
         SqlConnection conexion;
-        String username;
         int horarioInicioTurno;
         int horarioFinTurno;
 
-        public RegistroViajes(String username)
+        public RegistroViajes()
         {
             InitializeComponent();
             bd = new BaseDeDatos();
             conexion = bd.getCon();
-            this.username = username;
-            String select = "SELECT Usuario_Username FROM OVERFANTASY.Usuario JOIN OVERFANTASY.Automovil ON  (Usuario_Username = Chofer_Username) WHERE Automovil_Estado = 'H' AND	Usuario_Estado = 'H' order by Usuario_Username";
+            String select = "SELECT Usuario_Username FROM OVERFANTASY.Usuario JOIN OVERFANTASY.Automovil a ON  (Usuario_Username = Chofer_Username) JOIN OVERFANTASY.Turno t ON (a.Turno_Descripcion = t.Turno_Descripcion) WHERE Automovil_Estado = 'H' AND Usuario_Estado = 'H' AND Turno_Estado = 'H' order by Usuario_Username";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds);
             comboBox1.DataSource = ds.Tables[0];
+            String select1 = "SELECT Usuario_Username FROM OVERFANTASY.Usuario WHERE Usuario_Estado = 'H' order by Usuario_Username";
+            SqlDataAdapter dataAdapter1 = new SqlDataAdapter(select1, conexion);
+            SqlCommandBuilder commandBuilder1 = new SqlCommandBuilder(dataAdapter1);
+            DataSet ds1 = new DataSet();
+            dataAdapter1.Fill(ds1);
+            comboBox2.DataSource = ds1.Tables[0];
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -73,7 +77,7 @@ namespace UberFrba.Registro_Viajes
                     MessageBox.Show("Ingrese una cantidad de kilometros valida (Mayor a 0)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 conexion.Open();
-                String query = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Cliente_Username = '"+username+"' AND ('"+textBox4.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '"+textBox5.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
+                String query = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Cliente_Username = '"+comboBox2.Text+"' AND ('"+textBox4.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '"+textBox5.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -89,7 +93,7 @@ namespace UberFrba.Registro_Viajes
                 {
                     try
                     {
-                        viajeTableAdapter1.InsertViaje(cantidadDeKilometros, textBox4.Text, textBox5.Text, textBox1.Text, comboBox1.Text, username, textBox2.Text);
+                        viajeTableAdapter1.InsertViaje(cantidadDeKilometros, textBox4.Text, textBox5.Text, textBox1.Text, comboBox1.Text, comboBox2.Text, textBox2.Text);
                         MessageBox.Show("El viaje se ha registrado con exito", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     catch
