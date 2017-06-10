@@ -36,7 +36,6 @@
             this.Facturacion = new System.Windows.Forms.Button();
             this.ABMRol = new System.Windows.Forms.GroupBox();
             this.ABMRolBut = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.ABMCliente = new System.Windows.Forms.GroupBox();
             this.ABMClienteBut = new System.Windows.Forms.Button();
             this.ABMTurno = new System.Windows.Forms.GroupBox();
@@ -47,6 +46,7 @@
             this.Atras = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.ABMAutomovil.SuspendLayout();
             this.ABMRol.SuspendLayout();
             this.ABMCliente.SuspendLayout();
@@ -61,28 +61,28 @@
             this.ABMAutomovil.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ABMAutomovil.Controls.Add(this.ABMAutomovilBut);
             this.ABMAutomovil.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ABMAutomovil.Location = new System.Drawing.Point(18, 381);
+            this.ABMAutomovil.Location = new System.Drawing.Point(566, 35);
             this.ABMAutomovil.Name = "ABMAutomovil";
-            this.ABMAutomovil.Size = new System.Drawing.Size(206, 210);
+            this.ABMAutomovil.Size = new System.Drawing.Size(154, 210);
             this.ABMAutomovil.TabIndex = 5;
             this.ABMAutomovil.TabStop = false;
             this.ABMAutomovil.Text = "Automovil";
+            this.ABMAutomovil.Visible = false;
             // 
             // ABMAutomovilBut
             // 
-            this.ABMAutomovilBut.Location = new System.Drawing.Point(43, 71);
+            this.ABMAutomovilBut.Location = new System.Drawing.Point(10, 67);
             this.ABMAutomovilBut.Name = "ABMAutomovilBut";
             this.ABMAutomovilBut.Size = new System.Drawing.Size(125, 81);
             this.ABMAutomovilBut.TabIndex = 0;
             this.ABMAutomovilBut.Text = "ABM Automovil";
             this.ABMAutomovilBut.UseVisualStyleBackColor = true;
-            this.ABMAutomovilBut.Visible = false;
             this.ABMAutomovilBut.Click += new System.EventHandler(this.ABMAutomovilBut_Click);
             // 
             // RegistroViajes
             // 
             this.RegistroViajes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegistroViajes.Location = new System.Drawing.Point(733, 396);
+            this.RegistroViajes.Location = new System.Drawing.Point(492, 396);
             this.RegistroViajes.Name = "RegistroViajes";
             this.RegistroViajes.Size = new System.Drawing.Size(200, 94);
             this.RegistroViajes.TabIndex = 7;
@@ -130,11 +130,10 @@
             // ABMRol
             // 
             this.ABMRol.Controls.Add(this.ABMRolBut);
-            this.ABMRol.Controls.Add(this.button1);
             this.ABMRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ABMRol.Location = new System.Drawing.Point(6, 35);
             this.ABMRol.Name = "ABMRol";
-            this.ABMRol.Size = new System.Drawing.Size(200, 210);
+            this.ABMRol.Size = new System.Drawing.Size(155, 210);
             this.ABMRol.TabIndex = 2;
             this.ABMRol.TabStop = false;
             this.ABMRol.Text = "Rol";
@@ -142,7 +141,7 @@
             // 
             // ABMRolBut
             // 
-            this.ABMRolBut.Location = new System.Drawing.Point(38, 65);
+            this.ABMRolBut.Location = new System.Drawing.Point(15, 67);
             this.ABMRolBut.Name = "ABMRolBut";
             this.ABMRolBut.Size = new System.Drawing.Size(125, 81);
             this.ABMRolBut.TabIndex = 2;
@@ -150,22 +149,13 @@
             this.ABMRolBut.UseVisualStyleBackColor = true;
             this.ABMRolBut.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(37, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 81);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "ABM Rol";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // ABMCliente
             // 
             this.ABMCliente.Controls.Add(this.ABMClienteBut);
             this.ABMCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ABMCliente.Location = new System.Drawing.Point(232, 35);
+            this.ABMCliente.Location = new System.Drawing.Point(188, 35);
             this.ABMCliente.Name = "ABMCliente";
-            this.ABMCliente.Size = new System.Drawing.Size(200, 210);
+            this.ABMCliente.Size = new System.Drawing.Size(163, 210);
             this.ABMCliente.TabIndex = 3;
             this.ABMCliente.TabStop = false;
             this.ABMCliente.Text = "Cliente";
@@ -173,7 +163,7 @@
             // 
             // ABMClienteBut
             // 
-            this.ABMClienteBut.Location = new System.Drawing.Point(35, 67);
+            this.ABMClienteBut.Location = new System.Drawing.Point(22, 67);
             this.ABMClienteBut.Name = "ABMClienteBut";
             this.ABMClienteBut.Size = new System.Drawing.Size(125, 81);
             this.ABMClienteBut.TabIndex = 2;
@@ -186,9 +176,9 @@
             this.ABMTurno.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ABMTurno.Controls.Add(this.ABMTurnoBut);
             this.ABMTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ABMTurno.Location = new System.Drawing.Point(715, 35);
+            this.ABMTurno.Location = new System.Drawing.Point(752, 35);
             this.ABMTurno.Name = "ABMTurno";
-            this.ABMTurno.Size = new System.Drawing.Size(200, 210);
+            this.ABMTurno.Size = new System.Drawing.Size(163, 210);
             this.ABMTurno.TabIndex = 6;
             this.ABMTurno.TabStop = false;
             this.ABMTurno.Text = "Turno";
@@ -196,7 +186,7 @@
             // 
             // ABMTurnoBut
             // 
-            this.ABMTurnoBut.Location = new System.Drawing.Point(39, 67);
+            this.ABMTurnoBut.Location = new System.Drawing.Point(20, 67);
             this.ABMTurnoBut.Name = "ABMTurnoBut";
             this.ABMTurnoBut.Size = new System.Drawing.Size(125, 81);
             this.ABMTurnoBut.TabIndex = 7;
@@ -209,9 +199,9 @@
             this.ABMChofer.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ABMChofer.Controls.Add(this.ABMChoferBut);
             this.ABMChofer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ABMChofer.Location = new System.Drawing.Point(480, 35);
+            this.ABMChofer.Location = new System.Drawing.Point(389, 35);
             this.ABMChofer.Name = "ABMChofer";
-            this.ABMChofer.Size = new System.Drawing.Size(200, 210);
+            this.ABMChofer.Size = new System.Drawing.Size(154, 210);
             this.ABMChofer.TabIndex = 4;
             this.ABMChofer.TabStop = false;
             this.ABMChofer.Text = "Chofer";
@@ -219,7 +209,7 @@
             // 
             // ABMChoferBut
             // 
-            this.ABMChoferBut.Location = new System.Drawing.Point(28, 67);
+            this.ABMChoferBut.Location = new System.Drawing.Point(14, 67);
             this.ABMChoferBut.Name = "ABMChoferBut";
             this.ABMChoferBut.Size = new System.Drawing.Size(125, 81);
             this.ABMChoferBut.TabIndex = 7;
@@ -244,7 +234,7 @@
             this.Atras.Name = "Atras";
             this.Atras.Size = new System.Drawing.Size(200, 94);
             this.Atras.TabIndex = 12;
-            this.Atras.Text = "Atras";
+            this.Atras.Text = "Salir";
             this.Atras.UseVisualStyleBackColor = true;
             this.Atras.Click += new System.EventHandler(this.button20_Click);
             // 
@@ -254,7 +244,7 @@
             this.groupBox7.Controls.Add(this.RendicionCuentas);
             this.groupBox7.Controls.Add(this.ListadoEstadistico);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(250, 381);
+            this.groupBox7.Location = new System.Drawing.Point(18, 381);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(448, 210);
             this.groupBox7.TabIndex = 9;
@@ -263,6 +253,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.ABMAutomovil);
             this.groupBox6.Controls.Add(this.ABMRol);
             this.groupBox6.Controls.Add(this.ABMCliente);
             this.groupBox6.Controls.Add(this.ABMTurno);
@@ -275,18 +266,29 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "ABMs";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(733, 396);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 94);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "ReLogin";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(977, 617);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Atras);
             this.Controls.Add(this.UberFRBA);
-            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.RegistroViajes);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.ABMAutomovil);
             this.Name = "Menu";
             this.Text = "Menu";
             this.ABMAutomovil.ResumeLayout(false);
@@ -318,9 +320,9 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button ABMRolBut;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ABMClienteBut;
         private System.Windows.Forms.Button ABMTurnoBut;
         private System.Windows.Forms.Button ABMChoferBut;
+        private System.Windows.Forms.Button button1;
     }
 }
