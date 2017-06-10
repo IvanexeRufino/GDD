@@ -158,10 +158,19 @@ namespace UberFrba.Registro_Viajes
                 }
             }
             conexion.Close();
+
             DateTime rangoInicio = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioInicioTurno, 0, 0);
-            DateTime rangoFin = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioFinTurno, 0, 0);
-            fechaInicio.MinDate = rangoInicio;
+            DateTime rangoFin;
+            if (horarioFinTurno == 24)
+            {
+                rangoFin = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, 23, 59, 59);
+            }
+            else
+            {
+                rangoFin = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioFinTurno, 0, 0);
+            }
             fechaInicio.MaxDate = rangoFin;
+            fechaInicio.MinDate = rangoInicio;
         }
     }
 }
