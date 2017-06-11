@@ -151,7 +151,7 @@ namespace UberFrba.Abm_Automovil
                         //se comprueba si el automovil ya estaba habilitado y si era el mismo chofer
                         if ((estadoInicial == "H" || estadoInicial == "h") && choferInicial == comboBox2.Text)
                         {
-                            automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                            automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text, patenteVieja);
                             MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                             abm.ABMAutomovil_Load(sender, e);
                             this.Close();
@@ -162,7 +162,7 @@ namespace UberFrba.Abm_Automovil
                             if (automovilTableAdapter.getChoferes(comboBox2.Text) == 0)               
                             {
                                 //si el chofer no tenia automovil habilitado se modifica sin problemas
-                                automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                                automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text, patenteVieja);
                                 MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                                 abm.ABMAutomovil_Load(sender, e);
                                 this.Close();
@@ -174,7 +174,7 @@ namespace UberFrba.Abm_Automovil
                                 {
                                     string patente = automovilTableAdapter.TraemePatente(comboBox2.Text).ToString();//Se busca el automovil del chofer
                                     automovilTableAdapter.DeleteAutomovil(patente);//se inhabilita el automovil
-                                    automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text);
+                                    automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "H", comboBox3.Text, comboBox2.Text, patenteVieja);
                                     MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                                     abm.ABMAutomovil_Load(sender, e);
                                     this.Close();
@@ -189,7 +189,7 @@ namespace UberFrba.Abm_Automovil
                     }
                     else//En caso de que el automovil quede inhabilitado
                     {
-                        automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "I", comboBox3.Text, comboBox2.Text);
+                        automovilTableAdapter.UpdateAutomovil(textBox1.Text, comboBox4.Text, textBox3.Text, "I", comboBox3.Text, comboBox2.Text, patenteVieja);
                         MessageBox.Show("El Automovil se ha modificado exitosamente", "Modificar Automovil", MessageBoxButtons.OK, MessageBoxIcon.None);
                         abm.ABMAutomovil_Load(sender, e);
                         this.Close();
