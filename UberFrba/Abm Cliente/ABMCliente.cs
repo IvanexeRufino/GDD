@@ -25,6 +25,7 @@ namespace UberFrba.Abm_Cliente
 
         public void ABMCliente_Load(object sender, EventArgs e)                        //Creacion Datagrid a partir de vista
         {
+            //Creacion de los botones Modificacion y Baja
             DataGridViewButtonColumn modificarCliente = new DataGridViewButtonColumn();
             modificarCliente.Name = "Modificar Cliente";
             modificarCliente.Text = "Modificar Cliente";
@@ -33,6 +34,7 @@ namespace UberFrba.Abm_Cliente
             inhabilitarCliente.Name = "Inhabilitar Cliente";
             inhabilitarCliente.Text = "Inhabilitar Cliente";
 
+            //Creacion del datagrid con la vista ClienteCompleto
             String select = "SELECT Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad, Usuario_Estado FROM OVERFANTASY.ClienteCompleto";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -40,6 +42,8 @@ namespace UberFrba.Abm_Cliente
             dataAdapter.Fill(ds);
             dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = ds.Tables[0];
+
+            //Insercion de los botones en datagrid
             if (dataGridView1.Columns["Modificar Cliente"] == null)
             {
                 dataGridView1.Columns.Insert(13, modificarCliente);
@@ -58,57 +62,28 @@ namespace UberFrba.Abm_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!textBox3.Text.Equals(""))
-            {
-                SqlDataAdapter dad = new SqlDataAdapter("SELECT * FROM OVERFANTASY.ClienteCompleto WHERE Cliente_DNI = '" + textBox3.Text + "'", conexion);
-                DataSet ds = new DataSet();
-                dad.Fill(ds);
-                dataGridView1.DataSource = ds;
-                dataGridView1.DataSource = ds.Tables[0];
 
-                //Si no se vuelven a crear los botones queda modificar y eliminar como primera y segunda columna.
-
-                dataGridView1.Columns.RemoveAt(0);
-                dataGridView1.Columns.Remove("Eliminar Cliente");
-
-                DataGridViewButtonColumn modificarCliente = new DataGridViewButtonColumn();
-                modificarCliente.Name = "Modificar Cliente";
-                modificarCliente.Text = "Modificar Cliente";
-
-                DataGridViewButtonColumn eliminarCliente = new DataGridViewButtonColumn();
-                eliminarCliente.Name = "Eliminar Cliente";
-                eliminarCliente.Text = "Eliminar Cliente";
-
-                dataGridView1.Columns.Insert(13, modificarCliente);
-                dataGridView1.Columns.Insert(14, eliminarCliente);
-
-                textBox3.Clear();
-            }
-            else
-            {
-                ABMCliente_Load(sender, e);
-            }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //Boton Limpiar
         {
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e) //boton cancelar
         {
             this.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e) //boton alta cliente
         {
             Agregar_Modificar_Cliente amc = new Agregar_Modificar_Cliente(this);
             amc.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Boton filtrar
         {
             String filtro = "";
             String and = " AND ";
@@ -131,7 +106,7 @@ namespace UberFrba.Abm_Cliente
             (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = filtro;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //botones datagrid
         {
             if (e.ColumnIndex == 13) //Modificar Cliente
             {
@@ -144,6 +119,11 @@ namespace UberFrba.Abm_Cliente
                 MessageBox.Show("El Cliente se ha Inhabilitado Correctamente", "Baja Cliente", MessageBoxButtons.OK, MessageBoxIcon.None);
                 this.ABMCliente_Load(sender, e);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

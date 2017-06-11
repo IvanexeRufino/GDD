@@ -19,7 +19,7 @@ namespace UberFrba.Abm_Cliente
         String user;
         String telefonoViejo;
 
-        public Agregar_Modificar_Cliente(ABMCliente abm)
+        public Agregar_Modificar_Cliente(ABMCliente abm) //constructor de alta
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -32,7 +32,7 @@ namespace UberFrba.Abm_Cliente
             this.abm = abm;
         }
 
-        public Agregar_Modificar_Cliente(DataGridViewRow row, ABMCliente abm)
+        public Agregar_Modificar_Cliente(DataGridViewRow row, ABMCliente abm) //constructor de modificacion
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -58,7 +58,7 @@ namespace UberFrba.Abm_Cliente
             textBox11.Text = row.Cells[11].Value.ToString();    //Localidad
             telefonoViejo = row.Cells[10].Value.ToString();
 
-            if (row.Cells[12].Value.ToString().Equals("I"))
+            if (row.Cells[12].Value.ToString().Equals("I")) //Texto a aparecer en combobox transformando el char en un string
             {
                 comboBox1.Text = "Inhabilitado";
             }
@@ -104,15 +104,18 @@ namespace UberFrba.Abm_Cliente
             {
                 try
                 {
+                    //parseo de numeros
                     decimal dni = Decimal.Parse(textBox3.Text);
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
+                    //conversion del formato de fecha a uno para la db
                     String fecha = textBox5.Text.Substring(6, 4);
                     fecha += textBox5.Text.Substring(2, 3);
                     fecha += "/";
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
+                        //verificamos si el telefono no existe en la db
                         conexion.Open();
                         String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
                         using (SqlCommand cmd = new SqlCommand(procedure, conexion))
@@ -120,8 +123,9 @@ namespace UberFrba.Abm_Cliente
                             cmd.ExecuteNonQuery();
                         }
                         conexion.Close();
-                        if (!textBox4.Text.Equals(""))
+                        if (!textBox4.Text.Equals("")) //si tiene algo escrito en mail
                         {
+                            //inserto cliente con mail y cierro la pantalla
                             String insert = "INSERT INTO OVERFANTASY.ClienteCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
                             insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
@@ -135,6 +139,7 @@ namespace UberFrba.Abm_Cliente
                         }
                         else 
                         {
+                            //inserto cliente sin mail y cierro la pantalla
                             String insert = "INSERT INTO OVERFANTASY.ClienteCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
                             insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', NULL, '" + telefono + "', '" + textBox11.Text + "')";
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
@@ -170,6 +175,7 @@ namespace UberFrba.Abm_Cliente
             {
                 try
                 {
+                    //verifico que los campos numericos contengan datos validos y modifico la fecha internamente para que se inserte con formato valido en la db
                     String estado;
                     decimal dni = Decimal.Parse(textBox3.Text);
                     decimal piso = Decimal.Parse(textBox8.Text);
@@ -194,6 +200,7 @@ namespace UberFrba.Abm_Cliente
                         {
                             if (comboBox1.Text.Equals("Inhabilitado"))
                             {
+                                //inhabilito el cliente mandando un delete que ejecutara el trigger
                                 estado = "I";
                                 clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
                                 clienteTableAdapter2.DeleteCliente(user);
@@ -201,6 +208,7 @@ namespace UberFrba.Abm_Cliente
                             }
                             else
                             {
+                                //updateo la tabla cliente
                                 estado = "H";
                                 clienteTableAdapter2.UpdateCliente(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
                                 usuarioTableAdapter1.UpdateUserEstado(estado, user);
@@ -233,11 +241,13 @@ namespace UberFrba.Abm_Cliente
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //muestra el calendario
             monthCalendar1.Visible = true;
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
+            //guarda la fecha seleccionada por el cliente.
             textBox5.Text = monthCalendar1.SelectionStart.ToString().Substring(0, 10);
         }
 

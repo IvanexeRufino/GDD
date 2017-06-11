@@ -8747,7 +8747,7 @@ SELECT Automovil_Patente, Automovil_Marca, Automovil_Modelo, Automovil_Estado, T
 SET Automovil_Patente = @Automovil_Patente,Automovil_Marca = @Automovil_Marca, 
 Automovil_Modelo = @Automovil_Modelo, Automovil_Estado = @Automovil_Estado,
 Turno_Descripcion = @Turno_Descripcion, Chofer_Username = @Chofer_Username
-WHERE        (Automovil_Patente = @Automovil_Patente)";
+WHERE        (Automovil_Patente = @Automovil_Patente2)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Patente", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Marca", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Marca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8755,6 +8755,7 @@ WHERE        (Automovil_Patente = @Automovil_Patente)";
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Estado", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Turno_Descripcion", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Chofer_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Automovil_Patente2", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Automovil_Patente", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9164,7 +9165,7 @@ WHERE        (Automovil_Patente = @Automovil_Patente)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateAutomovil(string Automovil_Patente, string Automovil_Marca, string Automovil_Modelo, string Automovil_Estado, string Turno_Descripcion, string Chofer_Username) {
+        public virtual int UpdateAutomovil(string Automovil_Patente, string Automovil_Marca, string Automovil_Modelo, string Automovil_Estado, string Turno_Descripcion, string Chofer_Username, string Automovil_Patente2) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((Automovil_Patente == null)) {
                 throw new global::System.ArgumentNullException("Automovil_Patente");
@@ -9201,6 +9202,12 @@ WHERE        (Automovil_Patente = @Automovil_Patente)";
             }
             else {
                 command.Parameters[5].Value = ((string)(Chofer_Username));
+            }
+            if ((Automovil_Patente2 == null)) {
+                throw new global::System.ArgumentNullException("Automovil_Patente2");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(Automovil_Patente2));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
