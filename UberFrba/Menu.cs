@@ -12,20 +12,41 @@ using System.Data.SqlClient;
 namespace UberFrba
 {
     public partial class Menu : Form
+
     {
         BaseDeDatos bd;
         SqlConnection conexion;
         String username;
+        public Boolean visibilidad = false;
 
         public Menu()
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            Login login = new Login(this);
+            login.Show();
+        }
+
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            this.Visible = visibilidad;
         }
 
         public void desplegarMenu(String nombreDeUsuario, decimal rol)
         {
+            ABMRol.Visible = false;
+            ABMCliente.Visible = false;
+            ABMChofer.Visible = false;
+            ABMTurno.Visible = false;
+            ABMAutomovil.Visible = false;
+            RendicionCuentas.Visible = false;
+            Facturacion.Visible = false;
+            ListadoEstadistico.Visible = false;
+            RegistroViajes.Visible = false;
+
+
             this.username = nombreDeUsuario;
             conexion.Open();
             string query = "SELECT Funcionalidad_Descripcion FROM OVERFANTASY.Funcionalidad_Por_Rol WHERE Rol_id = " + rol + "";
@@ -50,7 +71,7 @@ namespace UberFrba
                                 ABMTurno.Visible = true;
                                 break;
                             case "ABM Automovil":
-                                ABMAutomovilBut.Visible = true;
+                                ABMAutomovil.Visible = true;
                                 break;
                             case "Rendicion de Cuentas":
                                 RendicionCuentas.Visible = true;
@@ -127,14 +148,20 @@ namespace UberFrba
 
         private void button20_Click(object sender, EventArgs e)
         {
-            Login log = new Login();
-            log.Show();
             this.Close();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login login = new Login(this);
+            this.visibilidad = false;
+            this.Hide();
+            login.Show();
         }
 
     }

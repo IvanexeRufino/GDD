@@ -17,12 +17,14 @@ namespace UberFrba
     {
         BaseDeDatos bd;
         SqlConnection conexion;
+        Menu menu;
 
-        public Login()
+        public Login(Menu menu)
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            this.menu = menu;
         }
 
         public void mostrarInicio()
@@ -80,16 +82,22 @@ namespace UberFrba
 
         private void button8_Click(object sender, EventArgs e)
         {
+            menu.visibilidad = true;
+            menu.Show();
             this.Close();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            menu.visibilidad = true;
+            menu.Show();
             this.Close();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+            menu.visibilidad = true;
+            menu.Show();
             this.Close();
         }
 
@@ -199,10 +207,10 @@ namespace UberFrba
                         }
                         else
                         {
-                            Menu mp = new Menu();
-                            mp.Show();
-                            mp.desplegarMenu(UsernameLogIn.Text, id);
-                            this.Hide();
+                            menu.visibilidad = true;
+                            menu.Show();
+                            menu.desplegarMenu(UsernameLogIn.Text, id);
+                            this.Close();
                         }
                     }
 
@@ -218,12 +226,11 @@ namespace UberFrba
                     }
                     Rol1.Visible = false;
                     RolLogIn.Visible = false;
-                    Menu mp = new Menu();
-                    mp.Show();
 
-                    mp.desplegarMenu(UsernameLogIn.Text, id);
-
-                    this.Hide();
+                    menu.visibilidad = true;
+                    menu.Show();
+                    menu.desplegarMenu(UsernameLogIn.Text, id);
+                    this.Close();
                 }
                 conexion.Close();
             }
@@ -286,9 +293,10 @@ namespace UberFrba
                 }
             }
 
-            Menu mp = new Menu();
-            mp.Show();
-            mp.desplegarMenu(UsernameRegister.Text, id);
+            menu.visibilidad = true;
+            menu.Show();
+            menu.desplegarMenu(UsernameLogIn.Text, id);
+            this.Close();
 
             conexion.Close();
 
