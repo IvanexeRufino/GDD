@@ -231,13 +231,18 @@ namespace UberFrba.Abm_Turno
                 conexion.Close();
                 throw new ArgumentException("El horario no puede empezar y terminar a la misma hora");
             }
-            if ((inicio >= 24 || fin >= 24) || (inicio < 0 || fin <= 0))
+            if ((inicio >= 25 || fin >= 25) || (inicio < 0 || fin <= 0))
             {
                 conexion.Close();
                 throw new ArgumentException("No existen horarios mayores a las 23 horas ni menores a las 0");
             }
             conexion.Close();
             return "ok";
+        }
+
+        private void Agregar_Modificar_Turno_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
