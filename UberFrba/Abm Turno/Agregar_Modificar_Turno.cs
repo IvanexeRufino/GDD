@@ -19,37 +19,37 @@ namespace UberFrba.Abm_Turno
         decimal horarioFinAnterior;
         ABMTurno abm;
 
-        public Agregar_Modificar_Turno(ABMTurno abm)
+        public Agregar_Modificar_Turno(ABMTurno abm) //constructor alta turno
         {
             this.abm = abm;
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
-            button2.Hide();
+            button2.Hide(); //boton modificar
             label6.Visible = false;
-            comboBox1.Visible = false;
-            textBox1.ReadOnly = false;
+            comboBox1.Visible = false; //estado
+            textBox1.ReadOnly = false; //descripcion
             horarioInicioAnterior = 45680;
             horarioFinAnterior = 45680;
         }
 
-        public Agregar_Modificar_Turno(DataGridViewRow row, ABMTurno abm)
+        public Agregar_Modificar_Turno(DataGridViewRow row, ABMTurno abm) //constructor modificar turno
         {
             this.abm = abm;
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
-            button1.Hide();
+            button1.Hide(); //boton alta
             textBox1.Text = row.Cells[0].Value.ToString();
-            textBox1.ReadOnly = true;
-            textBox2.Text = row.Cells[1].Value.ToString();
+            textBox1.ReadOnly = true; //no poder modificar la descripcion del turno
+            textBox2.Text = row.Cells[1].Value.ToString(); //hora inicio
             horarioInicioAnterior = Decimal.Parse(row.Cells[1].Value.ToString());
             horarioFinAnterior = Decimal.Parse(row.Cells[2].Value.ToString());
-            textBox3.Text = row.Cells[2].Value.ToString();
-            textBox4.Text = row.Cells[3].Value.ToString();
-            textBox5.Text = row.Cells[4].Value.ToString();
+            textBox3.Text = row.Cells[2].Value.ToString(); //hora fin
+            textBox4.Text = row.Cells[3].Value.ToString(); //precio base
+            textBox5.Text = row.Cells[4].Value.ToString(); //valor por km
             label6.Visible = true;
-            comboBox1.Visible = true;
+            comboBox1.Visible = true; //estado turno
 
             if (row.Cells[5].Value.ToString().Equals("I"))
             {
@@ -60,12 +60,12 @@ namespace UberFrba.Abm_Turno
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //boton cerrar
         {
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //boton limpiar
         {
             textBox1.Clear();
             textBox2.Clear();
@@ -74,10 +74,11 @@ namespace UberFrba.Abm_Turno
             textBox5.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton alta
         {
             if(!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals("")) {
             try {
+                //verificar que los numeros sean el tipo correcto
                 decimal horarioInicio = Decimal.Parse(textBox2.Text);
                 decimal horarioFin = Decimal.Parse(textBox3.Text);
                 decimal precioBase = Decimal.Parse(textBox4.Text.Replace('.', ','));
@@ -88,8 +89,9 @@ namespace UberFrba.Abm_Turno
                     {
                         try
                         {
-                            if (precioBase > 0 && valorKilometro > 0)
+                            if (precioBase > 0 && valorKilometro > 0) //los precios deben ser mayores a 
                             {
+                                //inserto el nuevo turno
                                 turnoTableAdapter1.InsertTurno(textBox1.Text, horarioInicio, horarioFin, precioBase, valorKilometro);
                                 MessageBox.Show("El Turno se ha creado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
                                 button4_Click(sender, e);
@@ -122,12 +124,13 @@ namespace UberFrba.Abm_Turno
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //boton modificar
         {
             if (!textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals(""))
             {
                 try
                 {
+                    //verifico que los numeros sean el tipo correcto
                     String estado;
                     decimal horarioInicio = Decimal.Parse(textBox2.Text);
                     decimal horarioFin = Decimal.Parse(textBox3.Text);
@@ -135,10 +138,11 @@ namespace UberFrba.Abm_Turno
                     decimal valorKilometro = Decimal.Parse(textBox5.Text.Replace('.', ','));
                     try
                     {
-                        if (precioBase > 0 && valorKilometro > 0)
+                        if (precioBase > 0 && valorKilometro > 0) //el precio base y el valor por km no pueden ser negativos
                         {
                             if (comboBox1.Text.Equals("Inhabilitado"))
                             {
+                                //se modifica el estado a inhabilitado y se hace el delete que activara al trigger
                                 estado = "I";
                                 verificarHorarioInicioYFin(horarioInicio, horarioFin);
                                 turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
@@ -147,6 +151,7 @@ namespace UberFrba.Abm_Turno
                             }
                             else
                             {
+                                //se modifica el estado a habilitado y se actualiza el turno
                                 estado = "H";
                                 verificarHorarioInicioYFin(horarioInicio, horarioFin);
                                 turnoTableAdapter1.UpdateTurno(horarioInicio, horarioFin, precioBase, valorKilometro, estado, textBox1.Text);
@@ -178,7 +183,7 @@ namespace UberFrba.Abm_Turno
         }
 
 
-        private String verificarHorarioInicioYFin(decimal inicio, decimal fin)
+        private String verificarHorarioInicioYFin(decimal inicio, decimal fin) //verificamos que los horarios no se superpongan ni excedan las 24 horas
         {
             conexion.Open();
             string query = "SELECT Turno_Horario_Inicio, Turno_Horario_Fin FROM OVERFANTASY.Turno";

@@ -108,6 +108,7 @@ namespace UberFrba.Abm_Cliente
                     decimal dni = Decimal.Parse(textBox3.Text);
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
+                    decimal codpostal = Decimal.Parse(textBox10.Text);
                     //conversion del formato de fecha a uno para la db
                     String fecha = textBox5.Text.Substring(6, 4);
                     fecha += textBox5.Text.Substring(2, 3);
@@ -180,6 +181,7 @@ namespace UberFrba.Abm_Cliente
                     decimal dni = Decimal.Parse(textBox3.Text);
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
+                    decimal codpostal = Decimal.Parse(textBox10.Text);
                     String fecha = textBox5.Text.Substring(6, 4);
                     fecha += textBox5.Text.Substring(2, 3);
                     fecha += "/";

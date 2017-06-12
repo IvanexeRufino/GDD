@@ -19,7 +19,7 @@ namespace UberFrba.Abm_Chofer
         String user;
         String telefonoViejo;
 
-        public Agregar_Modificar_Chofer(ABMChofer abm)
+        public Agregar_Modificar_Chofer(ABMChofer abm) //constructor alta
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -32,7 +32,7 @@ namespace UberFrba.Abm_Chofer
             this.abm = abm;
         }
 
-        public Agregar_Modificar_Chofer(DataGridViewRow row, ABMChofer abm)
+        public Agregar_Modificar_Chofer(DataGridViewRow row, ABMChofer abm) //constructor modificar
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
@@ -78,7 +78,7 @@ namespace UberFrba.Abm_Chofer
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //boton limpiar
         {
             textBox1.Clear();
             textBox2.Clear();
@@ -104,15 +104,19 @@ namespace UberFrba.Abm_Chofer
             {
                 try
                 {
+                    //parseo de los numeros para que sean el tipo correcto
                     decimal dni = Decimal.Parse(textBox3.Text);
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
+                    decimal codpostal = Decimal.Parse(textBox10.Text);
+                    //ponemos la fecha en el formato que esta en la db
                     String fecha = textBox5.Text.Substring(6, 4);
                     fecha += textBox5.Text.Substring(2, 3);
                     fecha += "/";
                     fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
+                        //verificamos que no haya telefonos repetidos
                         conexion.Open();
                         String procedure = "exec OVERFANTASY.UnicidadDeTelefonos '" + textBox6.Text + "'";
                         using (SqlCommand cmd = new SqlCommand(procedure, conexion))
@@ -120,6 +124,7 @@ namespace UberFrba.Abm_Chofer
                             cmd.ExecuteNonQuery();
                         }
                         conexion.Close();
+                        //insertamos el nuevo chofer en la db y cerramos la ventana
                         String insert = "INSERT INTO OVERFANTASY.ChoferCompleto (Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad)";
                         insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
@@ -155,10 +160,14 @@ namespace UberFrba.Abm_Chofer
             {
                 try
                 {
+                    //verificamos que los numeros sean el tipo correcto
                     String estado;
                     decimal dni = Decimal.Parse(textBox3.Text);
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
+                    decimal codpostal = Decimal.Parse(textBox10.Text);
+                    
+                    //ponemos la fecha en el formato en el que se encuentra en la db
                     String fecha = textBox5.Text.Substring(6, 4);
                     fecha += textBox5.Text.Substring(2, 3);
                     fecha += "/";
@@ -166,6 +175,7 @@ namespace UberFrba.Abm_Chofer
 
                     try
                     {
+                        //vemos si se modifico el telefono para que si fue asi siga siendo unico el mismo
                         if (telefonoViejo != textBox6.Text)
                         {
                             conexion.Open();
@@ -181,6 +191,7 @@ namespace UberFrba.Abm_Chofer
 
                             if (comboBox1.Text.Equals("Inhabilitado"))
                             {
+                                //si se inhabilita al chofer por modificacion se manda un delete que ejecutara el trigger
                                 estado = "I";
                                 choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
                                 choferTableAdapter1.DeleteChofer(user);
@@ -188,6 +199,7 @@ namespace UberFrba.Abm_Chofer
                             }
                             else
                             {
+                                //modificamos el chofer
                                 estado = "H";
                                 choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user); 
                                 usuarioTableAdapter1.UpdateUserEstado(estado, user);
@@ -222,12 +234,12 @@ namespace UberFrba.Abm_Chofer
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //boton seleccionar fecha
         {
             monthCalendar1.Visible = true;
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e) //asignacion fecha al textbox
         {
             textBox5.Text = monthCalendar1.SelectionStart.ToString().Substring(0,10);
         }

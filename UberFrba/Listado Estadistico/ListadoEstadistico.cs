@@ -28,7 +28,7 @@ namespace UberFrba.Listado_Estadistico
             textBox1.Text = "2015";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton cerrar
         {
             this.Close();
         }
@@ -37,11 +37,12 @@ namespace UberFrba.Listado_Estadistico
         {
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //eleccion de listados a mostrar
         {
             switch(comboBox1.Text) {
                 case "Chóferes con mayor recaudación":
                     {
+                        //mostramos los 5 choferes con mas recaudacion a traves de un select
                         String select = "SELECT TOP 5 Chofer_Username, total = (SELECT  SUM(Rendicion_Total) FROM OVERFANTASY.Rendicion r1 WHERE r1.Chofer_Username = r2.Chofer_Username AND r1.Rendicion_Fecha " + filtro + ") FROM OVERFANTASY.Rendicion r2 WHERE r2.Rendicion_Fecha " + filtro + " GROUP BY Chofer_Username order by total desc";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
                         SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -53,6 +54,7 @@ namespace UberFrba.Listado_Estadistico
                     }
                 case "Choferes con el viaje más largo realizado":
                     {
+                        //mostramos los 5 choferes que tengan el viaje mas largo realizado
                         String select = "SELECT TOP 5 Chofer_Username, Automovil_Patente, Cliente_Username, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Viaje_Total FROM OVERFANTASY.Viaje WHERE Viaje_Hora_Inicio " + filtro + " order by Viaje_Cantidad_Kilometros desc ";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
                         SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -64,6 +66,7 @@ namespace UberFrba.Listado_Estadistico
                     }
                 case "Clientes con mayor consumo":
                     {
+                        //mostramos los 5 clientes que mas hayan consumido
                         String select = "SELECT TOP 5 Cliente_Username, total = SUM(Factura_Total) FROM OVERFANTASY.Factura WHERE Factura_Fecha_Inicio "+ filtro +" GROUP BY Cliente_Username order by total desc";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
                         SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -75,6 +78,7 @@ namespace UberFrba.Listado_Estadistico
                     }
                 case "Cliente que utilizo más veces el mismo automóvil":
                     {
+                        //mostramos los 5 clientes que hayan utilizado mas el mismo automovil
                         String select = "SELECT DISTINCT TOP 5 Cliente_Username, Automovil_Patente,Usados = (SELECT COUNT(*) FROM OVERFANTASY.Viaje v1 WHERE v1.Cliente_Username = v2.Cliente_Username AND v1.Automovil_Patente = v2.Automovil_Patente AND v1.Viaje_hora_Inicio " + filtro + ") FROM OVERFANTASY.Viaje v2 order by Usados desc";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
                         SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -87,7 +91,7 @@ namespace UberFrba.Listado_Estadistico
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //eleccion del trimestre
         {
             switch (comboBox2.Text)
             {
@@ -110,7 +114,7 @@ namespace UberFrba.Listado_Estadistico
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e) //escribimos el año
         {
             try
             {

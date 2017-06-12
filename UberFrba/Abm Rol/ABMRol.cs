@@ -24,12 +24,12 @@ namespace UberFrba.Abm_Rol
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton cerrar
         {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //boton alta rol
         {
             Agregar_Modificar_Rol amr = new Agregar_Modificar_Rol(this);
             amr.Show();
@@ -37,14 +37,14 @@ namespace UberFrba.Abm_Rol
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 3) //boton modificar del data grid
             {
                 Agregar_Modificar_Rol amr = new Agregar_Modificar_Rol(dataGridView1.Rows[e.RowIndex], this);
                 amr.Show();
             }
             else
             {
-                if (e.ColumnIndex == 4)
+                if (e.ColumnIndex == 4) //boton inhabilitar del datagrid
                 {
                     rolTableAdapter.DeleteRol(Decimal.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
                     MessageBox.Show("El Rol se ha Inhabilitado Correctamente, se han eliminado todas las relaciones con sus usuarios", "Baja Rol", MessageBoxButtons.OK, MessageBoxIcon.None);

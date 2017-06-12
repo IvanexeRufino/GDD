@@ -18,7 +18,7 @@ namespace UberFrba.Facturacion
         String cliente_Username;
         Facturacion facturacion;
 
-        public HistorialFacturado(DataGridViewRow fila, Facturacion fact)
+        public HistorialFacturado(DataGridViewRow fila, Facturacion fact) //constructor llamado por el click en el boton del datagrid
         {
             InitializeComponent();
             bd = new BaseDeDatos();
@@ -27,13 +27,14 @@ namespace UberFrba.Facturacion
             cliente_Username = fila.Cells[0].Value.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton cerrar
         {
             this.Close();
         }
 
         private void HistorialFacturado_Load(object sender, EventArgs e)
         {
+            //crear datagrid
             String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Viaje_Total FROM OVERFANTASY.Viaje ";
             select += "WHERE Factura_Nro IS NULL ";
             select += "AND Cliente_Username = '" + cliente_Username + "' ";
@@ -53,10 +54,11 @@ namespace UberFrba.Facturacion
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //realizar facturacion
         {
             String insert;
             conexion.Open();
+            //creamos la factura
             insert = "INSERT INTO OVERFANTASY.Factura(Factura_Fecha_Inicio, Factura_Fecha_Fin, Cliente_Username, Factura_Total) ";
             insert += "VALUES ('" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01', '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + " 23:59:59', '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
@@ -65,6 +67,8 @@ namespace UberFrba.Facturacion
             }
             conexion.Close();
             MessageBox.Show("La Facturacion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            
+            //volvemos a mostrar la pantalla anterior actuualizada
             Facturacion fac= new Facturacion();
             fac.Show();
             facturacion.Close();

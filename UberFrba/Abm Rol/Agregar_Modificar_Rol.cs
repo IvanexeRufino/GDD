@@ -19,19 +19,19 @@ namespace UberFrba.Abm_Rol
         List<int> indicesAnteriores = new List<int>();
         ABMRol abm;
 
-        public Agregar_Modificar_Rol(ABMRol abm)
+        public Agregar_Modificar_Rol(ABMRol abm) //constructor alta rol
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
             cargarFuncionalidades();
-            comboBox1.Visible = false;
-            button1.Visible = false;
+            comboBox1.Visible = false; //combobox estado
+            button1.Visible = false; //boton modificar
             label2.Visible = false;
             this.abm = abm;
         }
 
-        public Agregar_Modificar_Rol(DataGridViewRow row, ABMRol abm)
+        public Agregar_Modificar_Rol(DataGridViewRow row, ABMRol abm) //constructor modificacion rol 
         {
             this.abm = abm;
             idAnterior = Decimal.Parse(row.Cells[0].Value.ToString());
@@ -39,8 +39,8 @@ namespace UberFrba.Abm_Rol
             conexion = bd.getCon();
             InitializeComponent();
             cargarFuncionalidades();
-            button2.Visible = false;
-            textBox1.Text = row.Cells[1].Value.ToString();
+            button2.Visible = false; //boton alta
+            textBox1.Text = row.Cells[1].Value.ToString(); // nombre
             if (row.Cells[2].Value.ToString().Equals("I"))
             {
                 comboBox1.Text = "Inhabilitado";
@@ -57,7 +57,7 @@ namespace UberFrba.Abm_Rol
                 {
                     while (reader.Read())
                     {
-                        switch (reader.GetString(0))
+                        switch (reader.GetString(0)) //tildes en las checkbox para los roles predefinidos
                         {
                             case "ABM Automovil":
                                 checkedListBox1.SetItemCheckState(0, CheckState.Checked);
@@ -101,7 +101,7 @@ namespace UberFrba.Abm_Rol
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //boton limpiar
         {
             textBox1.Clear();
             comboBox1.Text = "Habilitado";
@@ -111,12 +111,12 @@ namespace UberFrba.Abm_Rol
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // boton cerrar
         {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //boton alta
         {
             int cantDeErrores = 0;
             if (textBox1.Text.Equals("") || checkedListBox1.CheckedItems.Count == 0)
@@ -128,6 +128,7 @@ namespace UberFrba.Abm_Rol
             {
                 try
                 {
+                    //verifico si el nombre del rol existe
                     rolTableAdapter.InsertRol(textBox1.Text);
                     decimal id = obtenerIdDelRol();
                     foreach (int i in checkedListBox1.CheckedIndices)
@@ -172,12 +173,12 @@ namespace UberFrba.Abm_Rol
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton modificar
         {
             int cantDeErrores = 0;
             String estado;
             String funcionalidad;
-            if (textBox1.Text.Equals("") || checkedListBox1.CheckedItems.Count == 0)
+            if (textBox1.Text.Equals("") || checkedListBox1.CheckedItems.Count == 0) //rol sin nombre o sin funcionalidades
             {
                 cantDeErrores++;
                 MessageBox.Show("Por favor llene los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -186,11 +187,12 @@ namespace UberFrba.Abm_Rol
             {
                 try
                 {
-                    if(comboBox1.Text.Equals("Habilitado"))
+                    if(comboBox1.Text.Equals("Habilitado")) //habilito rol
                     {
                         estado = "H";
                         rolTableAdapter.UpdateRol(textBox1.Text, estado, idAnterior);
                     } else {
+                        //deshabilito rol y se ejecuta el trigger por el delete
                         estado = "I";
                         rolTableAdapter.UpdateRol(textBox1.Text, estado, idAnterior);
                         rolTableAdapter.DeleteRol(idAnterior);
@@ -201,12 +203,12 @@ namespace UberFrba.Abm_Rol
                         if (indicesAnteriores.Contains(i) && !checkedListBox1.CheckedIndices.Contains(i))
                         {
                             funcionalidad = obtenerFuncionalidad(i);
-                            funcionalidad_Por_RolTableAdapter1.DeleteFuncionalidadPorRol(idAnterior, funcionalidad);
+                            funcionalidad_Por_RolTableAdapter1.DeleteFuncionalidadPorRol(idAnterior, funcionalidad); //saco funcionalidades
                         }
                         if (!indicesAnteriores.Contains(i) && checkedListBox1.CheckedIndices.Contains(i))
                         {
                             funcionalidad = obtenerFuncionalidad(i);
-                            funcionalidad_Por_RolTableAdapter1.InsertFuncionalidadPorRol(idAnterior, funcionalidad);
+                            funcionalidad_Por_RolTableAdapter1.InsertFuncionalidadPorRol(idAnterior, funcionalidad); //agrego funcionalidades
                         }
                     }
                     MessageBox.Show("El rol se ha modificado exitosamente", "Moficicacion Rol", MessageBoxButtons.OK, MessageBoxIcon.None);

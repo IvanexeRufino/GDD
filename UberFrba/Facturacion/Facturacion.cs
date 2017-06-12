@@ -24,12 +24,12 @@ namespace UberFrba.Facturacion
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton cerrar
         {
             this.Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e) //filtro
         {
             if (!textBox1.Text.Equals(""))
             {
@@ -43,7 +43,8 @@ namespace UberFrba.Facturacion
 
         public void Facturacion_Load(object sender, EventArgs e)
         {
-            textBox2.Text = DateTime.Now.ToString("MMMM");
+            textBox2.Text = DateTime.Now.ToString("MMMM"); //ponemos el mes en el textbox
+            //creamos el datagrid a partir del select
             DataGridViewButtonColumn facturarViajes = new DataGridViewButtonColumn();
             facturarViajes.Name = "Facturar Cliente";
             facturarViajes.Text = "Facturar Cliente";
@@ -57,14 +58,14 @@ namespace UberFrba.Facturacion
             dataGridView1.DataSource = ds.Tables[0];
             if (dataGridView1.Columns["Facturar Cliente"] == null)
             {
-                dataGridView1.Columns.Insert(1, facturarViajes);
+                dataGridView1.Columns.Insert(1, facturarViajes); //boton facturar
             }
 
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 1) //click en boton facturar
             {
                 HistorialFacturado hf = new HistorialFacturado(dataGridView1.Rows[e.RowIndex], this);
                 hf.Show();
