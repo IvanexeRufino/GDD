@@ -165,6 +165,7 @@ namespace UberFrba.Abm_Rol
                     }
                     MessageBox.Show("El rol se ha creado exitosamente", "Alta Rol", MessageBoxButtons.OK, MessageBoxIcon.None);
                     this.abm.ABMRol_Load(sender, e);
+                    this.Close();
                 }
                 catch
                 {
@@ -213,6 +214,7 @@ namespace UberFrba.Abm_Rol
                     }
                     MessageBox.Show("El rol se ha modificado exitosamente", "Moficicacion Rol", MessageBoxButtons.OK, MessageBoxIcon.None);
                     abm.ABMRol_Load(sender,e);
+                    this.Close();
                 }
                 catch
                 {

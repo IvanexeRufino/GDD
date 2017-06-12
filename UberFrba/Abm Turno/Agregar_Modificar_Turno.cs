@@ -96,20 +96,21 @@ namespace UberFrba.Abm_Turno
                                 MessageBox.Show("El Turno se ha creado exitosamente", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
                                 button4_Click(sender, e);
                                 abm.ABMTurno_Load(sender, e);
+                                this.Close();
                             }
                             else
                             {
-                                MessageBox.Show("Los precios deben ser mayores a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Los precios deben ser mayores a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch
                         {
-                            MessageBox.Show("El nombre del turno ya existe", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("El nombre del turno ya existe", "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show(error, "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show(error, "Alta Turno", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (ArgumentException arg){
@@ -162,7 +163,7 @@ namespace UberFrba.Abm_Turno
                         }
                         else
                         {
-                            MessageBox.Show("Los precios deben ser mayores a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Los precios deben ser mayores a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     catch (ArgumentException arg)
