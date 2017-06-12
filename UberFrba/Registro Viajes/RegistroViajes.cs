@@ -90,7 +90,20 @@ namespace UberFrba.Registro_Viajes
                         if (reader.Read())
                         {
                             error += 1;
-                            MessageBox.Show("Ya hay un viaje realizado por usted en esa fecha", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Ya hay un viaje realizado por este cliente en esa fecha", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                //Select para verificar que el chofer no tenga ya un viaje realizado en la fecha ingresada
+                String query1 = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Chofer_Username = '" + comboBox1.Text + "' AND ('" + textBox4.Text + "' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '" + textBox5.Text + "' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
+                using (SqlCommand cmd = new SqlCommand(query1, conexion))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            error += 1;
+                            MessageBox.Show("Ya hay un viaje realizado por este chofer en esa fecha", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
