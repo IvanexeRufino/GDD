@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 namespace UberFrba
 {
     public partial class Menu : Form
+
     {
         BaseDeDatos bd;
         SqlConnection conexion;
