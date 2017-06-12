@@ -23,7 +23,7 @@ namespace UberFrba.Rendicion_Viajes
             InitializeComponent();
         }
 
-        public void RendicionViajes_Load(object sender, EventArgs e)
+        public void RendicionViajes_Load(object sender, EventArgs e) //Carga el dataGrid con los choferes que faltan hacerles la rendicion
         {
             DataGridViewButtonColumn rendirViajes = new DataGridViewButtonColumn();
             rendirViajes.Name = "Rendir Viajes";
@@ -41,14 +41,14 @@ namespace UberFrba.Rendicion_Viajes
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //boton para cerrar la ventana
         {
             this.Close();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //botones del dataGrid
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 3)  //Click en boton rendir viaje
             {
                 String query = "SELECT Rendicion_Nro FROM OVERFANTASY.Rendicion WHERE Chofer_Username = '"+dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()+"' AND Rendicion_Fecha = CONVERT(date, getdate())";
                 conexion.Open();
@@ -71,7 +71,7 @@ namespace UberFrba.Rendicion_Viajes
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e) //filtros para el username del chofer
         {
             if (!textBox1.Text.Equals(""))
             {

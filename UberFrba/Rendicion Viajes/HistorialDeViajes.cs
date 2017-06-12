@@ -21,13 +21,13 @@ namespace UberFrba.Rendicion_Viajes
         String fecha;
         RendicionViajes rendicion;
 
-        public HistorialDeViajes(DataGridViewRow fila, RendicionViajes rendicion)
+        public HistorialDeViajes(DataGridViewRow fila, RendicionViajes rendicion) //Carga variables con los datos traidos del dataGrid en RendicionViajes
         {
             InitializeComponent();
             this.rendicion = rendicion;
             bd = new BaseDeDatos();
             conexion = bd.getCon();
-            textBox2.Text = porcentajeACobrar.ToString();
+            textBox2.Text = porcentajeACobrar.ToString(); //porcentaje base
             chofer_Username = fila.Cells[0].Value.ToString();
             Turno_Descripcion = fila.Cells[1].Value.ToString();
             String aux = fila.Cells[2].Value.ToString().Substring(0,10);
@@ -37,12 +37,12 @@ namespace UberFrba.Rendicion_Viajes
             fecha += aux.Substring(0, 2);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  //Boton para cerrar
         {
             this.Close();
         }
 
-        private void HistorialDeViajes_Load(object sender, EventArgs e)
+        private void HistorialDeViajes_Load(object sender, EventArgs e)  //Carga el dataGrid con los viajes a rendir del Chofer
         {
             String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Viaje_Total FROM OVERFANTASY.Viaje ";
             select += "WHERE Rendicion_Nro IS NULL ";
@@ -55,8 +55,8 @@ namespace UberFrba.Rendicion_Viajes
             dataAdapter.Fill(ds);
             dataGridView1.ReadOnly = true;
             dataGridView1.DataSource = ds.Tables[0];
-            Decimal subtotal = 0;
-            for(int i = 0; i < dataGridView1.RowCount; i++) 
+            Decimal subtotal = 0; 
+            for(int i = 0; i < dataGridView1.RowCount; i++) //Calcula los totales
             {
                 subtotal += Decimal.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString());
             }
@@ -64,7 +64,7 @@ namespace UberFrba.Rendicion_Viajes
             textBox3.Text = (subtotal * porcentajeACobrar / 100).ToString();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)  //Realiza la rendicion con un insert en la tabla de rendiciones
         {
             String insert;
             conexion.Open();

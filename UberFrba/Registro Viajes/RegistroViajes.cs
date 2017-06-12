@@ -18,11 +18,12 @@ namespace UberFrba.Registro_Viajes
         int horarioInicioTurno;
         int horarioFinTurno;
 
-        public RegistroViajes()
+        public RegistroViajes() //Creacion de la comboBox de Choferes y Usuarios
         {
             InitializeComponent();
             bd = new BaseDeDatos();
             conexion = bd.getCon();
+            //Select de Choferes habilitados
             String select = "SELECT Usuario_Username FROM OVERFANTASY.Usuario JOIN OVERFANTASY.Automovil a ON  (Usuario_Username = Chofer_Username) JOIN OVERFANTASY.Turno t ON (a.Turno_Descripcion = t.Turno_Descripcion)";
             select += " WHERE Automovil_Estado = 'H' AND Usuario_Estado = 'H' AND Turno_Estado = 'H' order by Usuario_Username";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
@@ -30,6 +31,7 @@ namespace UberFrba.Registro_Viajes
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds);
             comboBox1.DataSource = ds.Tables[0];
+            //Select de Clientes habilitados
             String select1 = "SELECT c.Usuario_Username FROM OVERFANTASY.Cliente c JOIN OVERFANTASY.Usuario u ON (c.Usuario_Username = u.Usuario_Username)";
             select1 += " WHERE Usuario_Estado = 'H' AND c.Usuario_Username NOT IN (SELECT Cliente_Username FROM OVERFANTASY.Factura WHERE '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + "' BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin)  order by Usuario_Username";
             SqlDataAdapter dataAdapter1 = new SqlDataAdapter(select1, conexion);
@@ -39,7 +41,7 @@ namespace UberFrba.Registro_Viajes
             comboBox2.DataSource = ds1.Tables[0];
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)  //Boton para cerrar
         {
             this.Close();
         }
@@ -53,25 +55,25 @@ namespace UberFrba.Registro_Viajes
             relacionComboYText();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)  
         {
             relacionComboYText();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  //Registra el viaje
         {
             int error = 0;
             decimal cantidadDeKilometros = 0;
-            if (!textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals(""))
+            if (!textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals("")) //Verfica que los campos esten completos
             {
                 try
                 {
-                    cantidadDeKilometros = Decimal.Parse(textBox3.Text.Replace('.', ','));
+                    cantidadDeKilometros = Decimal.Parse(textBox3.Text.Replace('.', ',')); 
                 }
                 catch
                 {
                     error += 1;
-                    MessageBox.Show("Por favor ingrese numeros donde tiene qe haberlos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor ingrese numeros donde tiene que haberlos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (cantidadDeKilometros < 0)
                 {
@@ -79,6 +81,7 @@ namespace UberFrba.Registro_Viajes
                     MessageBox.Show("Ingrese una cantidad de kilometros valida (Mayor a 0)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 conexion.Open();
+                //Select para verificar que el cliente no tenga ya un viaje realizado en la fecha ingresada
                 String query = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Cliente_Username = '"+comboBox2.Text+"' AND ('"+textBox4.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '"+textBox5.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
@@ -91,7 +94,7 @@ namespace UberFrba.Registro_Viajes
                         }
                     }
                 }
-                if (error == 0)
+                if (error == 0) // si no hay errores
                 {
                     try
                     {
@@ -100,7 +103,7 @@ namespace UberFrba.Registro_Viajes
                     }
                     catch
                     {
-                        MessageBox.Show("Lo siento usted no es un cliente registrado, debe ser dado de alta como cliente para realizar viajes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lo siento, usted no es un cliente registrado, debe ser dado de alta como cliente para realizar viajes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
                 }
@@ -112,19 +115,19 @@ namespace UberFrba.Registro_Viajes
             }
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e) //Escribe la fecha completa en el textbox
         {
             textBox4.Text = datepickerAString(fechaInicio);
             fechaFin.MinDate = fechaInicio.Value;
             fechaFin.Visible = true;
         }
 
-        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e) //Escribe la fecha completa en el textbox
         {
             textBox5.Text = datepickerAString(fechaFin);
         }
 
-        private String datepickerAString(DateTimePicker dtp)
+        private String datepickerAString(DateTimePicker dtp)  //Crea el formato de fecha y hora
         {
             String date = dtp.Value.Year.ToString();
             date += "/";
@@ -140,9 +143,10 @@ namespace UberFrba.Registro_Viajes
             return date;
         }
 
-        private void relacionComboYText()
+        private void relacionComboYText()  //Carga los datos del viaje dependiendo del Chofer
         {
             conexion.Open();
+            //Select que trae la patente del automovil del chofer, la descripcion del turno y el horario de inicio y fin
             String query = "SELECT Automovil_Patente, a.Turno_Descripcion, Turno_Horario_Inicio, Turno_Horario_Fin FROM OVERFANTASY.Automovil a JOIN OVERFANTASY.Turno t ON (a.Turno_Descripcion = t.Turno_Descripcion) WHERE Chofer_Username = '"+comboBox1.Text+"'";
             using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
@@ -150,10 +154,10 @@ namespace UberFrba.Registro_Viajes
                 {
                     if (reader.Read())
                     {
-                        textBox1.Text = reader.GetString(0);
-                        textBox2.Text = reader.GetString(1);
+                        textBox1.Text = reader.GetString(0);  //Patente
+                        textBox2.Text = reader.GetString(1);  //Turno
                         horarioInicioTurno = Decimal.ToInt32(reader.GetDecimal(2));
-                        horarioFinTurno = Decimal.ToInt32(reader.GetDecimal(3));
+                        horarioFinTurno = Decimal.ToInt32(reader.GetDecimal(3)); 
                     }
                 }
             }
