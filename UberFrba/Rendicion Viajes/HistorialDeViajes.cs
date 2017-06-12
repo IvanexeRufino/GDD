@@ -39,6 +39,8 @@ namespace UberFrba.Rendicion_Viajes
 
         private void button1_Click(object sender, EventArgs e)  //Boton para cerrar
         {
+            rendicion.RendicionViajes_Load(sender, e);
+            rendicion.Show();
             this.Close();
         }
 
@@ -76,9 +78,8 @@ namespace UberFrba.Rendicion_Viajes
             }
             conexion.Close();
             MessageBox.Show("La rendicion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            RendicionViajes rendicionV = new RendicionViajes();
-            rendicionV.Show();
-            rendicion.Close();
+            rendicion.RendicionViajes_Load(sender, e);
+            rendicion.Show();
             this.Close();
         }
 

@@ -15,12 +15,14 @@ namespace UberFrba.Rendicion_Viajes
     {
         BaseDeDatos bd;
         SqlConnection conexion;
+        Menu menu;
 
-        public RendicionViajes()
+        public RendicionViajes(Menu menu)
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            this.menu = menu;
         }
 
         public void RendicionViajes_Load(object sender, EventArgs e) //Carga el dataGrid con los choferes que faltan hacerles la rendicion
@@ -39,10 +41,17 @@ namespace UberFrba.Rendicion_Viajes
             {
                 dataGridView1.Columns.Insert(3, rendirViajes);
             }
+            else
+            {
+                dataGridView1.Columns.Remove("Rendir Viajes");
+                dataGridView1.Columns.Insert(3, rendirViajes);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e) //boton para cerrar la ventana
         {
+            menu.visibilidad = true;
+            menu.Show();
             this.Close();
         }
 
@@ -59,6 +68,7 @@ namespace UberFrba.Rendicion_Viajes
                         if (!reader.Read())
                         {
                             HistorialDeViajes hdv = new HistorialDeViajes(dataGridView1.Rows[e.RowIndex], this);
+                            this.Hide();
                             hdv.Show();
                         }
                         else

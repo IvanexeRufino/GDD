@@ -124,7 +124,9 @@ namespace UberFrba
 
         private void RendicionCuentas_Click(object sender, EventArgs e)
         {
-            Rendicion_Viajes.RendicionViajes rendicion = new Rendicion_Viajes.RendicionViajes();
+            Rendicion_Viajes.RendicionViajes rendicion = new Rendicion_Viajes.RendicionViajes(this);
+            visibilidad = false;
+            this.Hide();
             rendicion.Show();
         }
 
