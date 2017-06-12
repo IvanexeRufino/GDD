@@ -130,7 +130,9 @@ namespace UberFrba
 
         private void Facturacion_Click(object sender, EventArgs e)
         {
-            Facturacion.Facturacion facturacion = new Facturacion.Facturacion();
+            Facturacion.Facturacion facturacion = new Facturacion.Facturacion(this);
+            visibilidad = false;
+            this.Hide();
             facturacion.Show();
         }
 

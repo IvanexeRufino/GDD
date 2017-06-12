@@ -29,6 +29,8 @@ namespace UberFrba.Facturacion
 
         private void button1_Click(object sender, EventArgs e) //boton cerrar
         {
+            facturacion.Facturacion_Load(sender, e);
+            facturacion.Show();
             this.Close();
         }
 
@@ -69,9 +71,8 @@ namespace UberFrba.Facturacion
             MessageBox.Show("La Facturacion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             
             //volvemos a mostrar la pantalla anterior actuualizada
-            Facturacion fac= new Facturacion();
-            fac.Show();
-            facturacion.Close();
+            facturacion.Facturacion_Load(sender, e);
+            facturacion.Show();
             this.Close();
         }
     }

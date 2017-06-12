@@ -16,16 +16,20 @@ namespace UberFrba.Facturacion
     {
         BaseDeDatos bd;
         SqlConnection conexion;
+        Menu menu;
 
-        public Facturacion()
+        public Facturacion(Menu menu)
         {
             bd = new BaseDeDatos();
             conexion = bd.getCon();
             InitializeComponent();
+            this.menu = menu;
         }
 
         private void button1_Click(object sender, EventArgs e) //boton cerrar
         {
+            menu.visibilidad = true;
+            menu.Show();
             this.Close();
         }
 
@@ -60,6 +64,11 @@ namespace UberFrba.Facturacion
             {
                 dataGridView1.Columns.Insert(1, facturarViajes); //boton facturar
             }
+            else
+            {
+                dataGridView1.Columns.Remove("Facturar Cliente");
+                dataGridView1.Columns.Insert(1, facturarViajes); //boton facturar
+            }
 
         }
 
@@ -68,6 +77,7 @@ namespace UberFrba.Facturacion
             if (e.ColumnIndex == 1) //click en boton facturar
             {
                 HistorialFacturado hf = new HistorialFacturado(dataGridView1.Rows[e.RowIndex], this);
+                this.Hide();
                 hf.Show();
             }
         }
