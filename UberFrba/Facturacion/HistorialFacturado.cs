@@ -40,7 +40,7 @@ namespace UberFrba.Facturacion
             String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Viaje_Total FROM OVERFANTASY.Viaje ";
             select += "WHERE Factura_Nro IS NULL ";
             select += "AND Cliente_Username = '" + cliente_Username + "' ";
-            select += " AND Viaje_Hora_Inicio BETWEEN CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) + "',103) AND CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59) + "',103)";
+            select += " AND Viaje_Hora_Inicio BETWEEN CONVERT(datetime, '" + new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), 1) + "',103) AND CONVERT(datetime, '" + new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), DateTime.DaysInMonth(Configuracion.fechaAño(), Configuracion.fechaMes()), 23, 59, 59) + "',103)";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
@@ -62,7 +62,7 @@ namespace UberFrba.Facturacion
             conexion.Open();
             //creamos la factura
             insert = "INSERT INTO OVERFANTASY.Factura(Factura_Fecha_Inicio, Factura_Fecha_Fin, Cliente_Username, Factura_Total) ";
-            insert += "VALUES (CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) + "',103), CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59) + "',103), '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ")";
+            insert += "VALUES (CONVERT(datetime, '" + new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), 1) + "',103), CONVERT(datetime, '" + new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), DateTime.DaysInMonth(Configuracion.fechaAño(), Configuracion.fechaMes()), 23, 59, 59) + "',103), '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();

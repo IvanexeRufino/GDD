@@ -43,5 +43,49 @@ namespace UberFrba
             config.Close();
             return "Data Source=" + dtSrc + ";Initial Catalog=" + iniCtlg + ";User ID=" + user + ";Password=" + pass;
         }
+
+        static public string fechaCompleta()
+        {
+            string fecha;
+            StreamReader config = new StreamReader("../../../configuracion.txt");
+            string buffer = "";
+            buffer = config.ReadLine();
+            fecha = buffer.Substring(7, 10);
+            config.Close();
+            return fecha;
+        }
+
+        static public int fechaAño()
+        {
+            int fecha;
+            StreamReader config = new StreamReader("../../../configuracion.txt");
+            string buffer = "";
+            buffer = config.ReadLine();
+            fecha = Int32.Parse(buffer.Substring(7,4));
+            config.Close();
+            return fecha;
+        }
+
+        static public int fechaMes()
+        {
+            int fecha;
+            StreamReader config = new StreamReader("../../../configuracion.txt");
+            string buffer = "";
+            buffer = config.ReadLine();
+            fecha = Int32.Parse(buffer.Substring(12, 2));
+            config.Close();
+            return fecha;
+        }
+
+        static public int fechaDia()
+        {
+            int fecha;
+            StreamReader config = new StreamReader("../../../configuracion.txt");
+            string buffer = "";
+            buffer = config.ReadLine();
+            fecha = Int32.Parse(buffer.Substring(15, 2));
+            config.Close();
+            return fecha;
+        }
     }
 }

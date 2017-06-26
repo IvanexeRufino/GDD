@@ -47,13 +47,13 @@ namespace UberFrba.Facturacion
 
         public void Facturacion_Load(object sender, EventArgs e)
         {
-            textBox2.Text = DateTime.Now.ToString("MMMM"); //ponemos el mes en el textbox
+            textBox2.Text = new DateTime(2015, Configuracion.fechaMes(), 1).ToString("MMMM"); //ponemos el mes en el textbox
             //creamos el datagrid a partir del select
             DataGridViewButtonColumn facturarViajes = new DataGridViewButtonColumn();
             facturarViajes.Name = "Facturar Cliente";
             facturarViajes.Text = "Facturar Cliente";
             String select = "SELECT DISTINCT(Cliente_Username) FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Cliente_Username = u.Usuario_Username) WHERE Factura_Nro IS NULL AND Usuario_Estado = 'H'";
-            select += " AND Viaje_Hora_Inicio BETWEEN CONVERT(datetime, '"+new DateTime(DateTime.Now.Year, DateTime.Now.Month,1)+"',103) AND CONVERT(datetime, '"+new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59)+"',103)";
+            select += " AND Viaje_Hora_Inicio BETWEEN CONVERT(datetime, '" + new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), 1) + "',103) AND CONVERT(datetime, '" + new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), DateTime.DaysInMonth(Configuracion.fechaAño(), Configuracion.fechaMes()), 23, 59, 59) + "',103)";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();

@@ -27,7 +27,7 @@ namespace UberFrba.Abm_Chofer
             label12.Visible = false;
             comboBox1.Visible = false;
             monthCalendar1.MaxSelectionCount = 1;
-            monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
+            monthCalendar1.MaxDate = new DateTime(Configuracion.fechaAño() - 5, Configuracion.fechaMes(), Configuracion.fechaDia());
             button2.Hide();                                     //BOTON MODIFICAR
             this.abm = abm;
         }
@@ -42,7 +42,7 @@ namespace UberFrba.Abm_Chofer
             label12.Visible = true;
             comboBox1.Visible = true;
             monthCalendar1.MaxSelectionCount = 1;
-            monthCalendar1.MaxDate = new DateTime(DateTime.Now.Year - 5, DateTime.Now.Month, DateTime.Now.Day);
+            monthCalendar1.MaxDate = new DateTime(Configuracion.fechaAño() - 5, Configuracion.fechaMes(), Configuracion.fechaDia());
 
             user = row.Cells[0].Value.ToString();
             textBox1.Text = row.Cells[1].Value.ToString();      //Nombre

@@ -59,7 +59,7 @@ namespace UberFrba.Rendicion_Viajes
         {
             if (e.ColumnIndex == 3)  //Click en boton rendir viaje
             {
-                String query = "SELECT Rendicion_Nro FROM OVERFANTASY.Rendicion WHERE Chofer_Username = '"+dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()+"' AND Rendicion_Fecha = CONVERT(date, getdate())";
+                String query = "SELECT Rendicion_Nro FROM OVERFANTASY.Rendicion WHERE Chofer_Username = '"+dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()+"' AND Rendicion_Fecha = CONVERT(date, '" + Configuracion.fechaCompleta() + "')";
                 conexion.Open();
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {

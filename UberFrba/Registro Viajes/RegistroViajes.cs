@@ -33,7 +33,7 @@ namespace UberFrba.Registro_Viajes
             comboBox1.DataSource = ds.Tables[0];
             //Select de Clientes habilitados
             String select1 = "SELECT c.Usuario_Username FROM OVERFANTASY.Cliente c JOIN OVERFANTASY.Usuario u ON (c.Usuario_Username = u.Usuario_Username)";
-            select1 += " WHERE Usuario_Estado = 'H' AND c.Usuario_Username NOT IN (SELECT Cliente_Username FROM OVERFANTASY.Factura WHERE CONVERT(date,'"+DateTime.Now.Date.ToString()+"', 103) BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin)  order by Usuario_Username";
+            select1 += " WHERE Usuario_Estado = 'H' AND c.Usuario_Username NOT IN (SELECT Cliente_Username FROM OVERFANTASY.Factura WHERE CONVERT(date,'"+Configuracion.fechaCompleta()+"') BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin)  order by Usuario_Username";
             SqlDataAdapter dataAdapter1 = new SqlDataAdapter(select1, conexion);
             SqlCommandBuilder commandBuilder1 = new SqlCommandBuilder(dataAdapter1);
             DataSet ds1 = new DataSet();
@@ -176,15 +176,15 @@ namespace UberFrba.Registro_Viajes
             }
             conexion.Close();
 
-            DateTime rangoInicio = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioInicioTurno, 0, 0);
+            DateTime rangoInicio = new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), Configuracion.fechaDia(), horarioInicioTurno, 0, 0);
             DateTime rangoFin;
             if (horarioFinTurno == 24)
             {
-                rangoFin = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, 23, 59, 59);
+                rangoFin = new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), Configuracion.fechaDia(), 23, 59, 59);
             }
             else
             {
-                rangoFin = new DateTime(fechaInicio.Value.Year, fechaInicio.Value.Month, fechaInicio.Value.Day, horarioFinTurno, 0, 0);
+                rangoFin = new DateTime(Configuracion.fechaAño(), Configuracion.fechaMes(), Configuracion.fechaDia(), horarioFinTurno, 0, 0);
             }
             fechaInicio.MaxDate = rangoFin;
             fechaInicio.MinDate = rangoInicio;
