@@ -16,7 +16,7 @@ namespace UberFrba.Listado_Estadistico
         BaseDeDatos bd;
         SqlConnection conexion;
         String filtro;
-        String año = "2015";
+        String año = "2013";
 
         public ListadoEstadistico()
         {
@@ -25,7 +25,6 @@ namespace UberFrba.Listado_Estadistico
             InitializeComponent();
             comboBox2.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
-            textBox1.Text = "2015";
         }
 
         private void button1_Click(object sender, EventArgs e) //boton cerrar
@@ -96,7 +95,7 @@ namespace UberFrba.Listado_Estadistico
             switch (comboBox2.Text)
             {
                 case "Enero-Marzo":
-                    filtro = "BETWEEN '" + año + "-01-01 00:00:00' AND '" + año + "-03-31 23:59:59'";
+                    filtro = "BETWEEN CONVERT(datetime,'" + año + "-01-01 00:00:00', 103) AND CONVERT(datetime,'" + año + "-31-03 23:59:59',103)";
                     this.comboBox1_SelectedIndexChanged(sender, e);
                     break;
                 case "Abril-Junio":
@@ -114,17 +113,10 @@ namespace UberFrba.Listado_Estadistico
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) //escribimos el año
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                Int16.Parse(textBox1.Text);
-                año = textBox1.Text;
-                this.comboBox2_SelectedIndexChanged(sender, e);
-            }
-            catch
-            {
-            }
+            año = numericUpDown1.Value.ToString();
+            this.comboBox2_SelectedIndexChanged(sender, e);
         }
     }
 }

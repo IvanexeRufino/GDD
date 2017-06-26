@@ -109,11 +109,6 @@ namespace UberFrba.Abm_Chofer
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
                     decimal codpostal = Decimal.Parse(textBox10.Text);
-                    //ponemos la fecha en el formato que esta en la db
-                    String fecha = textBox5.Text.Substring(6, 4);
-                    fecha += textBox5.Text.Substring(2, 3);
-                    fecha += "/";
-                    fecha += textBox5.Text.Substring(0, 2);
                     try
                     {
                         //verificamos que no haya telefonos repetidos
@@ -126,7 +121,7 @@ namespace UberFrba.Abm_Chofer
                         conexion.Close();
                         //insertamos el nuevo chofer en la db y cerramos la ventana
                         String insert = "INSERT INTO OVERFANTASY.ChoferCompleto (Usuario_Username, Chofer_Nombre, Chofer_Apellido, Chofer_DNI, Chofer_FechaNacimiento, Chofer_Direccion, Chofer_Piso, Chofer_Departamento, Chofer_CodigoPostal, Chofer_Mail, Chofer_telefono, Chofer_Localidad)";
-                        insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', '" + fecha + "', '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
+                        insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', CONVERT(datetime,'"+textBox5.Text+"',103), '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                         SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
                         SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
                         DataSet ds = new DataSet();
@@ -166,13 +161,6 @@ namespace UberFrba.Abm_Chofer
                     decimal piso = Decimal.Parse(textBox8.Text);
                     decimal telefono = Decimal.Parse(textBox6.Text);
                     decimal codpostal = Decimal.Parse(textBox10.Text);
-                    
-                    //ponemos la fecha en el formato en el que se encuentra en la db
-                    String fecha = textBox5.Text.Substring(6, 4);
-                    fecha += textBox5.Text.Substring(2, 3);
-                    fecha += "/";
-                    fecha += textBox5.Text.Substring(0, 2);
-
                     try
                     {
                         //vemos si se modifico el telefono para que si fue asi siga siendo unico el mismo
@@ -193,7 +181,7 @@ namespace UberFrba.Abm_Chofer
                             {
                                 //si se inhabilita al chofer por modificacion se manda un delete que ejecutara el trigger
                                 estado = "I";
-                                choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
+                                choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, new DateTime(monthCalendar1.SelectionStart.Date.Year, monthCalendar1.SelectionStart.Date.Month, monthCalendar1.SelectionStart.Date.Day), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user);
                                 choferTableAdapter1.DeleteChofer(user);
                                 MessageBox.Show("El Chofer se ha Inhabilitado Correctamente", "Baja Chofer", MessageBoxButtons.OK, MessageBoxIcon.None);
                             }
@@ -201,7 +189,7 @@ namespace UberFrba.Abm_Chofer
                             {
                                 //modificamos el chofer
                                 estado = "H";
-                                choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, DateTime.Parse(fecha), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user); 
+                                choferTableAdapter1.UpdateChofer(textBox1.Text, textBox2.Text, dni, new DateTime(monthCalendar1.SelectionStart.Date.Year, monthCalendar1.SelectionStart.Date.Month, monthCalendar1.SelectionStart.Date.Day), textBox7.Text, piso, textBox9.Text, textBox10.Text, textBox4.Text, telefono, textBox11.Text, user); 
                                 usuarioTableAdapter1.UpdateUserEstado(estado, user);
 
                             }
@@ -241,7 +229,10 @@ namespace UberFrba.Abm_Chofer
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e) //asignacion fecha al textbox
         {
-            textBox5.Text = monthCalendar1.SelectionStart.ToString().Substring(0,10);
+            String day = monthCalendar1.SelectionStart.Date.Day.ToString();
+            String month = monthCalendar1.SelectionStart.Date.Month.ToString();
+            String year = monthCalendar1.SelectionStart.Date.Year.ToString();
+            textBox5.Text = day + '/' + month + '/' + year;
         }
     }
 }
