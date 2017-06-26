@@ -40,7 +40,7 @@ namespace UberFrba.Facturacion
             String select = "SELECT Viaje_Id, Viaje_Cantidad_Kilometros, Viaje_Hora_Inicio, Viaje_Hora_Fin, Chofer_Username, Cliente_Username, Turno_Descripcion, Viaje_Total FROM OVERFANTASY.Viaje ";
             select += "WHERE Factura_Nro IS NULL ";
             select += "AND Cliente_Username = '" + cliente_Username + "' ";
-            select += "AND Viaje_Hora_Inicio BETWEEN '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01' AND '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + " 23:59:59'";
+            select += " AND Viaje_Hora_Inicio BETWEEN CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) + "',103) AND CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59) + "',103)";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();
@@ -62,7 +62,7 @@ namespace UberFrba.Facturacion
             conexion.Open();
             //creamos la factura
             insert = "INSERT INTO OVERFANTASY.Factura(Factura_Fecha_Inicio, Factura_Fecha_Fin, Cliente_Username, Factura_Total) ";
-            insert += "VALUES ('" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01', '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + " 23:59:59', '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ")";
+            insert += "VALUES (CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1) + "',103), CONVERT(datetime, '" + new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59) + "',103), '" + cliente_Username + "', " + textBox1.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();

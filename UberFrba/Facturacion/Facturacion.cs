@@ -53,7 +53,7 @@ namespace UberFrba.Facturacion
             facturarViajes.Name = "Facturar Cliente";
             facturarViajes.Text = "Facturar Cliente";
             String select = "SELECT DISTINCT(Cliente_Username) FROM OVERFANTASY.Viaje v JOIN OVERFANTASY.Usuario u ON (v.Cliente_Username = u.Usuario_Username) WHERE Factura_Nro IS NULL AND Usuario_Estado = 'H'";
-            select += " AND Viaje_Hora_Inicio BETWEEN '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01' AND '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + " 23:59:59'";
+            select += " AND Viaje_Hora_Inicio BETWEEN CONVERT(datetime, '"+new DateTime(DateTime.Now.Year, DateTime.Now.Month,1)+"',103) AND CONVERT(datetime, '"+new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month), 23, 59, 59)+"',103)";
             SqlDataAdapter dataAdapter = new SqlDataAdapter(select, conexion);
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
             DataSet ds = new DataSet();

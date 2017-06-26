@@ -16,7 +16,7 @@ namespace UberFrba.Listado_Estadistico
         BaseDeDatos bd;
         SqlConnection conexion;
         String filtro;
-        String año = "2013";
+        String año = "2015";
 
         public ListadoEstadistico()
         {
@@ -25,6 +25,7 @@ namespace UberFrba.Listado_Estadistico
             InitializeComponent();
             comboBox2.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
+            numericUpDown1.Value = 2015;
         }
 
         private void button1_Click(object sender, EventArgs e) //boton cerrar
@@ -95,19 +96,19 @@ namespace UberFrba.Listado_Estadistico
             switch (comboBox2.Text)
             {
                 case "Enero-Marzo":
-                    filtro = "BETWEEN CONVERT(datetime,'" + año + "-01-01 00:00:00', 103) AND CONVERT(datetime,'" + año + "-31-03 23:59:59',103)";
+                    filtro = "BETWEEN CONVERT(datetime, '01/01/" + año + " 00:00:00',103) AND CONVERT(datetime,'31/03/" + año + " 23:59:59', 103)";
                     this.comboBox1_SelectedIndexChanged(sender, e);
                     break;
                 case "Abril-Junio":
-                    filtro = "BETWEEN '" + año + "-04-01 00:00:00' AND '" + año + "-06-30 23:59:59'";
+                    filtro = "BETWEEN CONVERT(datetime, '01/04/" + año + " 00:00:00',103) AND CONVERT(datetime,'30/06/" + año + " 23:59:59', 103)";
                     this.comboBox1_SelectedIndexChanged(sender, e);
                     break;
                 case "Julio-Septiembre":
-                    filtro = "BETWEEN '" + año + "-07-01 00:00:00' AND '" + año + "-09-30 23:59:59'";
+                    filtro = "BETWEEN CONVERT(datetime, '01/07/" + año + " 00:00:00',103) AND CONVERT(datetime,'30/09/" + año + " 23:59:59', 103)";
                     this.comboBox1_SelectedIndexChanged(sender, e);
                     break;
                 case "Octubre-Diciembre":
-                    filtro = "BETWEEN '" + año + "-10-01 00:00:00' AND '" + año + "-12-31 23:59:59'";
+                    filtro = "BETWEEN CONVERT(datetime, '01/10/" + año + " 00:00:00',103) AND CONVERT(datetime,'31/12/" + año + " 23:59:59', 103)";
                     this.comboBox1_SelectedIndexChanged(sender, e);
                     break;
             }

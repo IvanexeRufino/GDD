@@ -33,7 +33,7 @@ namespace UberFrba.Registro_Viajes
             comboBox1.DataSource = ds.Tables[0];
             //Select de Clientes habilitados
             String select1 = "SELECT c.Usuario_Username FROM OVERFANTASY.Cliente c JOIN OVERFANTASY.Usuario u ON (c.Usuario_Username = u.Usuario_Username)";
-            select1 += " WHERE Usuario_Estado = 'H' AND c.Usuario_Username NOT IN (SELECT Cliente_Username FROM OVERFANTASY.Factura WHERE '" + DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + "' BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin)  order by Usuario_Username";
+            select1 += " WHERE Usuario_Estado = 'H' AND c.Usuario_Username NOT IN (SELECT Cliente_Username FROM OVERFANTASY.Factura WHERE CONVERT(date,'"+DateTime.Now.Date.ToString()+"', 103) BETWEEN Factura_Fecha_Inicio AND Factura_Fecha_Fin)  order by Usuario_Username";
             SqlDataAdapter dataAdapter1 = new SqlDataAdapter(select1, conexion);
             SqlCommandBuilder commandBuilder1 = new SqlCommandBuilder(dataAdapter1);
             DataSet ds1 = new DataSet();
@@ -82,7 +82,7 @@ namespace UberFrba.Registro_Viajes
                 }
                 conexion.Open();
                 //Select para verificar que el cliente no tenga ya un viaje realizado en la fecha ingresada
-                String query = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Cliente_Username = '"+comboBox2.Text+"' AND ('"+textBox4.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '"+textBox5.Text+"' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
+                String query = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Cliente_Username = '"+comboBox2.Text+"' AND (CONVERT(datetime,'"+textBox4.Text+"',103) BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR CONVERT(datetime,'"+textBox5.Text+"',103) BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -95,7 +95,7 @@ namespace UberFrba.Registro_Viajes
                     }
                 }
                 //Select para verificar que el chofer no tenga ya un viaje realizado en la fecha ingresada
-                String query1 = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Chofer_Username = '" + comboBox1.Text + "' AND ('" + textBox4.Text + "' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR '" + textBox5.Text + "' BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
+                String query1 = "SELECT Viaje_Hora_Inicio, Viaje_Hora_Fin FROM OVERFANTASY.Viaje WHERE Chofer_Username = '" + comboBox1.Text + "' AND (CONVERT(datetime,'" + textBox4.Text + "',103) BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin OR CONVERT(datetime,'" + textBox5.Text + "',103) BETWEEN Viaje_Hora_Inicio AND Viaje_Hora_Fin)";
                 using (SqlCommand cmd = new SqlCommand(query1, conexion))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -142,11 +142,11 @@ namespace UberFrba.Registro_Viajes
 
         private String datepickerAString(DateTimePicker dtp)  //Crea el formato de fecha y hora
         {
-            String date = dtp.Value.Year.ToString();
+            String date = dtp.Value.Day.ToString();
             date += "/";
             date += dtp.Value.Month.ToString();
             date += "/";
-            date += dtp.Value.Day.ToString();
+            date += dtp.Value.Year.ToString();
             date += " ";
             date += dtp.Value.Hour.ToString();
             date += ":";

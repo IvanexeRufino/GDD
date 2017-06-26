@@ -123,7 +123,7 @@ namespace UberFrba.Abm_Cliente
                         {
                             //inserto cliente con mail y cierro la pantalla
                             String insert = "INSERT INTO OVERFANTASY.ClienteCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
-                            insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', CONVERT(datetime, '"+textBox5.Text+"',103), '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
+                            insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', CONVERT(datetime,'" + textBox5.Text + "',103), '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', '" + textBox4.Text + "', '" + telefono + "', '" + textBox11.Text + "')";
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
                             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
                             DataSet ds = new DataSet();
@@ -137,7 +137,7 @@ namespace UberFrba.Abm_Cliente
                         {
                             //inserto cliente sin mail y cierro la pantalla
                             String insert = "INSERT INTO OVERFANTASY.ClienteCompleto (Usuario_Username, Cliente_Nombre, Cliente_Apellido, Cliente_DNI, Cliente_FechaNacimiento, Cliente_Direccion, Cliente_Piso, Cliente_Departamento, Cliente_CodigoPostal, Cliente_Mail, Cliente_telefono, Cliente_Localidad)";
-                            insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', CONVERT(datetime, '"+textBox5.Text+"',103), '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', NULL, '" + telefono + "', '" + textBox11.Text + "')";
+                            insert += " VALUES ( '" + textBox6.Text + "', '" + textBox1.Text + "', '" + textBox2.Text + "', '" + dni + "', CONVERT(datetime,'" + textBox5.Text + "',103), '" + textBox7.Text + "' , '" + piso + "', '" + textBox9.Text + "' , '" + textBox10.Text + "', NULL, '" + telefono + "', '" + textBox11.Text + "')";
                             SqlDataAdapter dataAdapter = new SqlDataAdapter(insert, conexion);
                             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
                             DataSet ds = new DataSet();

@@ -30,11 +30,7 @@ namespace UberFrba.Rendicion_Viajes
             textBox2.Text = porcentajeACobrar.ToString(); //porcentaje base
             chofer_Username = fila.Cells[0].Value.ToString();
             Turno_Descripcion = fila.Cells[1].Value.ToString();
-            String aux = fila.Cells[2].Value.ToString().Substring(0,10);
-            fecha = aux.Substring(6, 4);
-            fecha += aux.Substring(2, 3);
-            fecha += "/";
-            fecha += aux.Substring(0, 2);
+            fecha = fila.Cells[2].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)  //Boton para cerrar
@@ -71,7 +67,7 @@ namespace UberFrba.Rendicion_Viajes
             String insert;
             conexion.Open();
             insert = "INSERT INTO OVERFANTASY.Rendicion(Rendicion_Fecha, Chofer_Username, Turno_Descripcion, Rendicion_Total)";
-            insert += "VALUES ('" + fecha + "', '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
+            insert += "VALUES (CONVERT(datetime, '" + fecha + "', 103), '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
             using (SqlCommand cmd = new SqlCommand(insert, conexion))
             {
                 cmd.ExecuteNonQuery();
