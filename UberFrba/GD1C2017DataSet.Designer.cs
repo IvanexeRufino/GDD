@@ -12374,11 +12374,11 @@ SELECT Rendicion_Nro, Chofer_Username, Turno_Descripcion, Rendicion_Fecha, Rendi
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"INSERT INTO [OVERFANTASY].[Rendicion] ([Chofer_Username], [Turno_Descripcion], [Rendicion_Fecha], [Rendicion_Total]) VALUES (@Chofer_Username, @Turno_Descripcion, CONVERT(date, @Rendicion_Fecha, 121), @Rendicion_Total);
-UPDATE [OVERFANTASY].[Viaje]
-SET [Rendicion_Nro] = @@IDENTITY
-WHERE [Chofer_Username] = @Chofer_Username
-AND [Turno_Descripcion] = @Turno_Descripcion
-AND CONVERT(date, [Viaje_Hora_Inicio]) = CONVERT(date, @fecha, 103)";
+UPDATE [OVERFANTASY].[Viaje] 
+SET Rendicion_Nro = @@IDENTITY
+WHERE CONVERT(date, Viaje_Hora_Inicio) = CONVERT(date, @fecha)
+AND Chofer_Username = @Chofer_Username
+AND Turno_Descripcion =  @Turno_Descripcion";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Chofer_Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Chofer_Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Turno_Descripcion", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "Turno_Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

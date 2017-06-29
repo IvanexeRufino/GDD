@@ -64,15 +64,7 @@ namespace UberFrba.Rendicion_Viajes
 
         private void button2_Click(object sender, EventArgs e)  //Realiza la rendicion con un insert en la tabla de rendiciones
         {
-            String insert;
-            conexion.Open();
-            insert = "INSERT INTO OVERFANTASY.Rendicion(Rendicion_Fecha, Chofer_Username, Turno_Descripcion, Rendicion_Total)";
-            insert += "VALUES (CONVERT(datetime, '" + Configuracion.fechaCompleta() + "', 103), '" + chofer_Username + "', '" + Turno_Descripcion + "', " + textBox3.Text.Replace(',', '.') + ")";
-            using (SqlCommand cmd = new SqlCommand(insert, conexion))
-            {
-                cmd.ExecuteNonQuery();
-            }
-            conexion.Close();
+            rendicionTableAdapter1.InsertRendicion(chofer_Username, Turno_Descripcion, Configuracion.fechaCompleta(), Decimal.Parse(textBox3.Text), fecha);
             MessageBox.Show("La rendicion se ha realizado con exito", "Rendicion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             rendicion.RendicionViajes_Load(sender, e);
             rendicion.Show();
