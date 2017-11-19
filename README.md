@@ -7,17 +7,17 @@ TAREA
 SCRIPT BD
 
             Migracion                       OK
-            Creacion de triggers            PROCESO                 TODOS
-            Creacion de vistas              PROCESO                 TODOS
+            Creacion de triggers            OK
+            Creacion de vistas              OK
 ENTREGABLE
 
             Login                           OK
             Menu                            OK
             Registrar Usuario               OK
             ABM Rol                         OK
-            ABM Cliente                     PROCESO                 MATHI
-            ABM Chofer                      PROCESO                 IVAN                
-            ABM Automovil                   PROCESO                 NICO
+            ABM Cliente                     OK
+            ABM Chofer                      OK              
+            ABM Automovil                   OK
             ABM Turno                       OK
             Registro de Viajes              OK
             Facturacion                     OK
